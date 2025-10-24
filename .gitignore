@@ -1,0 +1,19 @@
+# Lệnh tạo file (trên MINGW64)
+vinhl@DESKTOP-27L5SFO MINGW64 /d/Nhom16-OAnQuan (master)
+$ touch .gitignore
+
+# Build results
+[Dd]ebug/
+[Rr]elease/
+**/bin/
+**/obj/
+
+# Visual Studio files
+.vs/
+*.suo
+*.user
+*.pdb
+*.log
+
+# NuGet
+*.nuget.cache
