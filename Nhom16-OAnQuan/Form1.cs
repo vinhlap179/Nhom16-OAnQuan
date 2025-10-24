@@ -6,5 +6,10 @@ namespace Nhom16_OAnQuan
         {
             InitializeComponent();
         }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            //Vinh Lap da o day 
+        }
     }
 }
