@@ -30,33 +30,48 @@
         {
             buttonLogin = new Button();
             buttonSignUp = new Button();
+            buttonRecover = new Button();
             SuspendLayout();
             // 
             // buttonLogin
             // 
             buttonLogin.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            buttonLogin.Location = new Point(258, 244);
+            buttonLogin.Location = new Point(258, 190);
             buttonLogin.Name = "buttonLogin";
-            buttonLogin.Size = new Size(147, 60);
+            buttonLogin.Size = new Size(233, 60);
             buttonLogin.TabIndex = 0;
             buttonLogin.Text = "Đăng nhập ";
             buttonLogin.UseVisualStyleBackColor = true;
+            buttonLogin.Click += buttonLogin_Click;
             // 
             // buttonSignUp
             // 
             buttonSignUp.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             buttonSignUp.Location = new Point(258, 106);
             buttonSignUp.Name = "buttonSignUp";
-            buttonSignUp.Size = new Size(147, 60);
+            buttonSignUp.Size = new Size(233, 60);
             buttonSignUp.TabIndex = 1;
             buttonSignUp.Text = "Đăng ký  ";
             buttonSignUp.UseVisualStyleBackColor = true;
+            buttonSignUp.Click += buttonSignUp_Click;
+            // 
+            // buttonRecover
+            // 
+            buttonRecover.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            buttonRecover.Location = new Point(258, 283);
+            buttonRecover.Name = "buttonRecover";
+            buttonRecover.Size = new Size(233, 60);
+            buttonRecover.TabIndex = 2;
+            buttonRecover.Text = "Quên mật khẩu";
+            buttonRecover.UseVisualStyleBackColor = true;
+            buttonRecover.Click += buttonRecover_Click;
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(buttonRecover);
             Controls.Add(buttonSignUp);
             Controls.Add(buttonLogin);
             Name = "Form1";
@@ -69,5 +84,6 @@
 
         private Button buttonLogin;
         private Button buttonSignUp;
+        private Button buttonRecover;
     }
 }
