@@ -41,6 +41,7 @@
             btnLogin.TabIndex = 0;
             btnLogin.Text = "button1";
             btnLogin.UseVisualStyleBackColor = true;
+            btnLogin.Click += btnLogin_Click;
             // 
             // txt_user
             // 
@@ -55,6 +56,7 @@
             txt_pwd.Name = "txt_pwd";
             txt_pwd.Size = new Size(339, 27);
             txt_pwd.TabIndex = 2;
+            txt_pwd.UseSystemPasswordChar = true;
             // 
             // DangNhap
             // 

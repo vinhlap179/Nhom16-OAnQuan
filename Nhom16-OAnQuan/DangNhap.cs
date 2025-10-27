@@ -11,41 +11,13 @@ using System.Windows.Forms;
 
 namespace Nhom16_OAnQuan
 {
-    // LỚP 1: ĐỊNH NGHĨA DỮ LIỆU NGƯỜI DÙNG (BẮT BUỘC CÓ)
-    // (Khuôn mẫu để đọc dữ liệu user từ Firebase)
-    public class UserData
-    {
-        public string UserName { get; set; }
-        public string Password { get; set; } // Mật khẩu đã băm
-    }
-
-    // LỚP 2: BĂM MẬT KHẨU (BẮT BUỘC CÓ)
-    // (Phải dùng CÙNG MỘT cách băm khi đăng ký và đăng nhập)
-    public static class EncryptSHA
-    {
-        public static string GetData(string data)
-        {
-            using (SHA256 sha256Hash = SHA256.Create())
-            {
-                byte[] bytes = sha256Hash.ComputeHash(Encoding.UTF8.GetBytes(data));
-                StringBuilder builder = new StringBuilder();
-                for (int i = 0; i < bytes.Length; i++)
-                {
-                    builder.Append(bytes[i].ToString("x2"));
-                }
-                return builder.ToString();
-            }
-        }
-    }
-
-    // LỚP 3: FORM ĐĂNG NHẬP CỦA BẠN
     public partial class DangNhap : Form
     {
         // --- Cấu hình FireSharp ---
         IFirebaseConfig ifc = new FirebaseConfig()
         {
-            AuthSecret = "ZbGtGNeAorzKTN042TXKZv3jU70Fn3Yf47YK10cYQT",
-            BasePath = "https://test-b658c-default-rtdb.asia-southeast1.firebaseio.com/"
+            AuthSecret = "DzJSzDp6vNcDuWruaQWkdXMK4JWHihF41mZLuSiZ",
+            BasePath = "https://nhom16-oanquan-default-rtdb.asia-southeast1.firebasedatabase.app/"
         };
 
         // Client để kết nối
@@ -77,7 +49,30 @@ namespace Nhom16_OAnQuan
                 MessageBox.Show($"Lỗi kết nối Firebase: {ex.Message}");
             }
         }
+        public class UserData
+        {
+            public string UserName { get; set; }
+            public string Password { get; set; } // Mật khẩu đã băm
+        }
 
+        // LỚP 2: BĂM MẬT KHẨU (BẮT BUỘC CÓ)
+        // (Phải dùng CÙNG MỘT cách băm khi đăng ký và đăng nhập)
+        public static class EncryptSHA
+        {
+            public static string GetData(string data)
+            {
+                using (SHA256 sha256Hash = SHA256.Create())
+                {
+                    byte[] bytes = sha256Hash.ComputeHash(Encoding.UTF8.GetBytes(data));
+                    StringBuilder builder = new StringBuilder();
+                    for (int i = 0; i < bytes.Length; i++)
+                    {
+                        builder.Append(bytes[i].ToString("x2"));
+                    }
+                    return builder.ToString();
+                }
+            }
+        }
         private async void btnLogin_Click(object sender, EventArgs e)
         {
             string username = txt_user.Text;
@@ -131,5 +126,6 @@ namespace Nhom16_OAnQuan
                 MessageBox.Show($"Lỗi: {ex.Message}");
             }
         }
+
     }
 }
