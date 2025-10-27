@@ -28,12 +28,53 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Text = "DangNhap";
+            btnLogin = new Button();
+            txt_user = new TextBox();
+            txt_pwd = new TextBox();
+            SuspendLayout();
+            // 
+            // btnLogin
+            // 
+            btnLogin.Location = new Point(252, 248);
+            btnLogin.Name = "btnLogin";
+            btnLogin.Size = new Size(137, 53);
+            btnLogin.TabIndex = 0;
+            btnLogin.Text = "button1";
+            btnLogin.UseVisualStyleBackColor = true;
+            // 
+            // txt_user
+            // 
+            txt_user.Location = new Point(192, 60);
+            txt_user.Name = "txt_user";
+            txt_user.Size = new Size(345, 27);
+            txt_user.TabIndex = 1;
+            // 
+            // txt_pwd
+            // 
+            txt_pwd.Location = new Point(198, 141);
+            txt_pwd.Name = "txt_pwd";
+            txt_pwd.Size = new Size(339, 27);
+            txt_pwd.TabIndex = 2;
+            // 
+            // DangNhap
+            // 
+            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(800, 450);
+            Controls.Add(txt_pwd);
+            Controls.Add(txt_user);
+            Controls.Add(btnLogin);
+            Name = "DangNhap";
+            Text = "DangNhap";
+            Load += DangNhap_Load;
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
+
+        private Button btnLogin;
+        private TextBox txt_user;
+        private TextBox txt_pwd;
     }
 }
