@@ -49,6 +49,7 @@
             txt_user.Name = "txt_user";
             txt_user.Size = new Size(345, 27);
             txt_user.TabIndex = 1;
+            txt_user.TextChanged += txt_user_TextChanged;
             // 
             // txt_pwd
             // 
