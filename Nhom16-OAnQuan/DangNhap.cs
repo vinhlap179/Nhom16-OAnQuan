@@ -127,5 +127,9 @@ namespace Nhom16_OAnQuan
             }
         }
 
+        private void txt_user_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
