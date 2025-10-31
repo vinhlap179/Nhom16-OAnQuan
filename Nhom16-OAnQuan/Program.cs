@@ -1,3 +1,7 @@
+using Google.Cloud.Firestore.V1;
+using Nhom16_OAnQuan.Classes;
+using Nhom16_OAnQuan.Forms;
+
 namespace Nhom16_OAnQuan
 {
     internal static class Program
@@ -10,8 +14,9 @@ namespace Nhom16_OAnQuan
         {
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
+            FirestoreHelper.SetEnvironmentVariable();
             ApplicationConfiguration.Initialize();
-            Application.Run(new Form1());
+            Application.Run(new LogInForm());
         }
     }
 }
