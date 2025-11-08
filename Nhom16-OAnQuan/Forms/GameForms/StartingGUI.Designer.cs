@@ -30,7 +30,7 @@
         {
             SignOutBtn = new Button();
             GuideBtn = new Button();
-            MatchHistoryBtn = new Button();
+            PlayerInformationBtn = new Button();
             PlayBtn = new Button();
             SuspendLayout();
             // 
@@ -55,15 +55,15 @@
             GuideBtn.Text = "Hướng Dẫn";
             GuideBtn.UseVisualStyleBackColor = true;
             // 
-            // MatchHistoryBtn
+            // PlayerInformationBtn
             // 
-            MatchHistoryBtn.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            MatchHistoryBtn.Location = new Point(782, 355);
-            MatchHistoryBtn.Name = "MatchHistoryBtn";
-            MatchHistoryBtn.Size = new Size(204, 51);
-            MatchHistoryBtn.TabIndex = 21;
-            MatchHistoryBtn.Text = "Lịch sử đấu";
-            MatchHistoryBtn.UseVisualStyleBackColor = true;
+            PlayerInformationBtn.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            PlayerInformationBtn.Location = new Point(782, 355);
+            PlayerInformationBtn.Name = "PlayerInformationBtn";
+            PlayerInformationBtn.Size = new Size(204, 51);
+            PlayerInformationBtn.TabIndex = 21;
+            PlayerInformationBtn.Text = "Thông tin người chơi";
+            PlayerInformationBtn.UseVisualStyleBackColor = true;
             // 
             // PlayBtn
             // 
@@ -81,7 +81,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1045, 581);
             Controls.Add(PlayBtn);
-            Controls.Add(MatchHistoryBtn);
+            Controls.Add(PlayerInformationBtn);
             Controls.Add(GuideBtn);
             Controls.Add(SignOutBtn);
             Name = "StartingGUI";
@@ -93,7 +93,7 @@
 
         private Button SignOutBtn;
         private Button GuideBtn;
-        private Button MatchHistoryBtn;
+        private Button PlayerInformationBtn;
         private Button PlayBtn;
     }
 }
