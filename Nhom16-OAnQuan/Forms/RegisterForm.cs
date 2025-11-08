@@ -56,13 +56,11 @@ namespace Nhom16_OAnQuan.Forms
         {
             string username = UserBox.Text.Trim();
             string password =  Security.Encrypt(PassBox.Text);
-            int zip = Convert.ToInt32(ZipBox.Text);
 
             return new UserData()
             {
                 Username = username,
                 Password = password,
-                ZipCode = zip,
             };
         }
 

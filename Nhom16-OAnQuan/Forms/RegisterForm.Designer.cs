@@ -30,10 +30,8 @@
         {
             label1 = new Label();
             label2 = new Label();
-            label3 = new Label();
             UserBox = new TextBox();
             PassBox = new TextBox();
-            ZipBox = new TextBox();
             BackToLoginBtn = new Button();
             SignUpBtn = new Button();
             SuspendLayout();
@@ -58,16 +56,6 @@
             label2.TabIndex = 3;
             label2.Text = "Mật khẩu";
             // 
-            // label3
-            // 
-            label3.AutoSize = true;
-            label3.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label3.Location = new Point(141, 198);
-            label3.Name = "label3";
-            label3.Size = new Size(73, 28);
-            label3.TabIndex = 5;
-            label3.Text = "Mã Zip";
-            // 
             // UserBox
             // 
             UserBox.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
@@ -86,18 +74,10 @@
             PassBox.TabIndex = 7;
             PassBox.UseSystemPasswordChar = true;
             // 
-            // ZipBox
-            // 
-            ZipBox.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            ZipBox.Location = new Point(265, 198);
-            ZipBox.Name = "ZipBox";
-            ZipBox.Size = new Size(306, 34);
-            ZipBox.TabIndex = 8;
-            // 
             // BackToLoginBtn
             // 
             BackToLoginBtn.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            BackToLoginBtn.Location = new Point(141, 270);
+            BackToLoginBtn.Location = new Point(70, 211);
             BackToLoginBtn.Name = "BackToLoginBtn";
             BackToLoginBtn.Size = new Size(204, 51);
             BackToLoginBtn.TabIndex = 9;
@@ -108,7 +88,7 @@
             // SignUpBtn
             // 
             SignUpBtn.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            SignUpBtn.Location = new Point(381, 270);
+            SignUpBtn.Location = new Point(315, 211);
             SignUpBtn.Name = "SignUpBtn";
             SignUpBtn.Size = new Size(204, 51);
             SignUpBtn.TabIndex = 10;
@@ -123,10 +103,8 @@
             ClientSize = new Size(800, 450);
             Controls.Add(SignUpBtn);
             Controls.Add(BackToLoginBtn);
-            Controls.Add(ZipBox);
             Controls.Add(PassBox);
             Controls.Add(UserBox);
-            Controls.Add(label3);
             Controls.Add(label2);
             Controls.Add(label1);
             Name = "RegisterForm";
@@ -139,10 +117,8 @@
 
         private Label label1;
         private Label label2;
-        private Label label3;
         private TextBox UserBox;
         private TextBox PassBox;
-        private TextBox ZipBox;
         private Button BackToLoginBtn;
         private Button SignUpBtn;
     }

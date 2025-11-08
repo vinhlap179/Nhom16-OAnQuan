@@ -14,7 +14,12 @@ namespace Nhom16_OAnQuan.Classes
         public string Username { get; set; }
         [FirestoreProperty]
         public string Password { get; set; }
+        //Quen mat khau
         [FirestoreProperty]
-        public int ZipCode { get; set; }
+        public string? ResetToken { get; set; }
+
+        [FirestoreProperty]
+        public DateTime? TokenExpiry { get; set; }
+
     }
 }

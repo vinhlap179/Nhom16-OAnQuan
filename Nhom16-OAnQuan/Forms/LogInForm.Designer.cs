@@ -34,6 +34,7 @@
             UserBox = new TextBox();
             label2 = new Label();
             label1 = new Label();
+            forgotPassBtn = new Button();
             SuspendLayout();
             // 
             // LogInBtn
@@ -96,11 +97,23 @@
             label1.TabIndex = 11;
             label1.Text = "Tài khoản";
             // 
+            // forgotPassBtn
+            // 
+            forgotPassBtn.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            forgotPassBtn.Location = new Point(128, 318);
+            forgotPassBtn.Name = "forgotPassBtn";
+            forgotPassBtn.Size = new Size(450, 51);
+            forgotPassBtn.TabIndex = 19;
+            forgotPassBtn.Text = "Quên mật khẩu";
+            forgotPassBtn.UseVisualStyleBackColor = true;
+            forgotPassBtn.Click += forgotPassBtn_Click;
+            // 
             // LogInForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(forgotPassBtn);
             Controls.Add(LogInBtn);
             Controls.Add(SignUpBtn);
             Controls.Add(PassBox);
@@ -121,5 +134,6 @@
         private TextBox UserBox;
         private Label label2;
         private Label label1;
+        private Button forgotPassBtn;
     }
 }
