@@ -54,6 +54,7 @@
             GuideBtn.TabIndex = 20;
             GuideBtn.Text = "Hướng Dẫn";
             GuideBtn.UseVisualStyleBackColor = true;
+            GuideBtn.Click += GuideBtn_Click;
             // 
             // PlayerInformationBtn
             // 
@@ -74,6 +75,7 @@
             PlayBtn.TabIndex = 22;
             PlayBtn.Text = "Chơi";
             PlayBtn.UseVisualStyleBackColor = true;
+            PlayBtn.Click += PlayBtn_Click;
             // 
             // StartingGUI
             // 

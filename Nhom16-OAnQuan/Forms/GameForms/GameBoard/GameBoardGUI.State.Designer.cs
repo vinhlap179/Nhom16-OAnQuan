@@ -1,4 +1,4 @@
-﻿namespace Nhom16_OAnQuan.Forms.GameForms
+﻿namespace Nhom16_OAnQuan.Forms.GameForms.GameBoard
 {
     partial class GameBoardGUI
     {
@@ -7,7 +7,7 @@
         /// </summary>
         private System.ComponentModel.IContainer components = null;
 
-        /// <summary>
+        /// <summary> 
         /// Clean up any resources being used.
         /// </summary>
         /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
@@ -20,7 +20,7 @@
             base.Dispose(disposing);
         }
 
-        #region Windows Form Designer generated code
+        #region Component Designer generated code
 
         /// <summary>
         /// Required method for Designer support - do not modify
@@ -28,16 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            SuspendLayout();
-            // 
-            // GameBoardGUI
-            // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
-            AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1272, 683);
-            Name = "GameBoardGUI";
-            Text = "GameBoardGUI";
-            ResumeLayout(false);
+            components = new System.ComponentModel.Container();
         }
 
         #endregion
