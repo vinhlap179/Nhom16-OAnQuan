@@ -400,13 +400,13 @@ namespace Nhom16_OAnQuan.Forms.GameForms
                 lblThongBao.Text = $"Kết thúc game. {ketQua}";
                 CapNhatGiaoDien();
 
-                // >>> POP-UP kết thúc game <<<
-                MessageBox.Show(
-                    $"Trò chơi kết thúc!\n\n{ketQua}\n\nTỷ số: {diemNguoi1} - {diemNguoi2}",
-                    "Hết game!",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Information
-                );
+                // MỞ FORM KẾT QUẢ 
+                ResultForm resultForm = new ResultForm(diemNguoi1, diemNguoi2);
+
+                // dạng dialog, sẽ khóa form game lại
+                resultForm.ShowDialog();
+                this.Close();
+                
 
                 // Khóa thao tác
                 for (int i = 0; i < 12; i++) if (oVuong[i] != null) oVuong[i].Enabled = false;
