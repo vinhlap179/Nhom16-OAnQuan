@@ -21,5 +21,14 @@ namespace Nhom16_OAnQuan.Classes
         [FirestoreProperty]
         public DateTime? TokenExpiry { get; set; }
 
+        [FirestoreProperty]
+        public int Wins { get; set; } = 0;
+
+        [FirestoreProperty]
+        public int Losses { get; set; } = 0;
+
+        [FirestoreProperty]
+        public int TotalGames { get; set; } = 0;
+
     }
 }

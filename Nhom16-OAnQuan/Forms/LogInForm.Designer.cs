@@ -76,6 +76,7 @@
             UserBox.Name = "UserBox";
             UserBox.Size = new Size(306, 34);
             UserBox.TabIndex = 14;
+            UserBox.TextChanged += UserBox_TextChanged;
             // 
             // label2
             // 
@@ -96,6 +97,7 @@
             label1.Size = new Size(94, 28);
             label1.TabIndex = 11;
             label1.Text = "Tài khoản";
+            label1.Click += label1_Click;
             // 
             // forgotPassBtn
             // 

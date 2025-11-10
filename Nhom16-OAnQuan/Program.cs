@@ -1,6 +1,7 @@
 using Google.Cloud.Firestore.V1;
 using Nhom16_OAnQuan.Classes;
 using Nhom16_OAnQuan.Forms;
+using Nhom16_OAnQuan.Forms.GameForms;
 
 namespace Nhom16_OAnQuan
 {
