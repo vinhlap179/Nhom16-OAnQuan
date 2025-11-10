@@ -65,6 +65,7 @@
             PlayerInformationBtn.TabIndex = 21;
             PlayerInformationBtn.Text = "Thông tin người chơi";
             PlayerInformationBtn.UseVisualStyleBackColor = true;
+            PlayerInformationBtn.Click += PlayerInformationBtn_Click;
             // 
             // PlayBtn
             // 

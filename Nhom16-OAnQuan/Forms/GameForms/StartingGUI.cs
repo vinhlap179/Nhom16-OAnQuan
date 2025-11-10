@@ -48,16 +48,5 @@ namespace Nhom16_OAnQuan.Forms.GameForms
             this.Close();
             Application.Restart();
         }
-
-        private void PlayBtn_Click(object sender, EventArgs e)
-        {
-            new GameBoardGUI().ShowDialog();
-        }
-
-        private void GuideBtn_Click(object sender, EventArgs e)
-        {
-            new GuideGUI().ShowDialog();
-            this.Hide();
-        }
     }
 }

@@ -63,6 +63,7 @@
             UserBox.Name = "UserBox";
             UserBox.Size = new Size(306, 34);
             UserBox.TabIndex = 6;
+            UserBox.TextChanged += UserBox_TextChanged;
             // 
             // PassBox
             // 
