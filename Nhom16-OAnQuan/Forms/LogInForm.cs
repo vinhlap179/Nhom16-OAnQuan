@@ -24,9 +24,9 @@ namespace Nhom16_OAnQuan.Forms
         private void SignUpBtn_Click(object sender, EventArgs e)
         {
             RegisterForm form = new RegisterForm();
-            this.Hide(); 
-            form.ShowDialog(); 
-            this.Show(); 
+            this.Hide();
+            form.ShowDialog();
+            this.Show();
         }
 
         private void LogInBtn_Click(object sender, EventArgs e)
@@ -53,7 +53,7 @@ namespace Nhom16_OAnQuan.Forms
                     if (password == Security.Decrypt(data.Password))
                     {
                         MessageBox.Show("Success");
-                        GlobalUserSession.CurrentUsername = username; 
+                        GlobalUserSession.CurrentUsername = username;
                         GlobalUserSession.CurrentToken = Guid.NewGuid().ToString();
 
                         StartingGUI startingForm = new StartingGUI();
@@ -88,6 +88,16 @@ namespace Nhom16_OAnQuan.Forms
             this.Hide();
             form.ShowDialog();
             this.Show();
+        }
+
+        private void UserBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

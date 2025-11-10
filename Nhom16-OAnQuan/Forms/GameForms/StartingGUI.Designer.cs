@@ -64,6 +64,7 @@
             PlayerInformationBtn.TabIndex = 21;
             PlayerInformationBtn.Text = "Thông tin người chơi";
             PlayerInformationBtn.UseVisualStyleBackColor = true;
+            PlayerInformationBtn.Click += PlayerInformationBtn_Click;
             // 
             // PlayBtn
             // 
@@ -74,6 +75,7 @@
             PlayBtn.TabIndex = 22;
             PlayBtn.Text = "Chơi";
             PlayBtn.UseVisualStyleBackColor = true;
+            PlayBtn.Click += PlayBtn_Click;
             // 
             // StartingGUI
             // 

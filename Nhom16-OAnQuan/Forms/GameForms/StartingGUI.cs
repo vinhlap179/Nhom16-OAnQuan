@@ -19,7 +19,7 @@ namespace Nhom16_OAnQuan.Forms.GameForms
             CheckLoginToken();
         }
 
-       
+
 
         private void CheckLoginToken()
         {
@@ -47,6 +47,17 @@ namespace Nhom16_OAnQuan.Forms.GameForms
             MessageBox.Show("Bạn đã đăng xuất thành công.", "Đăng xuất");
             this.Close();
             Application.Restart();
+        }
+
+        private void PlayBtn_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void PlayerInformationBtn_Click(object sender, EventArgs e)
+        {
+            PlayerInfoForm playerInfoForm = new PlayerInfoForm();
+            playerInfoForm.ShowDialog();
         }
     }
 }

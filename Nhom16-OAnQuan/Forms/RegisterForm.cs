@@ -55,7 +55,7 @@ namespace Nhom16_OAnQuan.Forms
         private UserData GetWriteData()
         {
             string username = UserBox.Text.Trim();
-            string password =  Security.Encrypt(PassBox.Text);
+            string password = Security.Encrypt(PassBox.Text);
 
             return new UserData()
             {
@@ -75,12 +75,17 @@ namespace Nhom16_OAnQuan.Forms
 
             if (data != null)
             {
-                return true; 
+                return true;
             }
             else
             {
                 return false;
             }
+        }
+
+        private void UserBox_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
