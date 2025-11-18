@@ -56,7 +56,7 @@ namespace Nhom16_OAnQuan.Forms.GameForms
 
         private void PlayerInformationBtn_Click(object sender, EventArgs e)
         {
-
+            new PlayerInfoForm().ShowDialog();
         }
 
         private void PlayBtn_Click(object sender, EventArgs e)
