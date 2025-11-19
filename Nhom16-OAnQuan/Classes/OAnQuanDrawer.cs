@@ -14,7 +14,7 @@ namespace Nhom16_OAnQuan.Classes
 
         public OAnQuanDrawer()
         {
-            // 1. Load ảnh gỗ từ folder (bên cạnh file .exe)
+            // 1. Load ảnh gỗ từ folder
             try
             {
                 string path = Path.Combine(Application.StartupPath, "Images", "GameBoard", "cool.jpg");
@@ -32,7 +32,7 @@ namespace Nhom16_OAnQuan.Classes
             _stonePositions = new PointF[12][];
             for (int i = 0; i < 12; i++)
             {
-                _stonePositions[i] = new PointF[100]; // Max 100 viên
+                _stonePositions[i] = new PointF[100];
                 for (int j = 0; j < 100; j++)
                 {
                     // Random vị trí từ 10% đến 90% diện tích ô
@@ -59,10 +59,16 @@ namespace Nhom16_OAnQuan.Classes
                     {
                         g.FillPath(brush, path);
                         using (Pen p = new Pen(Color.FromArgb(60, 40, 20), 3)) g.DrawPath(p, path);
-
-                        // Highlight khi chọn
+                        // Highlight viền ĐỎ khi chọn
                         if (isSelected)
-                            using (Pen pHi = new Pen(Color.Yellow, 4)) g.DrawPath(pHi, path);
+                        {
+                            // Màu Red, độ dày 5 cho rõ
+                            using (Pen pHi = new Pen(Color.Red, 5))
+                            {
+                                // Vẽ đè lên để thấy rõ viền
+                                g.DrawPath(pHi, path);
+                            }
+                        }
                     }
                 }
             }

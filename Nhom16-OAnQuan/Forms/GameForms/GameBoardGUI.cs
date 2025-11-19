@@ -18,7 +18,7 @@ namespace Nhom16_OAnQuan.Forms.GameForms
         {
             InitializeComponent();
             _game = new OAnQuanLogic();
-            _drawer = new OAnQuanDrawer(); // Khởi tạo họa sĩ (sẽ load ảnh gỗ)
+            _drawer = new OAnQuanDrawer();
 
             btnTrai.Click += btnHuong_Click;
             btnPhai.Click += btnHuong_Click;
@@ -87,35 +87,47 @@ namespace Nhom16_OAnQuan.Forms.GameForms
                 (index == oDaChon)
             );
         }
-
         private void CapNhatGiaoDien()
         {
-            for (int i = 0; i < 12; i++) if (oVuong[i] != null) oVuong[i].Invalidate(); // Vẽ lại
+            for (int i = 0; i < 12; i++) if (oVuong[i] != null) oVuong[i].Invalidate();
 
             lblDiemNguoi1.Text = $"Bạn: {_game.DiemNguoi1}";
             lblDiemNguoi2.Text = $"Bot: {_game.DiemNguoi2}";
-            lblThongBao.Text = _game.GameOver ? "Kết thúc." : (_game.LaLuotNguoiChoi ? "Lượt: Bạn" : "Lượt: Bot");
+            lblThongBao.Text = _game.GameOver
+                ? "Kết thúc."
+                : (_game.LaLuotNguoiChoi ? "Lượt: Bạn" : "Lượt: Bot");
+            // FIX cho phép chọn các ô khác khi là lượt người chơi và không đang di chuyển
+            bool choPhep = _game.LaLuotNguoiChoi && !dangDiChuyen && !_game.GameOver;
+            for (int i = 0; i < 12; i++)
+            {
+                // Chỉ bật (Enable) các ô dân của mình (7-11) và có quân
+                if (i >= 7 && i <= 11)
+                {
+                    oVuong[i].Enabled = choPhep && _game.BanCo[i] > 0;
+                }
+                else
+                {
+                    oVuong[i].Enabled = false;
+                }
+            }
 
-            bool choPhep = _game.LaLuotNguoiChoi && !dangDiChuyen && oDaChon < 0 && !_game.GameOver;
-            for (int i = 7; i <= 11; i++) oVuong[i].Enabled = choPhep && _game.BanCo[i] > 0;
-
+            // Hiện nút nếu đã có ô được chọn
             btnTrai.Visible = btnPhai.Visible = (oDaChon >= 0);
         }
 
         // --- LOGIC EVENTS ---
         private void oDan_Click(object sender, EventArgs e)
         {
+            // Các kiểm tra cơ bản
             if (dangDiChuyen || _game.GameOver || !_game.LaLuotNguoiChoi) return;
             int index = (int)(sender as Label).Tag;
-
             if (index < 7 || index > 11) return;
             if (_game.BanCo[index] == 0) return;
-
-            int old = oDaChon;
-            oDaChon = index;
-            if (old != -1) oVuong[old].Invalidate();
+            int oldSelect = oDaChon; // Lưu ô cũ
+            oDaChon = index;      // Gán ô mới
+            if (oldSelect != -1) oVuong[oldSelect].Invalidate();
             oVuong[oDaChon].Invalidate();
-
+            // Di chuyển 2 nút Trái/Phải đến vị trí mới
             try
             {
                 var pt = tblBanCo.PointToScreen(oVuong[oDaChon].Location);
@@ -123,11 +135,9 @@ namespace Nhom16_OAnQuan.Forms.GameForms
                 btnTrai.Location = new Point(pt.X - btnTrai.Width - 5, pt.Y + 20);
                 btnPhai.Location = new Point(pt.X + oVuong[oDaChon].Width + 5, pt.Y + 20);
             }
-            catch { }
-
+            catch { }      // Cập nhật trạng thái nút bấm (Visible = true)
             CapNhatGiaoDien();
         }
-
         private async void btnHuong_Click(object sender, EventArgs e)
         {
             if (oDaChon < 0) return;
