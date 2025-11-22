@@ -46,7 +46,7 @@
             tblBanCo.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 14.2857141F));
             tblBanCo.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 14.2857141F));
             tblBanCo.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 14.2857141F));
-            tblBanCo.Location = new Point(82, 89);
+            tblBanCo.Location = new Point(15, 12);
             tblBanCo.Name = "tblBanCo";
             tblBanCo.RowCount = 3;
             tblBanCo.RowStyles.Add(new RowStyle(SizeType.Percent, 33.3333321F));
@@ -58,36 +58,33 @@
             // lblDiemNguoi1
             // 
             lblDiemNguoi1.AutoSize = true;
-            lblDiemNguoi1.Font = new Font("Segoe UI", 18F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
-            lblDiemNguoi1.Location = new Point(82, 764);
+            lblDiemNguoi1.Location = new Point(70, 694);
             lblDiemNguoi1.Name = "lblDiemNguoi1";
-            lblDiemNguoi1.Size = new Size(253, 41);
+            lblDiemNguoi1.Size = new Size(120, 20);
             lblDiemNguoi1.TabIndex = 1;
             lblDiemNguoi1.Text = "Điểm người chơi";
             // 
             // lblDiemNguoi2
             // 
             lblDiemNguoi2.AutoSize = true;
-            lblDiemNguoi2.Font = new Font("Segoe UI", 18F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
-            lblDiemNguoi2.Location = new Point(1074, 768);
+            lblDiemNguoi2.Location = new Point(1004, 694);
             lblDiemNguoi2.Name = "lblDiemNguoi2";
-            lblDiemNguoi2.Size = new Size(163, 41);
+            lblDiemNguoi2.Size = new Size(77, 20);
             lblDiemNguoi2.TabIndex = 2;
             lblDiemNguoi2.Text = "Điểm máy";
             // 
             // lblThongBao
             // 
             lblThongBao.AutoSize = true;
-            lblThongBao.Font = new Font("Segoe UI Semibold", 16.2F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
-            lblThongBao.Location = new Point(616, 776);
+            lblThongBao.Location = new Point(527, 694);
             lblThongBao.Name = "lblThongBao";
-            lblThongBao.Size = new Size(154, 38);
+            lblThongBao.Size = new Size(81, 20);
             lblThongBao.TabIndex = 3;
             lblThongBao.Text = "Thông Báo";
             // 
             // btnTrai
             // 
-            btnTrai.Location = new Point(422, 776);
+            btnTrai.Location = new Point(370, 681);
             btnTrai.Name = "btnTrai";
             btnTrai.Size = new Size(116, 43);
             btnTrai.TabIndex = 4;
@@ -96,7 +93,7 @@
             // 
             // btnPhai
             // 
-            btnPhai.Location = new Point(847, 771);
+            btnPhai.Location = new Point(665, 679);
             btnPhai.Name = "btnPhai";
             btnPhai.Size = new Size(122, 48);
             btnPhai.TabIndex = 5;
@@ -107,7 +104,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1374, 850);
+            ClientSize = new Size(1182, 753);
             Controls.Add(btnPhai);
             Controls.Add(btnTrai);
             Controls.Add(lblThongBao);
@@ -115,7 +112,6 @@
             Controls.Add(lblDiemNguoi1);
             Controls.Add(tblBanCo);
             Name = "GameBoardGUI";
-            StartPosition = FormStartPosition.CenterScreen;
             Text = "GameBoardGUI";
             Load += GameBoardGUI_Load;
             ResumeLayout(false);
