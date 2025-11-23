@@ -39,75 +39,91 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label1.Location = new Point(141, 109);
+            label1.Font = new Font("Press Start 2P", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label1.ForeColor = Color.White;
+            label1.Location = new Point(121, 120);
             label1.Name = "label1";
-            label1.Size = new Size(94, 28);
+            label1.Size = new Size(130, 21);
             label1.TabIndex = 2;
-            label1.Text = "Tài khoản";
+            label1.Text = "Username";
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label2.Location = new Point(141, 151);
+            label2.BackColor = Color.FromArgb(64, 64, 64);
+            label2.Font = new Font("Press Start 2P", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label2.ForeColor = SystemColors.Control;
+            label2.Location = new Point(121, 151);
             label2.Name = "label2";
-            label2.Size = new Size(94, 28);
+            label2.Size = new Size(130, 21);
             label2.TabIndex = 3;
-            label2.Text = "Mật khẩu";
+            label2.Text = "Password";
             // 
             // UserBox
             // 
-            UserBox.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            UserBox.BackColor = SystemColors.ControlDark;
+            UserBox.Font = new Font("Press Start 2P", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            UserBox.ForeColor = SystemColors.Window;
             UserBox.Location = new Point(265, 109);
             UserBox.Name = "UserBox";
-            UserBox.Size = new Size(306, 34);
+            UserBox.Size = new Size(306, 27);
             UserBox.TabIndex = 6;
             UserBox.TextChanged += UserBox_TextChanged;
             // 
             // PassBox
             // 
-            PassBox.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            PassBox.BackColor = SystemColors.ControlDark;
+            PassBox.Font = new Font("Press Start 2P", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            PassBox.ForeColor = SystemColors.Window;
             PassBox.Location = new Point(265, 151);
             PassBox.Name = "PassBox";
             PassBox.PasswordChar = '*';
-            PassBox.Size = new Size(306, 34);
+            PassBox.Size = new Size(306, 27);
             PassBox.TabIndex = 7;
             PassBox.UseSystemPasswordChar = true;
             // 
             // BackToLoginBtn
             // 
-            BackToLoginBtn.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            BackToLoginBtn.Location = new Point(70, 211);
+            BackToLoginBtn.BackColor = Color.DimGray;
+            BackToLoginBtn.Font = new Font("Press Start 2P", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            BackToLoginBtn.ForeColor = SystemColors.ButtonHighlight;
+            BackToLoginBtn.Location = new Point(121, 205);
             BackToLoginBtn.Name = "BackToLoginBtn";
-            BackToLoginBtn.Size = new Size(204, 51);
+            BackToLoginBtn.Size = new Size(203, 62);
             BackToLoginBtn.TabIndex = 9;
-            BackToLoginBtn.Text = "Trở về đăng nhập ";
-            BackToLoginBtn.UseVisualStyleBackColor = true;
+            BackToLoginBtn.Text = "Back to login";
+            BackToLoginBtn.UseVisualStyleBackColor = false;
             BackToLoginBtn.Click += BackToLoginBtn_Click;
             // 
             // SignUpBtn
             // 
-            SignUpBtn.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            SignUpBtn.Location = new Point(315, 211);
+            SignUpBtn.BackColor = Color.DimGray;
+            SignUpBtn.BackgroundImageLayout = ImageLayout.Center;
+            SignUpBtn.FlatAppearance.BorderSize = 0;
+            SignUpBtn.Font = new Font("Press Start 2P", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            SignUpBtn.ForeColor = SystemColors.ButtonHighlight;
+            SignUpBtn.Location = new Point(371, 205);
             SignUpBtn.Name = "SignUpBtn";
-            SignUpBtn.Size = new Size(204, 51);
+            SignUpBtn.Size = new Size(200, 62);
             SignUpBtn.TabIndex = 10;
-            SignUpBtn.Text = "Đăng kí ";
-            SignUpBtn.UseVisualStyleBackColor = true;
+            SignUpBtn.Text = "Signup ";
+            SignUpBtn.UseVisualStyleBackColor = false;
             SignUpBtn.Click += SignUpBtn_Click_1;
             // 
             // RegisterForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            BackColor = Color.FromArgb(64, 64, 64);
+            BackgroundImageLayout = ImageLayout.Stretch;
+            ClientSize = new Size(744, 376);
             Controls.Add(SignUpBtn);
             Controls.Add(BackToLoginBtn);
             Controls.Add(PassBox);
             Controls.Add(UserBox);
             Controls.Add(label2);
             Controls.Add(label1);
+            DoubleBuffered = true;
             Name = "RegisterForm";
             Text = "RegisterForm";
             ResumeLayout(false);

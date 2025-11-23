@@ -38,58 +38,70 @@
             // lbUsername
             // 
             lbUsername.AutoSize = true;
-            lbUsername.Font = new Font("Segoe UI", 14F);
-            lbUsername.Location = new Point(60, 38);
+            lbUsername.BackColor = Color.Transparent;
+            lbUsername.Font = new Font("Press Start 2P", 9F);
+            lbUsername.ForeColor = SystemColors.ButtonHighlight;
+            lbUsername.Location = new Point(46, 60);
             lbUsername.Name = "lbUsername";
-            lbUsername.Size = new Size(163, 32);
+            lbUsername.Size = new Size(205, 21);
             lbUsername.TabIndex = 0;
-            lbUsername.Text = "Tên tài khoản:";
+            lbUsername.Text = "Account Name:";
             // 
             // lbWin
             // 
             lbWin.AutoSize = true;
-            lbWin.Font = new Font("Segoe UI", 14F);
-            lbWin.Location = new Point(60, 110);
+            lbWin.BackColor = Color.Transparent;
+            lbWin.Font = new Font("Press Start 2P", 9F);
+            lbWin.ForeColor = SystemColors.ButtonHighlight;
+            lbWin.Location = new Point(46, 132);
             lbWin.Name = "lbWin";
-            lbWin.Size = new Size(164, 32);
+            lbWin.Size = new Size(175, 21);
             lbWin.TabIndex = 1;
-            lbWin.Text = "Số trận thắng:";
+            lbWin.Text = "Win number:";
             // 
             // lbLoss
             // 
             lbLoss.AutoSize = true;
-            lbLoss.Font = new Font("Segoe UI", 14F);
-            lbLoss.Location = new Point(60, 194);
+            lbLoss.BackColor = Color.Transparent;
+            lbLoss.Font = new Font("Press Start 2P", 9F);
+            lbLoss.ForeColor = SystemColors.ButtonHighlight;
+            lbLoss.Location = new Point(46, 216);
             lbLoss.Name = "lbLoss";
-            lbLoss.Size = new Size(150, 32);
+            lbLoss.Size = new Size(190, 21);
             lbLoss.TabIndex = 2;
-            lbLoss.Text = "Số trận thua:";
+            lbLoss.Text = "Loss number:";
             // 
             // lbTotal
             // 
             lbTotal.AutoSize = true;
-            lbTotal.Font = new Font("Segoe UI", 14F);
-            lbTotal.Location = new Point(60, 285);
+            lbTotal.BackColor = Color.Transparent;
+            lbTotal.Font = new Font("Press Start 2P", 9F);
+            lbTotal.ForeColor = SystemColors.ButtonHighlight;
+            lbTotal.Location = new Point(46, 307);
             lbTotal.Name = "lbTotal";
-            lbTotal.Size = new Size(154, 32);
+            lbTotal.Size = new Size(205, 21);
             lbTotal.TabIndex = 3;
-            lbTotal.Text = "Tổng số trận:";
+            lbTotal.Text = "Total match: ";
             // 
             // btClose
             // 
-            btClose.Font = new Font("Segoe UI", 14F);
+            btClose.BackColor = Color.White;
+            btClose.Font = new Font("Press Start 2P", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btClose.Location = new Point(323, 368);
             btClose.Name = "btClose";
             btClose.Size = new Size(122, 46);
             btClose.TabIndex = 4;
-            btClose.Text = "Đóng";
-            btClose.UseVisualStyleBackColor = true;
+            btClose.Text = "Closed";
+            btClose.UseVisualStyleBackColor = false;
             btClose.Click += btClose_Click;
             // 
             // PlayerInfoForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = SystemColors.Control;
+            BackgroundImage = Properties.Resources.wasteland_bg;
+            BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(800, 450);
             Controls.Add(btClose);
             Controls.Add(lbTotal);
