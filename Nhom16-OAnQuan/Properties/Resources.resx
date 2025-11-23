@@ -118,16 +118,25 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="beach_bg" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Images\resources\Background\beach_bg.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="window_11" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\window_1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="OAnQuan_Logo" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\OAnQuan_Logo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="window_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Images\resources\Background\window_1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="OAnQuan_Logo" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\OAnQuan_Logo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="beach_bg" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Images\resources\Background\beach_bg.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="fairy_cave_bg" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\fairy_cave_bg.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="window_11" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\window_1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="seabed" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\seabed.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="wasteland_bg" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\wasteland_bg.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

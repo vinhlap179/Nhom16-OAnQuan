@@ -73,9 +73,38 @@ namespace Nhom16_OAnQuan.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap fairy_cave_bg {
+            get {
+                object obj = ResourceManager.GetObject("fairy_cave_bg", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap OAnQuan_Logo {
             get {
                 object obj = ResourceManager.GetObject("OAnQuan_Logo", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream seabed {
+            get {
+                return ResourceManager.GetStream("seabed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap wasteland_bg {
+            get {
+                object obj = ResourceManager.GetObject("wasteland_bg", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
