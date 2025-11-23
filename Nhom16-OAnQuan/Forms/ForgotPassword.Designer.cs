@@ -37,20 +37,24 @@
             // 
             // UserBox
             // 
-            UserBox.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            UserBox.Location = new Point(207, 103);
+            UserBox.BackColor = SystemColors.ControlDark;
+            UserBox.Font = new Font("Press Start 2P", 9F);
+            UserBox.ForeColor = SystemColors.ButtonHighlight;
+            UserBox.Location = new Point(203, 90);
             UserBox.Name = "UserBox";
-            UserBox.Size = new Size(306, 34);
+            UserBox.Size = new Size(306, 22);
             UserBox.TabIndex = 7;
             UserBox.TextChanged += UserBox_TextChanged;
             // 
             // PassBox
             // 
-            PassBox.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            PassBox.Location = new Point(207, 167);
+            PassBox.BackColor = SystemColors.ControlDark;
+            PassBox.Font = new Font("Press Start 2P", 9F);
+            PassBox.ForeColor = SystemColors.ButtonHighlight;
+            PassBox.Location = new Point(203, 154);
             PassBox.Name = "PassBox";
             PassBox.PasswordChar = '*';
-            PassBox.Size = new Size(306, 34);
+            PassBox.Size = new Size(306, 22);
             PassBox.TabIndex = 8;
             PassBox.UseSystemPasswordChar = true;
             PassBox.TextChanged += PassBox_TextChanged;
@@ -58,39 +62,44 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label1.Location = new Point(83, 109);
+            label1.Font = new Font("Press Start 2P", 9F);
+            label1.ForeColor = SystemColors.ButtonHighlight;
+            label1.Location = new Point(65, 93);
             label1.Name = "label1";
-            label1.Size = new Size(94, 28);
+            label1.Size = new Size(130, 21);
             label1.TabIndex = 9;
-            label1.Text = "Tài khoản";
+            label1.Text = "Username";
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label2.Location = new Point(83, 167);
+            label2.Font = new Font("Press Start 2P", 9F);
+            label2.ForeColor = SystemColors.ButtonHighlight;
+            label2.Location = new Point(65, 154);
             label2.Name = "label2";
-            label2.Size = new Size(94, 28);
+            label2.Size = new Size(130, 21);
             label2.TabIndex = 13;
-            label2.Text = "Mật khẩu";
+            label2.Text = "Password";
             // 
             // ChangePassBtn
             // 
-            ChangePassBtn.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            ChangePassBtn.Location = new Point(227, 237);
+            ChangePassBtn.BackColor = Color.DimGray;
+            ChangePassBtn.Font = new Font("Press Start 2P", 9F);
+            ChangePassBtn.ForeColor = SystemColors.ButtonHighlight;
+            ChangePassBtn.Location = new Point(223, 224);
             ChangePassBtn.Name = "ChangePassBtn";
             ChangePassBtn.Size = new Size(204, 51);
             ChangePassBtn.TabIndex = 14;
-            ChangePassBtn.Text = "Đổi mật khẩu ";
-            ChangePassBtn.UseVisualStyleBackColor = true;
+            ChangePassBtn.Text = "Change Password";
+            ChangePassBtn.UseVisualStyleBackColor = false;
             ChangePassBtn.Click += ChangePassBtn_Click;
             // 
             // ForgotPassword
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            BackColor = Color.FromArgb(64, 64, 64);
+            ClientSize = new Size(659, 351);
             Controls.Add(ChangePassBtn);
             Controls.Add(label2);
             Controls.Add(label1);

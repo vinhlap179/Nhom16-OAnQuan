@@ -16,6 +16,7 @@ namespace Nhom16_OAnQuan.Forms.GameForms
         public StartingGUI()
         {
             InitializeComponent();
+            pictureBox1.BackColor = System.Drawing.Color.Transparent;
             CheckLoginToken();
         }
 
@@ -63,5 +64,12 @@ namespace Nhom16_OAnQuan.Forms.GameForms
         {
             new GameBoardGUI().ShowDialog();
         }
+
+        private void StartingGUI_Load(object sender, EventArgs e)
+        {
+
+        }
+
+
     }
 }
