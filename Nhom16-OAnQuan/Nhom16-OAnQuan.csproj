@@ -11,7 +11,7 @@
 
   <ItemGroup>
     <PackageReference Include="FireSharp" Version="2.0.4" />
-    <PackageReference Include="Google.Cloud.Firestore" Version="3.11.0" />
+    <PackageReference Include="Google.Cloud.Firestore" Version="3.13.0" />
   </ItemGroup>
 
   <ItemGroup>

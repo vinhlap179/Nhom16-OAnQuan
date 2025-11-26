@@ -63,5 +63,10 @@ namespace Nhom16_OAnQuan.Forms.GameForms
         {
             new GameBoardGUI().ShowDialog();
         }
+
+        private void StartingGUI_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

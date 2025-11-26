@@ -89,6 +89,7 @@
             Controls.Add(SignOutBtn);
             Name = "StartingGUI";
             Text = "StartingGUI";
+            Load += StartingGUI_Load;
             ResumeLayout(false);
         }
 
