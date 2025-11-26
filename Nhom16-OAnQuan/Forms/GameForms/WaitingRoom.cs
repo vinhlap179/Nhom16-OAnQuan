@@ -17,82 +17,105 @@ namespace Nhom16_OAnQuan.Forms.GameForms
     {
         private string roomId;
         private string currentUser;
-        private ListenerRegistration listener;
+        private bool isHost;
+        private FirestoreChangeListener _listener; // Dùng để lắng nghe thay đổi realtime
 
 
 
-        public WaitingRoom()
+
+        public WaitingRoom(string roomId, string currentUser, bool isHost)
         {
             InitializeComponent();
             this.roomId = roomId;
             this.currentUser = currentUser;
+            this.isHost = isHost;
 
             lblRoomId.Text = "Room ID: " + roomId;
+            lblHost.Text = "Host: " + (isHost ? currentUser : "...");
         }
 
         private void WaitingRoom_Load(object sender, EventArgs e)
         {
-            ListenRoomChanges();
+            ListenToRoomChanges();
         }
 
-        // =====================================================
-        // LISTEN REALTIME - CẬP NHẬT KHI CÓ NGƯỜI VÀO PHÒNG
-        // =====================================================
-        private void ListenRoomChanges()
+        // THAY THẾ TIMER BẰNG LISTENER
+        private void ListenToRoomChanges()
         {
             DocumentReference doc = FirestoreService.DB.Collection("rooms").Document(roomId);
 
-            listener = doc.Listen(snapshot =>
+            // Hàm này sẽ tự chạy mỗi khi dữ liệu trên Firestore thay đổi
+            _listener = doc.Listen(snapshot =>
             {
-                if (!snapshot.Exists) return;
+                if (!snapshot.Exists)
+                {
+                    MessageBox.Show("Phòng đã bị hủy!");
+                    this.Close();
+                    return;
+                }
 
                 RoomModel room = snapshot.ConvertTo<RoomModel>();
 
-                Invoke(new Action(() =>
-                {
-                    lblHost.Text = "Host: " + room.HostUID;
-                    lblGuest.Text = "Guest: " + (room.GuestUID == "" ? "Đang chờ..." : room.GuestUID);
+                // Cập nhật UI
+                UpdateUI(room);
 
-                    // Nếu đủ người
-                    if (room.GuestUID != "" && !room.GameStarted)
-                    {
-                        StartGame(room);
-                    }
-                }));
+                // Logic chuyển màn hình
+                CheckGameStatus(room);
             });
         }
 
-        // =====================================================
-        // BẮT ĐẦU GAME (HOST SẼ GỌI LỆNH START)
-        // =====================================================
-        private async void StartGame(RoomModel room)
+        private void UpdateUI(RoomModel room)
         {
-            DocumentReference doc = FirestoreService.DB.Collection("rooms").Document(room.RoomId);
-
-            // Chỉ Host mới cập nhật trạng thái game
-            if (currentUser == room.HostUID)
+            // InvokeRequired để tránh lỗi cross-thread khi update UI từ Firestore thread
+            if (InvokeRequired)
             {
+                Invoke(new Action(() => UpdateUI(room)));
+                return;
+            }
+
+            lblHost.Text = "Host: " + room.HostUID;
+            lblGuest.Text = string.IsNullOrEmpty(room.GuestUID) ? "Đang chờ..." : "Guest: " + room.GuestUID;
+        }
+
+        private async void CheckGameStatus(RoomModel room)
+        {
+            if (InvokeRequired) { Invoke(new Action(() => CheckGameStatus(room))); return; }
+
+            // 1. Nếu là HOST và thấy có Guest vào -> Set GameStarted = true
+            if (isHost && !string.IsNullOrEmpty(room.GuestUID) && !room.GameStarted)
+            {
+                // Delay nhỏ để người dùng kịp nhìn thấy tên Guest hiện lên
+                await Task.Delay(1000);
+                DocumentReference doc = FirestoreService.DB.Collection("rooms").Document(roomId);
                 await doc.UpdateAsync("GameStarted", true);
             }
 
-            listener.Stop();
+            // 2. Cả Host và Guest đều lắng nghe: Nếu GameStarted == true -> Vào game
+            if (room.GameStarted)
+            {
+                // Dừng lắng nghe để tránh memory leak
+                _listener.StopAsync();
 
-            MessageBox.Show("Game đã bắt đầu!");
+                MessageBox.Show("Game bắt đầu!");
 
-            // Chuyển sang form game
-            GameBoardGUI game = new GameBoardGUI();
-            game.Show();
-            this.Hide();
+                // Truyền thông tin phòng sang GameBoard
+                GameOnline game = new GameOnline(roomId, currentUser, isHost);
+                game.Show();
+                this.Hide();
+            }
         }
+        
 
         private void WaitingRoom_FormClosing(object sender, FormClosingEventArgs e)
         {
-            listener?.Stop();
+            _listener?.StopAsync();
         }
 
         private void btnBack_Click(object sender, EventArgs e)
         {
-            this.Close(); // tự động quay lại form trước
+            _listener?.StopAsync();
+            // Xử lý thêm: Nếu Host thoát thì xóa phòng, Guest thoát thì xóa tên khỏi phòng (Optional)
+            this.Close();
         }
     }
 }

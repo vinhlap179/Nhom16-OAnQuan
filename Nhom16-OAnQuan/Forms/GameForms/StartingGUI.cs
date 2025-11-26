@@ -68,5 +68,13 @@ namespace Nhom16_OAnQuan.Forms.GameForms
         {
 
         }
+
+        private void btnLobby_Click(object sender, EventArgs e)
+        {
+            string username = "diecchituong";
+            LobbyForm lobby = new LobbyForm(username);
+            lobby.Show();
+
+        }
     }
 }

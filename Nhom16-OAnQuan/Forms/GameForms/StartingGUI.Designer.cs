@@ -32,6 +32,7 @@
             GuideBtn = new Button();
             PlayerInformationBtn = new Button();
             PlayBtn = new Button();
+            btnLobby = new Button();
             SuspendLayout();
             // 
             // SignOutBtn
@@ -78,11 +79,23 @@
             PlayBtn.UseVisualStyleBackColor = true;
             PlayBtn.Click += PlayBtn_Click;
             // 
+            // btnLobby
+            // 
+            btnLobby.Font = new Font("Segoe UI", 14F);
+            btnLobby.Location = new Point(782, 171);
+            btnLobby.Name = "btnLobby";
+            btnLobby.Size = new Size(204, 61);
+            btnLobby.TabIndex = 23;
+            btnLobby.Text = "Phòng chờ";
+            btnLobby.UseVisualStyleBackColor = true;
+            btnLobby.Click += btnLobby_Click;
+            // 
             // StartingGUI
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1045, 581);
+            Controls.Add(btnLobby);
             Controls.Add(PlayBtn);
             Controls.Add(PlayerInformationBtn);
             Controls.Add(GuideBtn);
@@ -99,5 +112,6 @@
         private Button GuideBtn;
         private Button PlayerInformationBtn;
         private Button PlayBtn;
+        private Button btnLobby;
     }
 }

@@ -86,6 +86,7 @@
             Controls.Add(BtnCreateRoom);
             Name = "LobbyForm";
             Text = "LobbyForm";
+            Load += LobbyForm_Load;
             ResumeLayout(false);
             PerformLayout();
         }

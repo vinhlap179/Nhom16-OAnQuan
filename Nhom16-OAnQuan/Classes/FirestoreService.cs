@@ -14,7 +14,7 @@ namespace Nhom16_OAnQuan.Classes
         static FirestoreService()
         {
             Environment.SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS", "service-account.json");
-            DB = FirestoreDb.Create("your-project-id");
+            DB = FirestoreDb.Create("nhom16-oanquan");
         }
     }
 }

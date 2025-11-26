@@ -74,7 +74,7 @@ namespace Nhom16_OAnQuan.Forms.GameForms
                 RoomId = roomId,
                 HostUID = currentUser,
                 GuestUID = "",
-                BoardState = new int[12], // board trống
+                BoardState = new int[12], // Setup bàn cờ ban đầu ở đây nếu cần
                 Turn = currentUser,
                 GameStarted = false
             };
@@ -82,7 +82,10 @@ namespace Nhom16_OAnQuan.Forms.GameForms
             DocumentReference doc = FirestoreService.DB.Collection("rooms").Document(roomId);
             await doc.SetAsync(room);
 
-            MessageBox.Show($"Tạo phòng thành công!\nRoom ID: {roomId}", "Success");
+            // CHUYỂN SANG WAITING ROOM (Là Host)
+            WaitingRoom waitForm = new WaitingRoom(roomId, currentUser, true);
+            waitForm.Show();
+            this.Hide(); // Ẩn Lobby đi
         }
 
         // ------------------------------
@@ -97,26 +100,33 @@ namespace Nhom16_OAnQuan.Forms.GameForms
             }
 
             DocumentReference doc = FirestoreService.DB.Collection("rooms").Document(roomId);
-            DocumentSnapshot snap = await doc.GetSnapshotAsync();
 
-            if (!snap.Exists)
+            // Dùng Transaction để đảm bảo không có 2 người cùng vào 1 lúc
+            string result = await FirestoreService.DB.RunTransactionAsync(async transaction =>
             {
-                MessageBox.Show("Phòng không tồn tại!");
-                return;
-            }
+                DocumentSnapshot snap = await transaction.GetSnapshotAsync(doc);
+                if (!snap.Exists) return "NOT_FOUND";
 
-            RoomModel room = snap.ConvertTo<RoomModel>();
+                RoomModel room = snap.ConvertTo<RoomModel>();
+                if (!string.IsNullOrEmpty(room.GuestUID)) return "FULL";
 
-            if (room.GuestUID != "")
-            {
-                MessageBox.Show("Phòng đã đủ người!");
-                return;
-            }
+                // Update Guest
+                transaction.Update(doc, "GuestUID", currentUser);
+                return "OK";
+            });
 
-            // cập nhật guest vào phòng
-            await doc.UpdateAsync("GuestUID", currentUser);
+            if (result == "NOT_FOUND") { MessageBox.Show("Phòng không tồn tại!"); return; }
+            if (result == "FULL") { MessageBox.Show("Phòng đã đầy!"); return; }
 
-            MessageBox.Show("Tham gia phòng thành công!", "Success");
+            // CHUYỂN SANG WAITING ROOM (Là Guest)
+            WaitingRoom waitForm = new WaitingRoom(roomId, currentUser, false);
+            waitForm.Show();
+            this.Hide();
+        }
+
+        private void LobbyForm_Load(object sender, EventArgs e)
+        {
+           
         }
     }
 }
