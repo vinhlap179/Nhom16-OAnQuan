@@ -34,7 +34,6 @@
             PlayerInformationBtn = new Button();
             GuideBtn = new Button();
             PlayBtn = new Button();
-            btnLobby = new Button();
             SignOutBtn = new Button();
             panel1 = new Panel();
             timer1 = new System.Windows.Forms.Timer(components);
@@ -49,7 +48,7 @@
             pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
             pictureBox1.Location = new Point(97, 30);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(918, 245);
+            pictureBox1.Size = new Size(870, 216);
             pictureBox1.TabIndex = 23;
             pictureBox1.TabStop = false;
             // 
@@ -58,7 +57,7 @@
             PlayerInformationBtn.BackColor = Color.Gray;
             PlayerInformationBtn.Font = new Font("Press Start 2P", 9F);
             PlayerInformationBtn.ForeColor = SystemColors.ButtonHighlight;
-            PlayerInformationBtn.Location = new Point(30, 95);
+            PlayerInformationBtn.Location = new Point(32, 188);
             PlayerInformationBtn.Name = "PlayerInformationBtn";
             PlayerInformationBtn.Size = new Size(204, 60);
             PlayerInformationBtn.TabIndex = 21;
@@ -71,7 +70,7 @@
             GuideBtn.BackColor = Color.Gray;
             GuideBtn.Font = new Font("Press Start 2P", 9F);
             GuideBtn.ForeColor = SystemColors.ButtonHighlight;
-            GuideBtn.Location = new Point(30, 171);
+            GuideBtn.Location = new Point(32, 106);
             GuideBtn.Name = "GuideBtn";
             GuideBtn.Size = new Size(204, 61);
             GuideBtn.TabIndex = 20;
@@ -84,7 +83,7 @@
             PlayBtn.BackColor = Color.Gray;
             PlayBtn.Font = new Font("Press Start 2P", 9F);
             PlayBtn.ForeColor = SystemColors.ButtonHighlight;
-            PlayBtn.Location = new Point(30, 22);
+            PlayBtn.Location = new Point(32, 24);
             PlayBtn.Name = "PlayBtn";
             PlayBtn.Size = new Size(204, 56);
             PlayBtn.TabIndex = 22;
@@ -92,22 +91,12 @@
             PlayBtn.UseVisualStyleBackColor = false;
             PlayBtn.Click += PlayBtn_Click;
             // 
-            // btnLobby
-            // 
-            btnLobby.Font = new Font("Segoe UI", 14F);
-            btnLobby.Location = new Point(782, 171);
-            btnLobby.Name = "btnLobby";
-            btnLobby.Size = new Size(204, 61);
-            btnLobby.TabIndex = 23;
-            btnLobby.Text = "Chơi Online";
-            btnLobby.UseVisualStyleBackColor = true;
-            btnLobby.Click += btnLobby_Click;
             // SignOutBtn
             // 
             SignOutBtn.BackColor = Color.Gray;
             SignOutBtn.Font = new Font("Press Start 2P", 9F);
             SignOutBtn.ForeColor = SystemColors.ButtonHighlight;
-            SignOutBtn.Location = new Point(30, 252);
+            SignOutBtn.Location = new Point(32, 265);
             SignOutBtn.Name = "SignOutBtn";
             SignOutBtn.Size = new Size(204, 58);
             SignOutBtn.TabIndex = 19;
@@ -118,10 +107,10 @@
             // panel1
             // 
             panel1.BackColor = Color.Transparent;
+            panel1.Controls.Add(PlayerInformationBtn);
             panel1.Controls.Add(SignOutBtn);
             panel1.Controls.Add(PlayBtn);
             panel1.Controls.Add(GuideBtn);
-            panel1.Controls.Add(PlayerInformationBtn);
             panel1.Location = new Point(835, 277);
             panel1.Name = "panel1";
             panel1.Size = new Size(258, 345);
@@ -136,12 +125,6 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1045, 581);
-            Controls.Add(btnLobby);
-            Controls.Add(PlayBtn);
-            Controls.Add(PlayerInformationBtn);
-            Controls.Add(GuideBtn);
-            Controls.Add(SignOutBtn);
             AutoSize = true;
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             BackgroundImageLayout = ImageLayout.Zoom;
@@ -162,7 +145,6 @@
         private Button PlayerInformationBtn;
         private Button GuideBtn;
         private Button PlayBtn;
-        private Button btnLobby;
         private Button SignOutBtn;
         private Panel panel1;
         private System.Windows.Forms.Timer timer1;
