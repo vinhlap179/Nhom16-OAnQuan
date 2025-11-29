@@ -75,7 +75,7 @@
             PlayBtn.Name = "PlayBtn";
             PlayBtn.Size = new Size(204, 51);
             PlayBtn.TabIndex = 22;
-            PlayBtn.Text = "Chơi";
+            PlayBtn.Text = "Chơi Offline";
             PlayBtn.UseVisualStyleBackColor = true;
             PlayBtn.Click += PlayBtn_Click;
             // 
@@ -86,7 +86,7 @@
             btnLobby.Name = "btnLobby";
             btnLobby.Size = new Size(204, 61);
             btnLobby.TabIndex = 23;
-            btnLobby.Text = "Phòng chờ";
+            btnLobby.Text = "Chơi Online";
             btnLobby.UseVisualStyleBackColor = true;
             btnLobby.Click += btnLobby_Click;
             // 

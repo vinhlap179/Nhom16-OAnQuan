@@ -71,9 +71,27 @@ namespace Nhom16_OAnQuan.Forms.GameForms
 
         private void btnLobby_Click(object sender, EventArgs e)
         {
-            string username = "diecchituong";
+            // 1. Lấy tên người dùng hiện tại từ Session (thay vì điền cứng "diecchituong")
+            string username = GlobalUserSession.CurrentUsername;
+
+            // 2. Kiểm tra cho chắc chắn (phòng hờ)
+            if (string.IsNullOrEmpty(username))
+            {
+                MessageBox.Show("Chưa xác định được người dùng, vui lòng đăng nhập lại.");
+                return;
+            }
+
+            // 3. Khởi tạo LobbyForm
             LobbyForm lobby = new LobbyForm(username);
-            lobby.Show();
+
+            // 4. Ẩn form StartingGUI đi để chuyển sang Lobby
+            this.Hide();
+
+            // 5. Dùng ShowDialog() để code dừng tại đây cho đến khi LobbyForm đóng lại
+            lobby.ShowDialog();
+
+            // 6. Sau khi LobbyForm đóng, hiện lại StartingGUI
+            this.Show();
 
         }
     }
