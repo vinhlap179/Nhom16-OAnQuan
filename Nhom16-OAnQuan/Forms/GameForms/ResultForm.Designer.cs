@@ -37,48 +37,57 @@
             // lbScorePlayer
             // 
             lbScorePlayer.AutoSize = true;
-            lbScorePlayer.Font = new Font("Segoe UI", 14F);
+            lbScorePlayer.BackColor = Color.Transparent;
+            lbScorePlayer.Font = new Font("Press Start 2P", 9F);
+            lbScorePlayer.ForeColor = SystemColors.ButtonHighlight;
             lbScorePlayer.Location = new Point(84, 56);
             lbScorePlayer.Name = "lbScorePlayer";
-            lbScorePlayer.Size = new Size(192, 32);
+            lbScorePlayer.Size = new Size(220, 21);
             lbScorePlayer.TabIndex = 0;
-            lbScorePlayer.Text = "Điểm người chơi";
+            lbScorePlayer.Text = "Player Scores ";
             // 
             // lbScoreBot
             // 
             lbScoreBot.AutoSize = true;
-            lbScoreBot.Font = new Font("Segoe UI", 14F);
+            lbScoreBot.BackColor = Color.Transparent;
+            lbScoreBot.Font = new Font("Press Start 2P", 9F);
+            lbScoreBot.ForeColor = SystemColors.ButtonHighlight;
             lbScoreBot.Location = new Point(84, 110);
             lbScoreBot.Name = "lbScoreBot";
-            lbScoreBot.Size = new Size(123, 32);
+            lbScoreBot.Size = new Size(160, 21);
             lbScoreBot.TabIndex = 1;
-            lbScoreBot.Text = "Điểm máy";
+            lbScoreBot.Text = "Bot Scores";
             // 
             // lbKq
             // 
             lbKq.AutoSize = true;
-            lbKq.Font = new Font("Segoe UI", 14F);
+            lbKq.BackColor = Color.Transparent;
+            lbKq.Font = new Font("Press Start 2P", 9F);
+            lbKq.ForeColor = SystemColors.ButtonFace;
             lbKq.Location = new Point(84, 169);
             lbKq.Name = "lbKq";
-            lbKq.Size = new Size(96, 32);
+            lbKq.Size = new Size(100, 21);
             lbKq.TabIndex = 2;
-            lbKq.Text = "Kết quả";
+            lbKq.Text = "Result";
             // 
             // btClose
             // 
-            btClose.Font = new Font("Segoe UI", 14F);
+            btClose.BackColor = SystemColors.ButtonHighlight;
+            btClose.Font = new Font("Press Start 2P", 9F);
             btClose.Location = new Point(84, 231);
             btClose.Name = "btClose";
             btClose.Size = new Size(141, 56);
             btClose.TabIndex = 3;
-            btClose.Text = "Quay lại";
-            btClose.UseVisualStyleBackColor = true;
+            btClose.Text = "BACK";
+            btClose.UseVisualStyleBackColor = false;
             btClose.Click += btClose_Click;
             // 
             // ResultForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackgroundImage = Properties.Resources.fairy_cave_bg;
+            BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(605, 342);
             Controls.Add(btClose);
             Controls.Add(lbKq);

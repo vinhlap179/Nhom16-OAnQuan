@@ -8,14 +8,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Media;
 
 namespace Nhom16_OAnQuan.Forms.GameForms
 {
     public partial class StartingGUI : Form
     {
+        private SoundPlayer backgroundMusicPlayer;
         public StartingGUI()
         {
             InitializeComponent();
+            backgroundMusicPlayer = new SoundPlayer();
+            pictureBox1.BackColor = System.Drawing.Color.Transparent;
             CheckLoginToken();
         }
 
@@ -66,33 +70,47 @@ namespace Nhom16_OAnQuan.Forms.GameForms
 
         private void StartingGUI_Load(object sender, EventArgs e)
         {
-
+            try
+            {
+                // Gán file nhạc từ Resources (đảm bảo file 'seabed' là file .wav)
+                backgroundMusicPlayer.Stream = Properties.Resources.seabed;
+                // Phát lặp lại
+                backgroundMusicPlayer.PlayLooping();
+            }
+            catch (Exception ex)
+            {
+                // Phòng trường hợp lỗi file nhạc thì không bị crash game
+                Console.WriteLine("Lỗi phát nhạc: " + ex.Message);
+            }
         }
 
         private void btnLobby_Click(object sender, EventArgs e)
         {
-            // 1. Lấy tên người dùng hiện tại từ Session (thay vì điền cứng "diecchituong")
             string username = GlobalUserSession.CurrentUsername;
 
-            // 2. Kiểm tra cho chắc chắn (phòng hờ)
             if (string.IsNullOrEmpty(username))
             {
                 MessageBox.Show("Chưa xác định được người dùng, vui lòng đăng nhập lại.");
                 return;
             }
 
-            // 3. Khởi tạo LobbyForm
             LobbyForm lobby = new LobbyForm(username);
-
-            // 4. Ẩn form StartingGUI đi để chuyển sang Lobby
             this.Hide();
-
-            // 5. Dùng ShowDialog() để code dừng tại đây cho đến khi LobbyForm đóng lại
             lobby.ShowDialog();
-
-            // 6. Sau khi LobbyForm đóng, hiện lại StartingGUI
             this.Show();
 
         }
+            
+
+        private void StartingGUI_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (backgroundMusicPlayer != null)
+            {
+                backgroundMusicPlayer.Stop();
+                backgroundMusicPlayer.Dispose(); // Giải phóng tài nguyên
+            }
+        }
+
+
     }
 }

@@ -78,6 +78,8 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackgroundImage = Properties.Resources.beach_bg;
+            BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(1182, 753);
             Controls.Add(btnNext);
             Controls.Add(btnBack);
