@@ -8,14 +8,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Media;
 
 namespace Nhom16_OAnQuan.Forms.GameForms
 {
     public partial class StartingGUI : Form
     {
+        private SoundPlayer backgroundMusicPlayer;
         public StartingGUI()
         {
             InitializeComponent();
+            backgroundMusicPlayer = new SoundPlayer();
+            pictureBox1.BackColor = System.Drawing.Color.Transparent;
             CheckLoginToken();
         }
 
@@ -76,5 +80,20 @@ namespace Nhom16_OAnQuan.Forms.GameForms
             lobby.Show();
 
         }
+            backgroundMusicPlayer.Stream = Properties.Resources.seabed;
+
+            backgroundMusicPlayer.PlayLooping();
+        }
+
+        private void StartingGUI_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (backgroundMusicPlayer != null)
+            {
+                backgroundMusicPlayer.Stop();
+                backgroundMusicPlayer.Dispose(); // Giải phóng tài nguyên
+            }
+        }
+
+
     }
 }

@@ -28,55 +28,68 @@
         /// </summary>
         private void InitializeComponent()
         {
-            SignOutBtn = new Button();
-            GuideBtn = new Button();
+            components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StartingGUI));
+            pictureBox1 = new PictureBox();
             PlayerInformationBtn = new Button();
+            GuideBtn = new Button();
             PlayBtn = new Button();
             btnLobby = new Button();
+            SignOutBtn = new Button();
+            panel1 = new Panel();
+            timer1 = new System.Windows.Forms.Timer(components);
+            formLoadTimer = new System.Windows.Forms.Timer(components);
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            panel1.SuspendLayout();
             SuspendLayout();
             // 
-            // SignOutBtn
+            // pictureBox1
             // 
-            SignOutBtn.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            SignOutBtn.Location = new Point(782, 506);
-            SignOutBtn.Name = "SignOutBtn";
-            SignOutBtn.Size = new Size(204, 51);
-            SignOutBtn.TabIndex = 19;
-            SignOutBtn.Text = "Đăng xuất";
-            SignOutBtn.UseVisualStyleBackColor = true;
-            SignOutBtn.Click += SignOutBtn_Click;
-            // 
-            // GuideBtn
-            // 
-            GuideBtn.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            GuideBtn.Location = new Point(782, 433);
-            GuideBtn.Name = "GuideBtn";
-            GuideBtn.Size = new Size(204, 51);
-            GuideBtn.TabIndex = 20;
-            GuideBtn.Text = "Hướng Dẫn";
-            GuideBtn.UseVisualStyleBackColor = true;
-            GuideBtn.Click += GuideBtn_Click;
+            pictureBox1.BackColor = Color.Transparent;
+            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
+            pictureBox1.Location = new Point(97, 30);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(918, 245);
+            pictureBox1.TabIndex = 23;
+            pictureBox1.TabStop = false;
             // 
             // PlayerInformationBtn
             // 
-            PlayerInformationBtn.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            PlayerInformationBtn.Location = new Point(782, 355);
+            PlayerInformationBtn.BackColor = Color.Gray;
+            PlayerInformationBtn.Font = new Font("Press Start 2P", 9F);
+            PlayerInformationBtn.ForeColor = SystemColors.ButtonHighlight;
+            PlayerInformationBtn.Location = new Point(30, 95);
             PlayerInformationBtn.Name = "PlayerInformationBtn";
-            PlayerInformationBtn.Size = new Size(204, 51);
+            PlayerInformationBtn.Size = new Size(204, 60);
             PlayerInformationBtn.TabIndex = 21;
-            PlayerInformationBtn.Text = "Thông tin người chơi";
-            PlayerInformationBtn.UseVisualStyleBackColor = true;
+            PlayerInformationBtn.Text = "PLAYER INFORMATION";
+            PlayerInformationBtn.UseVisualStyleBackColor = false;
             PlayerInformationBtn.Click += PlayerInformationBtn_Click;
+            // 
+            // GuideBtn
+            // 
+            GuideBtn.BackColor = Color.Gray;
+            GuideBtn.Font = new Font("Press Start 2P", 9F);
+            GuideBtn.ForeColor = SystemColors.ButtonHighlight;
+            GuideBtn.Location = new Point(30, 171);
+            GuideBtn.Name = "GuideBtn";
+            GuideBtn.Size = new Size(204, 61);
+            GuideBtn.TabIndex = 20;
+            GuideBtn.Text = "GUIDE";
+            GuideBtn.UseVisualStyleBackColor = false;
+            GuideBtn.Click += GuideBtn_Click;
             // 
             // PlayBtn
             // 
-            PlayBtn.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            PlayBtn.Location = new Point(782, 279);
+            PlayBtn.BackColor = Color.Gray;
+            PlayBtn.Font = new Font("Press Start 2P", 9F);
+            PlayBtn.ForeColor = SystemColors.ButtonHighlight;
+            PlayBtn.Location = new Point(30, 22);
             PlayBtn.Name = "PlayBtn";
-            PlayBtn.Size = new Size(204, 51);
+            PlayBtn.Size = new Size(204, 56);
             PlayBtn.TabIndex = 22;
-            PlayBtn.Text = "Chơi";
-            PlayBtn.UseVisualStyleBackColor = true;
+            PlayBtn.Text = "PLAY";
+            PlayBtn.UseVisualStyleBackColor = false;
             PlayBtn.Click += PlayBtn_Click;
             // 
             // btnLobby
@@ -89,6 +102,35 @@
             btnLobby.Text = "Phòng chờ";
             btnLobby.UseVisualStyleBackColor = true;
             btnLobby.Click += btnLobby_Click;
+            // SignOutBtn
+            // 
+            SignOutBtn.BackColor = Color.Gray;
+            SignOutBtn.Font = new Font("Press Start 2P", 9F);
+            SignOutBtn.ForeColor = SystemColors.ButtonHighlight;
+            SignOutBtn.Location = new Point(30, 252);
+            SignOutBtn.Name = "SignOutBtn";
+            SignOutBtn.Size = new Size(204, 58);
+            SignOutBtn.TabIndex = 19;
+            SignOutBtn.Text = "LOGOUT ";
+            SignOutBtn.UseVisualStyleBackColor = false;
+            SignOutBtn.Click += SignOutBtn_Click;
+            // 
+            // panel1
+            // 
+            panel1.BackColor = Color.Transparent;
+            panel1.Controls.Add(SignOutBtn);
+            panel1.Controls.Add(PlayBtn);
+            panel1.Controls.Add(GuideBtn);
+            panel1.Controls.Add(PlayerInformationBtn);
+            panel1.Location = new Point(835, 277);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(258, 345);
+            panel1.TabIndex = 24;
+            // 
+            // formLoadTimer
+            // 
+            formLoadTimer.Enabled = true;
+            formLoadTimer.Interval = 10;
             // 
             // StartingGUI
             // 
@@ -100,18 +142,30 @@
             Controls.Add(PlayerInformationBtn);
             Controls.Add(GuideBtn);
             Controls.Add(SignOutBtn);
+            AutoSize = true;
+            BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
+            BackgroundImageLayout = ImageLayout.Zoom;
+            ClientSize = new Size(1105, 625);
+            Controls.Add(pictureBox1);
+            Controls.Add(panel1);
             Name = "StartingGUI";
+            StartPosition = FormStartPosition.Manual;
             Text = "StartingGUI";
             Load += StartingGUI_Load;
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            panel1.ResumeLayout(false);
             ResumeLayout(false);
         }
 
         #endregion
-
-        private Button SignOutBtn;
-        private Button GuideBtn;
+        private PictureBox pictureBox1;
         private Button PlayerInformationBtn;
+        private Button GuideBtn;
         private Button PlayBtn;
         private Button btnLobby;
+        private Button SignOutBtn;
+        private Panel panel1;
+        private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.Timer formLoadTimer;
     }
 }
