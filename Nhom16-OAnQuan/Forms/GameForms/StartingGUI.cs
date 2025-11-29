@@ -65,7 +65,7 @@ namespace Nhom16_OAnQuan.Forms.GameForms
 
         private void PlayBtn_Click(object sender, EventArgs e)
         {
-            new GameBoardGUI().ShowDialog();
+            new ChooseMode().ShowDialog();
         }
 
         private void StartingGUI_Load(object sender, EventArgs e)
@@ -84,22 +84,7 @@ namespace Nhom16_OAnQuan.Forms.GameForms
             }
         }
 
-        private void btnLobby_Click(object sender, EventArgs e)
-        {
-            string username = GlobalUserSession.CurrentUsername;
-
-            if (string.IsNullOrEmpty(username))
-            {
-                MessageBox.Show("Chưa xác định được người dùng, vui lòng đăng nhập lại.");
-                return;
-            }
-
-            LobbyForm lobby = new LobbyForm(username);
-            this.Hide();
-            lobby.ShowDialog();
-            this.Show();
-
-        }
+        
             
 
         private void StartingGUI_FormClosing(object sender, FormClosingEventArgs e)
