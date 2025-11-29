@@ -70,10 +70,37 @@ namespace Nhom16_OAnQuan.Forms.GameForms
 
         private void StartingGUI_Load(object sender, EventArgs e)
         {
-            backgroundMusicPlayer.Stream = Properties.Resources.seabed;
-
-            backgroundMusicPlayer.PlayLooping();
+            try
+            {
+                // Gán file nhạc từ Resources (đảm bảo file 'seabed' là file .wav)
+                backgroundMusicPlayer.Stream = Properties.Resources.seabed;
+                // Phát lặp lại
+                backgroundMusicPlayer.PlayLooping();
+            }
+            catch (Exception ex)
+            {
+                // Phòng trường hợp lỗi file nhạc thì không bị crash game
+                Console.WriteLine("Lỗi phát nhạc: " + ex.Message);
+            }
         }
+
+        private void btnLobby_Click(object sender, EventArgs e)
+        {
+            string username = GlobalUserSession.CurrentUsername;
+
+            if (string.IsNullOrEmpty(username))
+            {
+                MessageBox.Show("Chưa xác định được người dùng, vui lòng đăng nhập lại.");
+                return;
+            }
+
+            LobbyForm lobby = new LobbyForm(username);
+            this.Hide();
+            lobby.ShowDialog();
+            this.Show();
+
+        }
+            
 
         private void StartingGUI_FormClosing(object sender, FormClosingEventArgs e)
         {

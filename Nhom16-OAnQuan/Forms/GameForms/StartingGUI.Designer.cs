@@ -34,6 +34,7 @@
             PlayerInformationBtn = new Button();
             GuideBtn = new Button();
             PlayBtn = new Button();
+            btnLobby = new Button();
             SignOutBtn = new Button();
             panel1 = new Panel();
             timer1 = new System.Windows.Forms.Timer(components);
@@ -91,6 +92,16 @@
             PlayBtn.UseVisualStyleBackColor = false;
             PlayBtn.Click += PlayBtn_Click;
             // 
+            // btnLobby
+            // 
+            btnLobby.Font = new Font("Segoe UI", 14F);
+            btnLobby.Location = new Point(782, 171);
+            btnLobby.Name = "btnLobby";
+            btnLobby.Size = new Size(204, 61);
+            btnLobby.TabIndex = 23;
+            btnLobby.Text = "Chơi Online";
+            btnLobby.UseVisualStyleBackColor = true;
+            btnLobby.Click += btnLobby_Click;
             // SignOutBtn
             // 
             SignOutBtn.BackColor = Color.Gray;
@@ -125,6 +136,12 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(1045, 581);
+            Controls.Add(btnLobby);
+            Controls.Add(PlayBtn);
+            Controls.Add(PlayerInformationBtn);
+            Controls.Add(GuideBtn);
+            Controls.Add(SignOutBtn);
             AutoSize = true;
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             BackgroundImageLayout = ImageLayout.Zoom;
@@ -145,6 +162,7 @@
         private Button PlayerInformationBtn;
         private Button GuideBtn;
         private Button PlayBtn;
+        private Button btnLobby;
         private Button SignOutBtn;
         private Panel panel1;
         private System.Windows.Forms.Timer timer1;
