@@ -28,200 +28,106 @@
         /// </summary>
         private void InitializeComponent()
         {
-            btnSquare0 = new Button();
-            btnSquare1 = new Button();
-            btnSquare2 = new Button();
-            btnSquare3 = new Button();
-            btnSquare4 = new Button();
-            btnSquare5 = new Button();
-            btnSquare6 = new Button();
-            btnSquare7 = new Button();
-            btnSquare8 = new Button();
-            btnSquare9 = new Button();
-            btnSquare10 = new Button();
-            btnSquare11 = new Button();
-            lblTurn = new Label();
-            lblScoreHost = new Label();
-            lblScoreGuest = new Label();
+            btnPhai = new Button();
+            btnTrai = new Button();
+            lblThongBao = new Label();
+            lblDiemNguoi2 = new Label();
+            lblDiemNguoi1 = new Label();
+            tblBanCo = new TableLayoutPanel();
             SuspendLayout();
             // 
-            // btnSquare0
+            // btnPhai
             // 
-            btnSquare0.Location = new Point(112, 393);
-            btnSquare0.Name = "btnSquare0";
-            btnSquare0.Size = new Size(94, 29);
-            btnSquare0.TabIndex = 0;
-            btnSquare0.Text = "button1";
-            btnSquare0.UseVisualStyleBackColor = true;
+            btnPhai.Location = new Point(876, 725);
+            btnPhai.Name = "btnPhai";
+            btnPhai.Size = new Size(122, 48);
+            btnPhai.TabIndex = 11;
+            btnPhai.Text = "Phải";
+            btnPhai.UseVisualStyleBackColor = true;
             // 
-            // btnSquare1
+            // btnTrai
             // 
-            btnSquare1.Location = new Point(276, 393);
-            btnSquare1.Name = "btnSquare1";
-            btnSquare1.Size = new Size(94, 29);
-            btnSquare1.TabIndex = 1;
-            btnSquare1.Text = "button2";
-            btnSquare1.UseVisualStyleBackColor = true;
+            btnTrai.Location = new Point(451, 730);
+            btnTrai.Name = "btnTrai";
+            btnTrai.Size = new Size(116, 43);
+            btnTrai.TabIndex = 10;
+            btnTrai.Text = "Trái";
+            btnTrai.UseVisualStyleBackColor = true;
             // 
-            // btnSquare2
+            // lblThongBao
             // 
-            btnSquare2.Location = new Point(476, 393);
-            btnSquare2.Name = "btnSquare2";
-            btnSquare2.Size = new Size(94, 29);
-            btnSquare2.TabIndex = 2;
-            btnSquare2.Text = "button3";
-            btnSquare2.UseVisualStyleBackColor = true;
+            lblThongBao.AutoSize = true;
+            lblThongBao.Font = new Font("Segoe UI Semibold", 16.2F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
+            lblThongBao.Location = new Point(645, 730);
+            lblThongBao.Name = "lblThongBao";
+            lblThongBao.Size = new Size(154, 38);
+            lblThongBao.TabIndex = 9;
+            lblThongBao.Text = "Thông Báo";
             // 
-            // btnSquare3
+            // lblDiemNguoi2
             // 
-            btnSquare3.Location = new Point(660, 393);
-            btnSquare3.Name = "btnSquare3";
-            btnSquare3.Size = new Size(94, 29);
-            btnSquare3.TabIndex = 3;
-            btnSquare3.Text = "button4";
-            btnSquare3.UseVisualStyleBackColor = true;
+            lblDiemNguoi2.AutoSize = true;
+            lblDiemNguoi2.Font = new Font("Segoe UI", 18F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
+            lblDiemNguoi2.Location = new Point(1103, 722);
+            lblDiemNguoi2.Name = "lblDiemNguoi2";
+            lblDiemNguoi2.Size = new Size(289, 41);
+            lblDiemNguoi2.TabIndex = 8;
+            lblDiemNguoi2.Text = "Điểm Người Chơi 2";
             // 
-            // btnSquare4
+            // lblDiemNguoi1
             // 
-            btnSquare4.Location = new Point(865, 393);
-            btnSquare4.Name = "btnSquare4";
-            btnSquare4.Size = new Size(94, 29);
-            btnSquare4.TabIndex = 4;
-            btnSquare4.Text = "button5";
-            btnSquare4.UseVisualStyleBackColor = true;
+            lblDiemNguoi1.AutoSize = true;
+            lblDiemNguoi1.Font = new Font("Segoe UI", 18F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
+            lblDiemNguoi1.Location = new Point(111, 718);
+            lblDiemNguoi1.Name = "lblDiemNguoi1";
+            lblDiemNguoi1.Size = new Size(278, 41);
+            lblDiemNguoi1.TabIndex = 7;
+            lblDiemNguoi1.Text = "Điểm người chơi 1";
             // 
-            // btnSquare5
+            // tblBanCo
             // 
-            btnSquare5.Location = new Point(112, 234);
-            btnSquare5.Name = "btnSquare5";
-            btnSquare5.Size = new Size(94, 29);
-            btnSquare5.TabIndex = 5;
-            btnSquare5.Text = "button6";
-            btnSquare5.UseVisualStyleBackColor = true;
-            // 
-            // btnSquare6
-            // 
-            btnSquare6.Location = new Point(112, 59);
-            btnSquare6.Name = "btnSquare6";
-            btnSquare6.Size = new Size(94, 29);
-            btnSquare6.TabIndex = 6;
-            btnSquare6.Text = "button7";
-            btnSquare6.UseVisualStyleBackColor = true;
-            // 
-            // btnSquare7
-            // 
-            btnSquare7.Location = new Point(276, 59);
-            btnSquare7.Name = "btnSquare7";
-            btnSquare7.Size = new Size(94, 29);
-            btnSquare7.TabIndex = 7;
-            btnSquare7.Text = "button8";
-            btnSquare7.UseVisualStyleBackColor = true;
-            // 
-            // btnSquare8
-            // 
-            btnSquare8.Location = new Point(476, 59);
-            btnSquare8.Name = "btnSquare8";
-            btnSquare8.Size = new Size(94, 29);
-            btnSquare8.TabIndex = 8;
-            btnSquare8.Text = "button9";
-            btnSquare8.UseVisualStyleBackColor = true;
-            // 
-            // btnSquare9
-            // 
-            btnSquare9.Location = new Point(660, 59);
-            btnSquare9.Name = "btnSquare9";
-            btnSquare9.Size = new Size(94, 29);
-            btnSquare9.TabIndex = 9;
-            btnSquare9.Text = "button10";
-            btnSquare9.UseVisualStyleBackColor = true;
-            // 
-            // btnSquare10
-            // 
-            btnSquare10.Location = new Point(865, 59);
-            btnSquare10.Name = "btnSquare10";
-            btnSquare10.Size = new Size(94, 29);
-            btnSquare10.TabIndex = 10;
-            btnSquare10.Text = "button11";
-            btnSquare10.UseVisualStyleBackColor = true;
-            // 
-            // btnSquare11
-            // 
-            btnSquare11.Location = new Point(865, 234);
-            btnSquare11.Name = "btnSquare11";
-            btnSquare11.Size = new Size(94, 29);
-            btnSquare11.TabIndex = 11;
-            btnSquare11.Text = "button12";
-            btnSquare11.UseVisualStyleBackColor = true;
-            // 
-            // lblTurn
-            // 
-            lblTurn.AutoSize = true;
-            lblTurn.Location = new Point(128, 455);
-            lblTurn.Name = "lblTurn";
-            lblTurn.Size = new Size(38, 20);
-            lblTurn.TabIndex = 12;
-            lblTurn.Text = "Turn";
-            // 
-            // lblScoreHost
-            // 
-            lblScoreHost.AutoSize = true;
-            lblScoreHost.Location = new Point(251, 455);
-            lblScoreHost.Name = "lblScoreHost";
-            lblScoreHost.Size = new Size(77, 20);
-            lblScoreHost.TabIndex = 13;
-            lblScoreHost.Text = "ScoreHost";
-            // 
-            // lblScoreGuest
-            // 
-            lblScoreGuest.AutoSize = true;
-            lblScoreGuest.Location = new Point(400, 455);
-            lblScoreGuest.Name = "lblScoreGuest";
-            lblScoreGuest.Size = new Size(83, 20);
-            lblScoreGuest.TabIndex = 14;
-            lblScoreGuest.Text = "ScoreGuest";
+            tblBanCo.ColumnCount = 7;
+            tblBanCo.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 14.2857141F));
+            tblBanCo.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 14.2857141F));
+            tblBanCo.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 14.2857141F));
+            tblBanCo.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 14.2857141F));
+            tblBanCo.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 14.2857141F));
+            tblBanCo.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 14.2857141F));
+            tblBanCo.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 14.2857141F));
+            tblBanCo.Location = new Point(92, 26);
+            tblBanCo.Name = "tblBanCo";
+            tblBanCo.RowCount = 3;
+            tblBanCo.RowStyles.Add(new RowStyle(SizeType.Percent, 33.3333321F));
+            tblBanCo.RowStyles.Add(new RowStyle(SizeType.Percent, 33.3333321F));
+            tblBanCo.RowStyles.Add(new RowStyle(SizeType.Percent, 33.3333321F));
+            tblBanCo.Size = new Size(1228, 658);
+            tblBanCo.TabIndex = 6;
             // 
             // GameOnline
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1098, 511);
-            Controls.Add(lblScoreGuest);
-            Controls.Add(lblScoreHost);
-            Controls.Add(lblTurn);
-            Controls.Add(btnSquare11);
-            Controls.Add(btnSquare10);
-            Controls.Add(btnSquare9);
-            Controls.Add(btnSquare8);
-            Controls.Add(btnSquare7);
-            Controls.Add(btnSquare6);
-            Controls.Add(btnSquare5);
-            Controls.Add(btnSquare4);
-            Controls.Add(btnSquare3);
-            Controls.Add(btnSquare2);
-            Controls.Add(btnSquare1);
-            Controls.Add(btnSquare0);
+            ClientSize = new Size(1426, 809);
+            Controls.Add(btnPhai);
+            Controls.Add(btnTrai);
+            Controls.Add(lblThongBao);
+            Controls.Add(lblDiemNguoi2);
+            Controls.Add(lblDiemNguoi1);
+            Controls.Add(tblBanCo);
             Name = "GameOnline";
             Text = "GameOnline";
+            Load += GameOnline_Load;
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
 
-        private Button btnSquare0;
-        private Button btnSquare1;
-        private Button btnSquare2;
-        private Button btnSquare3;
-        private Button btnSquare4;
-        private Button btnSquare5;
-        private Button btnSquare6;
-        private Button btnSquare7;
-        private Button btnSquare8;
-        private Button btnSquare9;
-        private Button btnSquare10;
-        private Button btnSquare11;
-        private Label lblTurn;
-        private Label lblScoreHost;
-        private Label lblScoreGuest;
+        private Button btnPhai;
+        private Button btnTrai;
+        private Label lblThongBao;
+        private Label lblDiemNguoi2;
+        private Label lblDiemNguoi1;
+        private TableLayoutPanel tblBanCo;
     }
 }

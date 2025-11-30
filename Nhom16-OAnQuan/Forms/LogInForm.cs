@@ -58,7 +58,6 @@ namespace Nhom16_OAnQuan.Forms
 
                         StartingGUI startingForm = new StartingGUI();
 
-                        this.Hide();
 
                         startingForm.Show();
                     }
