@@ -91,15 +91,17 @@ namespace Nhom16_OAnQuan.Forms.GameForms
             }
 
             // 2. Cả Host và Guest đều lắng nghe: Nếu GameStarted == true -> Vào game
+            // Trong file WaitingRoom.cs
             if (room.GameStarted)
             {
-                // Dừng lắng nghe để tránh memory leak
-                _listener.StopAsync();
-
+                _listener.StopAsync(); // Dừng lắng nghe phòng chờ
                 MessageBox.Show("Game bắt đầu!");
 
-                // Truyền thông tin phòng sang GameBoard
-                GameOnline game = new GameOnline(roomId, currentUser, isHost);
+                // --- SỬA DÒNG NÀY ---
+                // Truyền biến 'isHost' (chữ thường) của class, KHÔNG ĐƯỢC truyền 'true' hay 'false' cứng
+                GameOnline game = new GameOnline(roomId, currentUser, this.isHost);
+                // --------------------
+
                 game.Show();
                 this.Hide();
             }
