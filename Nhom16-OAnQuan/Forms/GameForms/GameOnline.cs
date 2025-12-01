@@ -73,27 +73,34 @@ namespace Nhom16_OAnQuan.Forms.GameForms
             {
                 CapNhatGiaoDien();
 
-                string winnerName = "";
-                if (_game.DiemNguoi1 > _game.DiemNguoi2) winnerName = "CHỦ PHÒNG (P1)";
-                else if (_game.DiemNguoi2 > _game.DiemNguoi1) winnerName = "KHÁCH (P2)";
-                else winnerName = "HÒA";
+                // Xác định điểm của Mình và Đối thủ để truyền vào ResultForm
+                int myScore = 0;
+                int opponentScore = 0;
 
-                string msg = "";
-                // Logic hiển thị thông báo cho ngầu
-                if ((_isHost && _game.DiemNguoi1 > _game.DiemNguoi2) || (!_isHost && _game.DiemNguoi2 > _game.DiemNguoi1))
-                    msg = "NGON! BẠN THẮNG RỒI! 🏆";
-                else if (_game.DiemNguoi1 == _game.DiemNguoi2) msg = "HÒA CẢ LÀNG! 🤝";
-                else msg = "TOANG! BẠN THUA RỒI! 😢";
+                if (_isHost) // Mình là P1
+                {
+                    myScore = _game.DiemNguoi1;
+                    opponentScore = _game.DiemNguoi2;
+                }
+                else // Mình là P2 (Guest)
+                {
+                    myScore = _game.DiemNguoi2;
+                    opponentScore = _game.DiemNguoi1;
+                }
 
-                MessageBox.Show($"{msg}\nNgười thắng: {winnerName}\nTỷ số: P1({_game.DiemNguoi1}) - P2({_game.DiemNguoi2})");
+                // --- MỞ FORM KẾT QUẢ ---
+                // Truyền true để báo là chơi Online
+                ResultForm resultForm = new ResultForm(myScore, opponentScore, true);
+                resultForm.ShowDialog();
 
-                // Chỉ chủ phòng mới đc quyền xóa phòng trên server cho sạch rác
+                // --- SAU KHI ĐÓNG FORM KẾT QUẢ ---
+                // Host xóa phòng
                 if (_isHost)
                 {
                     try { await FirestoreService.DB.Collection("rooms").Document(_roomId).DeleteAsync(); } catch { }
                 }
 
-                this.Close(); // Đóng game
+                this.Close(); // Đóng GameOnline quay về sảnh
                 return;
             }
 
@@ -289,11 +296,7 @@ namespace Nhom16_OAnQuan.Forms.GameForms
             };
             await doc.UpdateAsync(updates);
         }
-
-        // -----------------------------------------------------------
         // 4. CÁC HÀM HỖ TRỢ GIAO DIỆN (UI)
-        // -----------------------------------------------------------
-
         // Hàm kiểm tra xem ô này có phải của mình không (để chặn click bậy)
         private bool IsMySide(int index)
         {
