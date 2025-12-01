@@ -82,8 +82,20 @@ namespace Nhom16_OAnQuan.Forms.GameForms
 
                 MessageBox.Show($"{msg}\n\nNgười thắng: {winnerName}\nTỷ số: {_game.DiemNguoi1} - {_game.DiemNguoi2}",
                                 "KẾT QUẢ TRẬN ĐẤU");
+                if (_isHost)
+                {
+                    try
+                    {
+                        await FirestoreService.DB.Collection("rooms").Document(_roomId).DeleteAsync();
+                    }
+                    catch { /* Bỏ qua lỗi nếu mạng lag hoặc đã bị xóa */ }
+                }
 
                 this.Close();
+                return;
+            }
+
+            this.Close();
                 return;
             }
 
@@ -215,7 +227,14 @@ namespace Nhom16_OAnQuan.Forms.GameForms
                         CapNhatTrangThaiLuot();
                     });
                 }
-
+                if (snapshot.TryGetValue("Status", out string status))
+                {
+                    if (status == "PlayerLeft")
+                    {
+                        MessageBox.Show("Đối thủ đã thoát trận đấu! Bạn thắng.");
+                        this.Close();
+                    }
+                }
                 if (snapshot.TryGetValue("MoveCount", out int moveCount))
                 {
                     if (moveCount > _lastProcessedMoveCount)
@@ -365,6 +384,12 @@ namespace Nhom16_OAnQuan.Forms.GameForms
          private void GameOnline_FormClosing(object sender, FormClosingEventArgs e)
         {
             _listener?.StopAsync();
+            try
+            {
+                DocumentReference doc = FirestoreService.DB.Collection("rooms").Document(_roomId);
+                await doc.UpdateAsync("Status", "PlayerLeft");
+            }
+            catch { }
         }
     }
 }
