@@ -10,61 +10,64 @@ namespace Nhom16_OAnQuan.Forms.GameForms
 {
     public partial class GameOnline : Form
     {
-        // --- 1. KHAI BÁO BIẾN ---
-        private OAnQuanLogic _game;
-        private OAnQuanDrawer _drawer;
-        private Label[] oVuong = new Label[12];
+        // --- PHẦN KHAI BÁO BIẾN ---
+        private OAnQuanLogic _game;     // Cái này chứa luật chơi logic
+        private OAnQuanDrawer _drawer;  // Cái này để vẽ vời (họa sĩ)
+        private Label[] oVuong = new Label[12]; // Mảng 12 ô trên bàn cờ
 
-        // Biến xử lý thao tác
+        // Biến trạng thái
         private int oDaChon = -1;
-        private bool dangDiChuyen = false; // Khóa khi animation chạy
-        private bool _isMyTurn = false;    // Khóa khi chưa đến lượt
+        private bool _isAnimating = false; // Cờ hiệu: Đang rải quân thì cấm bấm lung tung
+        private bool _isMyTurn = false;    // Cờ hiệu: Đến lượt mình chưa?
+        private bool _dangThoat = false;   // Cờ hiệu: Mình có đang bấm thoát ko? (Để fix lỗi hiện thông báo 2 bên)
 
-        // Biến Online
+        // Biến kết nối mạng
         private string _roomId;
         private string _myUID;
-        private bool _isHost; // True = P1 (7-11), False = P2 (1-5)
-        private FirestoreChangeListener _listener;
-        private int _lastProcessedMoveCount = 0;
+        private bool _isHost; // True là Chủ phòng (P1), False là Khách (P2)
+        private FirestoreChangeListener _listener; // Cái này để "hóng" tin từ server về
+        private int _lastProcessedMoveCount = 0; // Đếm số nước đi để ko bị lặp lại
 
-        // --- 2. KHỞI TẠO (CONSTRUCTOR) ---
         public GameOnline(string roomId, string myUID, bool isHost)
         {
             InitializeComponent();
             _roomId = roomId;
             _myUID = myUID;
-            _isHost = isHost; // Nhận vai trò từ WaitingRoom
+            _isHost = isHost;
 
             _game = new OAnQuanLogic();
             _drawer = new OAnQuanDrawer();
 
-            // Gắn sự kiện cho 2 nút (Dùng chung 1 hàm xử lý)
+            // Gán hàm xử lý click cho 2 nút
             btnTrai.Click += btnHuong_Click;
             btnPhai.Click += btnHuong_Click;
 
-            // Định nghĩa hướng: -1 là Trái, 1 là Phải
+            // Quy ước: -1 là đi Trái, 1 là đi Phải
             btnTrai.Tag = -1;
             btnPhai.Tag = 1;
 
             this.BackColor = Color.FromArgb(40, 40, 40);
-            this.Text = isHost ? $"HOST (P1) - ID: {roomId}" : $"GUEST (P2) - ID: {roomId}";
+            // Hiện title cho dễ biết mình là ai
+            this.Text = isHost ? $"CHỦ PHÒNG (P1) - Room: {roomId}" : $"KHÁCH (P2) - Room: {roomId}";
 
-            // Kết nối sự kiện Load và Đóng form
             this.Load += GameOnline_Load;
             this.FormClosing += GameOnline_FormClosing;
         }
 
         private void GameOnline_Load(object sender, EventArgs e)
         {
-            TaoBanCoUI();       // Vẽ ô
-            CapNhatGiaoDien();  // Vẽ điểm
-            LangNghePhong();    // Kết nối Firebase
+            TaoBanCoUI();       // Vẽ mấy cái ô ra
+            CapNhatGiaoDien();  // Hiện điểm số lên
+            LangNghePhong();    // Bắt đầu kết nối mạng để hóng tin
         }
 
-        // --- 3. LOGIC CHECK END GAME & VAY QUÂN (ĐÃ FIX) ---
+        // -----------------------------------------------------------
+        // 1. HÀM XỬ LÝ SAU KHI ĐI XONG (QUAN TRỌNG NHẤT)
+        // Chạy xong animation thì nhảy vào đây để tính toán tiếp
+        // -----------------------------------------------------------
         private async Task CheckDoiLuotVaKetThuc(bool isP1JustMoved)
         {
-            // 1. Kiểm tra kết thúc game
+            // --- Check xem Game Over chưa ---
             _game.CheckEndGame();
             if (_game.GameOver)
             {
@@ -76,35 +79,37 @@ namespace Nhom16_OAnQuan.Forms.GameForms
                 else winnerName = "HÒA";
 
                 string msg = "";
+                // Logic hiển thị thông báo cho ngầu
                 if ((_isHost && _game.DiemNguoi1 > _game.DiemNguoi2) || (!_isHost && _game.DiemNguoi2 > _game.DiemNguoi1))
-                    msg = "CHÚC MỪNG! BẠN ĐÃ CHIẾN THẮNG! 🏆";
-                else if (_game.DiemNguoi1 == _game.DiemNguoi2) msg = "HÒA!";
-                else msg = "RẤT TIẾC, BẠN ĐÃ THUA!";
+                    msg = "NGON! BẠN THẮNG RỒI! 🏆";
+                else if (_game.DiemNguoi1 == _game.DiemNguoi2) msg = "HÒA CẢ LÀNG! 🤝";
+                else msg = "TOANG! BẠN THUA RỒI! 😢";
 
                 MessageBox.Show($"{msg}\nNgười thắng: {winnerName}\nTỷ số: P1({_game.DiemNguoi1}) - P2({_game.DiemNguoi2})");
 
-                // Host xóa phòng
+                // Chỉ chủ phòng mới đc quyền xóa phòng trên server cho sạch rác
                 if (_isHost)
                 {
                     try { await FirestoreService.DB.Collection("rooms").Document(_roomId).DeleteAsync(); } catch { }
                 }
 
-                this.Close();
+                this.Close(); // Đóng game
                 return;
             }
 
-            // 2. LOGIC VAY QUÂN (QUAN TRỌNG: ĐẢO NGƯỢC LOGIC)
-            // Kiểm tra người SẮP ĐI (người kế tiếp) có cần vay không
+            // --- Logic Vay Quân ---
+            // Mẹo: Đảo ngược biến lượt đi để kiểm tra túi tiền của người TIẾP THEO
             _game.LaLuotNguoiChoi = !isP1JustMoved;
 
             if (_game.CheckAndBorrowStones())
             {
                 CapNhatGiaoDien();
-                // Có thể hiện thông báo vay quân ở đây nếu muốn
+                // Dừng 1s cho người chơi kịp nhìn thấy 5 viên sỏi vừa rải
                 await Task.Delay(1000);
             }
 
-            // 3. ĐỔI LƯỢT TRÊN SERVER
+            // --- Đổi lượt trên Server ---
+            // Chỉ thằng vừa đi xong mới được quyền báo server đổi lượt (để tránh 2 máy cùng gửi gây lỗi)
             if (_isMyTurn)
             {
                 DocumentReference doc = FirestoreService.DB.Collection("rooms").Document(_roomId);
@@ -112,27 +117,34 @@ namespace Nhom16_OAnQuan.Forms.GameForms
 
                 string hostID = snap.GetValue<string>("HostUID");
                 string guestID = snap.GetValue<string>("GuestUID");
+                // Nếu mình là Host thì chuyển lượt cho Guest, và ngược lại
                 string nextUID = (_myUID == hostID) ? guestID : hostID;
 
                 await doc.UpdateAsync("Turn", nextUID);
             }
         }
 
-        // --- 4. ANIMATION ---
+        // -----------------------------------------------------------
+        // 2. HÀM CHẠY HIỆU ỨNG RẢI SỎI (ANIMATION)
+        // Hàm này chạy trên cả 2 máy để đồng bộ hình ảnh
+        // -----------------------------------------------------------
         private async Task ThucHienNuocDi(int start, int dir)
         {
             if (start < 0 || start >= 12 || _game.BanCo[start] <= 0) return;
 
-            // Xác định ai đi: 7-11 là P1, 1-5 là P2
+            // Xác định ai là người đi nước này? (Để cộng điểm cho đúng)
+            // 7-11 là P1 đi. 1-5 là P2 đi.
             bool isP1Move = (start >= 7 && start <= 11);
 
-            dangDiChuyen = true;
+            _isAnimating = true; // Khóa màn hình lại, ko cho bấm nữa
             btnTrai.Visible = btnPhai.Visible = false;
 
+            // Bốc quân lên tay
             int stones = _game.BanCo[start];
             _game.BanCo[start] = 0;
             CapNhatGiaoDien(); await Task.Delay(250);
 
+            // Rải quân từng ô
             int pos = start;
             while (stones > 0)
             {
@@ -142,12 +154,13 @@ namespace Nhom16_OAnQuan.Forms.GameForms
                 stones--;
             }
 
+            // Xử lý logic: Vào quan, đi tiếp hay ăn điểm?
             while (true)
             {
                 int next = _game.NextIndex(pos, dir);
-                if (_game.IsQuan(next)) break;
+                if (_game.IsQuan(next)) break; // Gặp quan thì dừng
 
-                if (_game.BanCo[next] > 0)
+                if (_game.BanCo[next] > 0) // Có quân -> Bốc đi tiếp
                 {
                     stones = _game.BanCo[next]; _game.BanCo[next] = 0; pos = next;
                     CapNhatGiaoDien(); await Task.Delay(250);
@@ -158,20 +171,24 @@ namespace Nhom16_OAnQuan.Forms.GameForms
                         stones--;
                     }
                 }
-                else
+                else // Ô trống -> Ăn điểm
                 {
                     int nextEmpty = _game.NextIndex(next, dir);
                     if (_game.BanCo[nextEmpty] > 0)
                     {
                         int cap = _game.BanCo[nextEmpty]; _game.BanCo[nextEmpty] = 0;
+
+                        // Cộng điểm cho người vừa đi
                         if (isP1Move) _game.DiemNguoi1 += cap; else _game.DiemNguoi2 += cap;
                         CapNhatGiaoDien(); await Task.Delay(400);
 
+                        // Check ăn chuỗi (ăn liên hoàn)
                         int cur = nextEmpty;
                         while (true)
                         {
                             int ePos = _game.NextIndex(cur, dir);
                             int tPos = _game.NextIndex(ePos, dir);
+                            // Nếu ô tiếp theo trống VÀ ô sau nữa có quân -> Ăn tiếp
                             if (_game.BanCo[ePos] == 0 && _game.BanCo[tPos] > 0)
                             {
                                 int c2 = _game.BanCo[tPos]; _game.BanCo[tPos] = 0;
@@ -186,40 +203,53 @@ namespace Nhom16_OAnQuan.Forms.GameForms
                 }
             }
 
-            dangDiChuyen = false;
+            _isAnimating = false; // Xong rồi, mở khóa
             CapNhatGiaoDien();
 
-            // GỌI HÀM CHECK VỚI THÔNG TIN NGƯỜI VỪA ĐI
+            // Gọi hàm check kết thúc/vay quân/đổi lượt
             await CheckDoiLuotVaKetThuc(isP1Move);
         }
 
-        // --- 5. CÁC HÀM UI & LISTEN ---
+        // -----------------------------------------------------------
+        // 3. PHẦN LẮNG NGHE TỪ SERVER VỀ MÁY (LISTENER)
+        // -----------------------------------------------------------
         private void LangNghePhong()
         {
             DocumentReference doc = FirestoreService.DB.Collection("rooms").Document(_roomId);
             _listener = doc.Listen(async snapshot =>
             {
-                if (!snapshot.Exists) { MessageBox.Show("Phòng hủy!"); this.Close(); return; }
+                // Nếu form đóng rồi thì thôi, đừng chạy nữa kẻo lỗi
+                if (this.IsDisposed || !this.IsHandleCreated) return;
 
+                if (!snapshot.Exists) { MessageBox.Show("Phòng này bay màu rồi!"); this.Close(); return; }
+
+                // A. Cập nhật ai đang đến lượt
                 if (snapshot.TryGetValue("Turn", out string currentTurnUID))
                 {
+                    // Dùng Invoke để vẽ lại giao diện an toàn
                     this.Invoke((MethodInvoker)delegate {
-                        _isMyTurn = (currentTurnUID == _myUID);
+                        _isMyTurn = (currentTurnUID == _myUID); // Nếu UID trên mạng trùng mình -> Lượt mình
                         CapNhatTrangThaiLuot();
                     });
                 }
 
+                // B. Check xem đối thủ có thoát game không
                 if (snapshot.TryGetValue("Status", out string status))
                 {
-                    if (status == "PlayerLeft")
+                    // Nếu status là PlayerLeft VÀ mình không phải đứa đang thoát
+                    if (status == "PlayerLeft" && !_dangThoat)
                     {
-                        MessageBox.Show("Đối thủ đã thoát! Bạn thắng.");
-                        this.Close();
+                        this.Invoke((MethodInvoker)delegate {
+                            MessageBox.Show("Đối thủ sợ quá chạy mất dép rồi! Bạn thắng.");
+                            this.Close();
+                        });
                     }
                 }
 
+                // C. Nhận nước đi mới từ đối thủ
                 if (snapshot.TryGetValue("MoveCount", out int moveCount))
                 {
+                    // Nếu số đếm tăng lên -> Có nước đi mới
                     if (moveCount > _lastProcessedMoveCount)
                     {
                         _lastProcessedMoveCount = moveCount;
@@ -227,50 +257,62 @@ namespace Nhom16_OAnQuan.Forms.GameForms
                         int dir = snapshot.GetValue<int>("LastDir");
 
                         this.Invoke((MethodInvoker)async delegate {
-                            await ThucHienNuocDi(start, dir);
+                            await ThucHienNuocDi(start, dir); // Chạy hoạt hình
                         });
                     }
                 }
             });
         }
 
+        // Khi mình bấm nút Chọn Hướng thì chạy hàm này
         private async void btnHuong_Click(object sender, EventArgs e)
         {
-            if (oDaChon < 0 || !_isMyTurn || dangDiChuyen ) return;
+            // Kiểm tra kỹ: Chưa chọn ô? Chưa đến lượt? Đang chạy? -> Cút
+            if (oDaChon < 0 || !_isMyTurn || _isAnimating) return;
 
             int dir = (int)(sender as Button).Tag;
             int start = oDaChon;
 
+            // Khóa giao diện ngay lập tức
             oDaChon = -1;
             btnTrai.Visible = btnPhai.Visible = false;
-            dangDiChuyen = true;
+            _isAnimating = true;
 
+            // Đẩy dữ liệu lên Server (Chỉ đẩy thôi, chưa chạy animation vội)
+            // Đợi Server phản hồi về Listener thì cả 2 máy mới cùng chạy
             DocumentReference doc = FirestoreService.DB.Collection("rooms").Document(_roomId);
             Dictionary<string, object> updates = new Dictionary<string, object>
             {
                 { "LastStart", start },
                 { "LastDir", dir },
-                { "MoveCount", _lastProcessedMoveCount + 1 }
+                { "MoveCount", _lastProcessedMoveCount + 1 } // Tăng số đếm lên
             };
             await doc.UpdateAsync(updates);
         }
 
-        // --- 6. HỖ TRỢ GIAO DIỆN ---
+        // -----------------------------------------------------------
+        // 4. CÁC HÀM HỖ TRỢ GIAO DIỆN (UI)
+        // -----------------------------------------------------------
+
+        // Hàm kiểm tra xem ô này có phải của mình không (để chặn click bậy)
         private bool IsMySide(int index)
         {
-            if (_isHost && index >= 7 && index <= 11) return true;
-            if (!_isHost && index >= 1 && index <= 5) return true;
+            if (_isHost && index >= 7 && index <= 11) return true; // Host bấm 7-11
+            if (!_isHost && index >= 1 && index <= 5) return true; // Guest bấm 1-5
             return false;
         }
 
+        // Hàm xoay bàn cờ 180 độ cho Guest đỡ bị ngược tay
         private (int col, int row) GetUiCoordinates(int index)
         {
             int col = 0, row = 0;
+            // Vị trí chuẩn của Host
             if (index == 0) { col = 0; row = 1; }
             else if (index == 6) { col = 6; row = 1; }
             else if (index >= 1 && index <= 5) { col = index; row = 0; }
             else if (index >= 7 && index <= 11) { col = index - 6; row = 2; }
 
+            // Nếu là Guest -> Xoay ngược lại
             if (!_isHost) { col = 6 - col; row = 2 - row; }
             return (col, row);
         }
@@ -292,21 +334,23 @@ namespace Nhom16_OAnQuan.Forms.GameForms
                     Margin = new Padding(5),
                     BackColor = Color.Transparent
                 };
-                lbl.Paint += oVuong_Paint;
+                lbl.Paint += oVuong_Paint; // Nhờ thợ vẽ
 
+                // Phân quyền click chuột
                 if (IsMySide(i)) { lbl.Cursor = Cursors.Hand; lbl.Click += oDan_Click; }
                 else lbl.Cursor = Cursors.Default;
 
                 oVuong[i] = lbl;
-                var pos = GetUiCoordinates(i);
+                var pos = GetUiCoordinates(i); // Tính vị trí đặt ô
                 tblBanCo.Controls.Add(lbl, pos.col, pos.row);
             }
         }
 
         private void CapNhatGiaoDien()
         {
-            for (int i = 0; i < 12; i++) if (oVuong[i] != null) oVuong[i].Invalidate();
+            for (int i = 0; i < 12; i++) if (oVuong[i] != null) oVuong[i].Invalidate(); // Vẽ lại
 
+            // Hiển thị điểm số
             if (_isHost)
             {
                 lblDiemNguoi1.Text = $"BẠN (P1): {_game.DiemNguoi1}";
@@ -325,12 +369,13 @@ namespace Nhom16_OAnQuan.Forms.GameForms
             lblThongBao.Text = _isMyTurn ? "ĐẾN LƯỢT BẠN!" : "Đợi đối thủ...";
             lblThongBao.ForeColor = _isMyTurn ? Color.Lime : Color.Yellow;
 
-            bool allowClick = _isMyTurn && !dangDiChuyen;
+            bool allowClick = _isMyTurn && !_isAnimating;
             for (int i = 0; i < 12; i++)
             {
                 if (IsMySide(i)) oVuong[i].Enabled = allowClick && _game.BanCo[i] > 0;
-                else oVuong[i].Enabled = false;
+                else oVuong[i].Enabled = false; // Ô đối thủ luôn khóa
             }
+            // Nút chỉ hiện khi đã chọn ô
             bool showBtn = allowClick && (oDaChon >= 0);
             btnTrai.Visible = btnPhai.Visible = showBtn;
         }
@@ -339,19 +384,22 @@ namespace Nhom16_OAnQuan.Forms.GameForms
         {
             Label lbl = sender as Label;
             int index = (int)lbl.Tag;
+            // Gọi class Drawer vẽ hình sỏi và gỗ
             _drawer.DrawCell(e.Graphics, lbl.ClientRectangle, index, _game.BanCo[index], (index == oDaChon));
         }
 
         private void oDan_Click(object sender, EventArgs e)
         {
-            if (!_isMyTurn || dangDiChuyen) return;
+            if (!_isMyTurn || _isAnimating) return; // Chặn click
             int index = (int)(sender as Label).Tag;
             if (!IsMySide(index) || _game.BanCo[index] == 0) return;
 
+            // Highlight ô vừa chọn
             int old = oDaChon; oDaChon = index;
             if (old != -1) oVuong[old].Invalidate();
             oVuong[oDaChon].Invalidate();
 
+            // Tính vị trí để hiện nút Trái/Phải ngay dưới ô đó
             try
             {
                 var pt = tblBanCo.PointToScreen(oVuong[oDaChon].Location);
@@ -363,12 +411,15 @@ namespace Nhom16_OAnQuan.Forms.GameForms
             CapNhatTrangThaiLuot();
         }
 
+        // Hàm này chạy khi bấm nút X tắt form
         private async void GameOnline_FormClosing(object sender, FormClosingEventArgs e)
         {
-            _listener?.StopAsync();
+            _dangThoat = true; // Đánh dấu là mình đang thoát
+            _listener?.StopAsync(); // Ngắt kết nối
+
             try
             {
-                // Báo cho đối thủ biết mình thoát
+                // Báo lên server là mình thoát để thằng kia biết mà thắng
                 DocumentReference doc = FirestoreService.DB.Collection("rooms").Document(_roomId);
                 await doc.UpdateAsync("Status", "PlayerLeft");
             }
