@@ -57,9 +57,6 @@ namespace Nhom16_OAnQuan.Forms
                         GlobalUserSession.CurrentToken = Guid.NewGuid().ToString();
 
                         StartingGUI startingForm = new StartingGUI();
-
-                        this.Hide();
-
                         startingForm.Show();
                     }
                     else
@@ -96,6 +93,11 @@ namespace Nhom16_OAnQuan.Forms
         }
 
         private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void LogInForm_Load(object sender, EventArgs e)
         {
 
         }

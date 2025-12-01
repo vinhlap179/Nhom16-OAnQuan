@@ -29,9 +29,8 @@ namespace Nhom16_OAnQuan.Forms.GameForms
             }
 
             LobbyForm lobby = new LobbyForm(username);
-            this.Hide();
             lobby.ShowDialog();
-            this.Show();
+            this.Hide();
         }
 
         private void PlayOfflineBtn_Click(object sender, EventArgs e)
