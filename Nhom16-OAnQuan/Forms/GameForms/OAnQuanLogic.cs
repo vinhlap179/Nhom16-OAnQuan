@@ -58,37 +58,50 @@ namespace Nhom16_OAnQuan.Classes
             }
         }
 
+        // 3. LOGIC KIỂM TRA & VAY QUÂN (ĐÃ SỬA: XỬ LÝ VỠ NỢ)
         public bool CheckAndBorrowStones()
         {
-            if (LaLuotNguoiChoi) // Người chơi
+            if (LaLuotNguoiChoi) // Kiểm tra Người 1 (Host)
             {
                 bool allEmpty = true;
                 for (int i = 7; i <= 11; i++) if (BanCo[i] > 0) { allEmpty = false; break; }
+
                 if (allEmpty)
                 {
-                    int can = 5;
-                    int trum = Math.Min(can, DiemNguoi1);
-                    DiemNguoi1 -= trum; can -= trum;
-                    if (can > 0) { DiemNguoi2 -= Math.Min(can, DiemNguoi2); }
-                    for (int i = 7; i <= 11; i++) BanCo[i] += 1;
-                    return true;
+                    // Nếu không đủ 5 điểm để vay -> THUA LUÔN
+                    if (DiemNguoi1 < 5)
+                    {
+                        GameOver = true;
+                        return false; // Báo về UI là game kết thúc, không vay được
+                    }
+
+                    // Đủ điểm -> Trừ điểm và rải quân
+                    DiemNguoi1 -= 5;
+                    for (int i = 7; i <= 11; i++) BanCo[i] = 1; // Rải mỗi ô 1 quân
+                    return true; // Đã vay thành công
                 }
             }
-            else // Bot
+            else // Kiểm tra Người 2 (Guest/Bot)
             {
                 bool allEmpty = true;
                 for (int i = 1; i <= 5; i++) if (BanCo[i] > 0) { allEmpty = false; break; }
+
                 if (allEmpty)
                 {
-                    int can = 5;
-                    int trum = Math.Min(can, DiemNguoi2);
-                    DiemNguoi2 -= trum; can -= trum;
-                    if (can > 0) { DiemNguoi1 -= Math.Min(can, DiemNguoi1); }
-                    for (int i = 1; i <= 5; i++) BanCo[i] += 1;
+                    // Nếu không đủ 5 điểm để vay -> THUA LUÔN
+                    if (DiemNguoi2 < 5)
+                    {
+                        GameOver = true;
+                        return false;
+                    }
+
+                    // Đủ điểm -> Trừ điểm và rải quân
+                    DiemNguoi2 -= 5;
+                    for (int i = 1; i <= 5; i++) BanCo[i] = 1;
                     return true;
                 }
             }
-            return false;
+            return false; // Không cần vay
         }
 
         // --- 4. LOGIC BOT (AI) ---

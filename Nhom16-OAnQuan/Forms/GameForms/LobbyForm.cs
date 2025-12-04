@@ -108,12 +108,17 @@ namespace Nhom16_OAnQuan.Forms.GameForms
                 if (!snap.Exists) return "NOT_FOUND";
 
                 RoomModel room = snap.ConvertTo<RoomModel>();
+
+                if (room.HostUID == currentUser) return "SAME_USER";
+                // ----------------------------------------
+
                 if (!string.IsNullOrEmpty(room.GuestUID)) return "FULL";
 
-                // Update Guest
                 transaction.Update(doc, "GuestUID", currentUser);
                 return "OK";
             });
+
+            if (result == "SAME_USER") { MessageBox.Show("Bạn không thể tự vào phòng của chính mình!"); return; }
 
             if (result == "NOT_FOUND") { MessageBox.Show("Phòng không tồn tại!"); return; }
             if (result == "FULL") { MessageBox.Show("Phòng đã đầy!"); return; }

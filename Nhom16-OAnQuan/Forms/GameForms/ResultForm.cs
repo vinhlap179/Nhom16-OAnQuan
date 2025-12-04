@@ -16,18 +16,25 @@ namespace Nhom16_OAnQuan.Forms.GameForms
     {
         private int playerScore;
         private int botScore;
-        public ResultForm(int playerScore, int botScore)
+        // Trong ResultForm.cs
+
+        // Thêm biến để biết là chơi với Bot hay Người
+        private bool isOnlineMatch = false;
+
+        // Sửa Constructor để nhận thêm cờ isOnline (mặc định false nếu không truyền)
+        public ResultForm(int playerScore, int otherScore, bool isOnline = false)
         {
             InitializeComponent();
             this.playerScore = playerScore;
-            this.botScore = botScore;
+            this.botScore = otherScore; // Tạm gọi là botScore nhưng hiểu là điểm đối thủ
+            this.isOnlineMatch = isOnline;
         }
-
         private async void ResultForm_Load(object sender, EventArgs e)
         {
             lbScorePlayer.Text = $"Điểm của bạn: {playerScore}";
-            lbScoreBot.Text = $"Điểm của máy: {botScore}";
-
+            string otherLabel = isOnlineMatch ? "Điểm đối thủ" : "Điểm của máy";
+            lbScoreBot.Text = $"{otherLabel}: {botScore}";
+            // Nếu onl á thì cập nhật điểm cho cả hai người chơi, còn off thì chỉ cập nhật cho người chơi
             string resultMessage;
 
             if (playerScore > botScore)
