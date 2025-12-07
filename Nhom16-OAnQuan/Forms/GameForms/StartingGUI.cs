@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Media;
+using Google.Cloud.Firestore;
 
 namespace Nhom16_OAnQuan.Forms.GameForms
 {
@@ -68,7 +69,7 @@ namespace Nhom16_OAnQuan.Forms.GameForms
             new ChooseMode().ShowDialog();
         }
 
-        private void StartingGUI_Load(object sender, EventArgs e)
+        private async void StartingGUI_Load(object sender, EventArgs e)
         {
             try
             {
@@ -82,6 +83,9 @@ namespace Nhom16_OAnQuan.Forms.GameForms
                 // Phòng trường hợp lỗi file nhạc thì không bị crash game
                 Console.WriteLine("Lỗi phát nhạc: " + ex.Message);
             }
+
+            // Gọi hàm tải bảng xếp hạng ngay tại đây
+            await LoadBangXepHang();
         }
 
         
@@ -96,6 +100,51 @@ namespace Nhom16_OAnQuan.Forms.GameForms
             }
         }
 
+
+        // Hàm cấu hình và tải bảng xếp hạng
+        private async Task LoadBangXepHang()
+        {
+            try
+            {
+                //Tạo cột cho bảng
+                dgvBXH.Columns.Clear();
+                dgvBXH.Columns.Add("Rank", "Top");
+                dgvBXH.Columns.Add("Name", "Tên");
+                dgvBXH.Columns.Add("Wins", "Thắng");
+
+                dgvBXH.Columns[0].Width = 150;  // Cột Top nhỏ thôi
+                dgvBXH.Columns[1].Width = 300; // Cột Tên
+                dgvBXH.Columns[2].Width = 150;  // Cột Thắng
+
+                //Lấy dữ liệu từ Firestore xong sắp xếp
+                var db = FirestoreHelper.Database;
+                Query query = db.Collection("UserData").OrderByDescending("Wins").Limit(10);
+                QuerySnapshot snap = await query.GetSnapshotAsync();
+
+                //Cho dữ liệu vào bảng
+                dgvBXH.Rows.Clear();
+                int rank = 1;
+
+                foreach (DocumentSnapshot doc in snap.Documents)
+                {
+                    if (doc.Exists)
+                    {
+                        UserData user = doc.ConvertTo<UserData>();
+                        dgvBXH.Rows.Add(rank, user.Username, user.Wins);
+                        rank++;
+                    }
+                }
+
+  
+                dgvBXH.ClearSelection();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi BXH: " + ex.Message);
+            }
+        }
+
+        
 
     }
 }
