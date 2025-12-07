@@ -38,8 +38,10 @@
             panel1 = new Panel();
             timer1 = new System.Windows.Forms.Timer(components);
             formLoadTimer = new System.Windows.Forms.Timer(components);
+            dgvBXH = new DataGridView();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvBXH).BeginInit();
             SuspendLayout();
             // 
             // pictureBox1
@@ -55,7 +57,7 @@
             // PlayerInformationBtn
             // 
             PlayerInformationBtn.BackColor = Color.Gray;
-            PlayerInformationBtn.Font = new Font("Press Start 2P", 9F);
+            PlayerInformationBtn.Font = new Font("Microsoft Sans Serif", 9F);
             PlayerInformationBtn.ForeColor = SystemColors.ButtonHighlight;
             PlayerInformationBtn.Location = new Point(32, 188);
             PlayerInformationBtn.Name = "PlayerInformationBtn";
@@ -68,7 +70,7 @@
             // GuideBtn
             // 
             GuideBtn.BackColor = Color.Gray;
-            GuideBtn.Font = new Font("Press Start 2P", 9F);
+            GuideBtn.Font = new Font("Microsoft Sans Serif", 9F);
             GuideBtn.ForeColor = SystemColors.ButtonHighlight;
             GuideBtn.Location = new Point(32, 106);
             GuideBtn.Name = "GuideBtn";
@@ -81,7 +83,7 @@
             // PlayBtn
             // 
             PlayBtn.BackColor = Color.Gray;
-            PlayBtn.Font = new Font("Press Start 2P", 9F);
+            PlayBtn.Font = new Font("Microsoft Sans Serif", 9F);
             PlayBtn.ForeColor = SystemColors.ButtonHighlight;
             PlayBtn.Location = new Point(32, 24);
             PlayBtn.Name = "PlayBtn";
@@ -94,7 +96,7 @@
             // SignOutBtn
             // 
             SignOutBtn.BackColor = Color.Gray;
-            SignOutBtn.Font = new Font("Press Start 2P", 9F);
+            SignOutBtn.Font = new Font("Microsoft Sans Serif", 9F);
             SignOutBtn.ForeColor = SystemColors.ButtonHighlight;
             SignOutBtn.Location = new Point(32, 265);
             SignOutBtn.Name = "SignOutBtn";
@@ -121,6 +123,18 @@
             formLoadTimer.Enabled = true;
             formLoadTimer.Interval = 10;
             // 
+            // dgvBXH
+            // 
+            dgvBXH.AllowUserToAddRows = false;
+            dgvBXH.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvBXH.Location = new Point(37, 277);
+            dgvBXH.Name = "dgvBXH";
+            dgvBXH.ReadOnly = true;
+            dgvBXH.RowHeadersVisible = false;
+            dgvBXH.RowHeadersWidth = 51;
+            dgvBXH.Size = new Size(569, 310);
+            dgvBXH.TabIndex = 25;
+            // 
             // StartingGUI
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -129,6 +143,7 @@
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             BackgroundImageLayout = ImageLayout.Zoom;
             ClientSize = new Size(1105, 625);
+            Controls.Add(dgvBXH);
             Controls.Add(pictureBox1);
             Controls.Add(panel1);
             Name = "StartingGUI";
@@ -137,6 +152,7 @@
             Load += StartingGUI_Load;
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)dgvBXH).EndInit();
             ResumeLayout(false);
         }
 
@@ -149,5 +165,6 @@
         private Panel panel1;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Timer formLoadTimer;
+        private DataGridView dgvBXH;
     }
 }
