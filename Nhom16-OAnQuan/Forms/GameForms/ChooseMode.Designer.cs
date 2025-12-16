@@ -62,6 +62,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.DimGray;
             ClientSize = new Size(624, 339);
             Controls.Add(PlayOnlineBtn);
             Controls.Add(PlayOfflineBtn);

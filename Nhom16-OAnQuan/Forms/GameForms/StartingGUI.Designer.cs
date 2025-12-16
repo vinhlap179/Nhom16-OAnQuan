@@ -30,6 +30,10 @@
         {
             components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StartingGUI));
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
             pictureBox1 = new PictureBox();
             PlayerInformationBtn = new Button();
             GuideBtn = new Button();
@@ -39,6 +43,9 @@
             timer1 = new System.Windows.Forms.Timer(components);
             formLoadTimer = new System.Windows.Forms.Timer(components);
             dgvBXH = new DataGridView();
+            RANK = new DataGridViewTextBoxColumn();
+            NAME = new DataGridViewTextBoxColumn();
+            WIN = new DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvBXH).BeginInit();
@@ -57,7 +64,7 @@
             // PlayerInformationBtn
             // 
             PlayerInformationBtn.BackColor = Color.Gray;
-            PlayerInformationBtn.Font = new Font("Microsoft Sans Serif", 9F);
+            PlayerInformationBtn.Font = new Font("Press Start 2P", 9F);
             PlayerInformationBtn.ForeColor = SystemColors.ButtonHighlight;
             PlayerInformationBtn.Location = new Point(32, 188);
             PlayerInformationBtn.Name = "PlayerInformationBtn";
@@ -70,7 +77,7 @@
             // GuideBtn
             // 
             GuideBtn.BackColor = Color.Gray;
-            GuideBtn.Font = new Font("Microsoft Sans Serif", 9F);
+            GuideBtn.Font = new Font("Press Start 2P", 9F);
             GuideBtn.ForeColor = SystemColors.ButtonHighlight;
             GuideBtn.Location = new Point(32, 106);
             GuideBtn.Name = "GuideBtn";
@@ -83,7 +90,7 @@
             // PlayBtn
             // 
             PlayBtn.BackColor = Color.Gray;
-            PlayBtn.Font = new Font("Microsoft Sans Serif", 9F);
+            PlayBtn.Font = new Font("Press Start 2P", 9F);
             PlayBtn.ForeColor = SystemColors.ButtonHighlight;
             PlayBtn.Location = new Point(32, 24);
             PlayBtn.Name = "PlayBtn";
@@ -96,7 +103,7 @@
             // SignOutBtn
             // 
             SignOutBtn.BackColor = Color.Gray;
-            SignOutBtn.Font = new Font("Microsoft Sans Serif", 9F);
+            SignOutBtn.Font = new Font("Press Start 2P", 9F);
             SignOutBtn.ForeColor = SystemColors.ButtonHighlight;
             SignOutBtn.Location = new Point(32, 265);
             SignOutBtn.Name = "SignOutBtn";
@@ -126,14 +133,67 @@
             // dgvBXH
             // 
             dgvBXH.AllowUserToAddRows = false;
+            dgvBXH.BackgroundColor = SystemColors.InfoText;
+            dgvBXH.CellBorderStyle = DataGridViewCellBorderStyle.None;
+            dgvBXH.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = Color.Transparent;
+            dataGridViewCellStyle1.Font = new Font("Press Start 2P", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle1.ForeColor = Color.LightCoral;
+            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            dgvBXH.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dgvBXH.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvBXH.Location = new Point(37, 277);
+            dgvBXH.Columns.AddRange(new DataGridViewColumn[] { RANK, NAME, WIN });
+            dgvBXH.EnableHeadersVisualStyles = false;
+            dgvBXH.GridColor = SystemColors.InfoText;
+            dgvBXH.Location = new Point(70, 252);
             dgvBXH.Name = "dgvBXH";
             dgvBXH.ReadOnly = true;
             dgvBXH.RowHeadersVisible = false;
             dgvBXH.RowHeadersWidth = 51;
-            dgvBXH.Size = new Size(569, 310);
+            dgvBXH.Size = new Size(454, 322);
             dgvBXH.TabIndex = 25;
+            // 
+            // RANK
+            // 
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = Color.Transparent;
+            dataGridViewCellStyle2.Font = new Font("Press Start 2P", 7.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle2.ForeColor = Color.LightCoral;
+            RANK.DefaultCellStyle = dataGridViewCellStyle2;
+            RANK.HeaderText = "RANK";
+            RANK.MinimumWidth = 6;
+            RANK.Name = "RANK";
+            RANK.ReadOnly = true;
+            RANK.Width = 125;
+            // 
+            // NAME
+            // 
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = Color.Transparent;
+            dataGridViewCellStyle3.Font = new Font("Press Start 2P", 7.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle3.ForeColor = Color.LightCoral;
+            NAME.DefaultCellStyle = dataGridViewCellStyle3;
+            NAME.HeaderText = "NAME";
+            NAME.MinimumWidth = 6;
+            NAME.Name = "NAME";
+            NAME.ReadOnly = true;
+            NAME.Width = 200;
+            // 
+            // WIN
+            // 
+            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.BackColor = Color.Transparent;
+            dataGridViewCellStyle4.Font = new Font("Press Start 2P", 7.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle4.ForeColor = Color.LightCoral;
+            WIN.DefaultCellStyle = dataGridViewCellStyle4;
+            WIN.HeaderText = "WIN";
+            WIN.MinimumWidth = 6;
+            WIN.Name = "WIN";
+            WIN.ReadOnly = true;
+            WIN.Width = 125;
             // 
             // StartingGUI
             // 
@@ -166,5 +226,8 @@
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Timer formLoadTimer;
         private DataGridView dgvBXH;
+        private DataGridViewTextBoxColumn RANK;
+        private DataGridViewTextBoxColumn NAME;
+        private DataGridViewTextBoxColumn WIN;
     }
 }

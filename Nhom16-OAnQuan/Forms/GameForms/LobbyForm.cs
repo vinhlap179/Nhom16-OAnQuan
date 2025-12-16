@@ -131,7 +131,12 @@ namespace Nhom16_OAnQuan.Forms.GameForms
 
         private void LobbyForm_Load(object sender, EventArgs e)
         {
-           
+
+        }
+
+        private void txtRoomId_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
