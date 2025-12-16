@@ -88,37 +88,35 @@ namespace Nhom16_OAnQuan.Forms.GameForms
             await LoadBangXepHang();
         }
 
-
         private void DecorateDataGridView()
         {
-            // 1. Cài đặt chung
-            dgvBXH.BackgroundColor = Color.FromArgb(40, 40, 40); // Màu nền tối nhẹ hoặc Color.White tuỳ theme
+            // Cài đặt chung
+            dgvBXH.BackgroundColor = Color.FromArgb(40, 40, 40);
             dgvBXH.BorderStyle = BorderStyle.None;
-            dgvBXH.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal; // Chỉ kẻ ngang
-            dgvBXH.GridColor = Color.DimGray; // Màu đường kẻ mờ
-            dgvBXH.RowHeadersVisible = false; // Ẩn cột đầu dòng thừa thãi
+            dgvBXH.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
+            dgvBXH.GridColor = Color.DimGray;
+            dgvBXH.RowHeadersVisible = false; 
             dgvBXH.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvBXH.MultiSelect = false;
             dgvBXH.AllowUserToResizeRows = false;
-            dgvBXH.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill; // Tự giãn cột
+            dgvBXH.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill; 
 
-            // 2. Chỉnh Header (Tiêu đề cột)
-            dgvBXH.EnableHeadersVisualStyles = false; // Bắt buộc để chỉnh màu header
+            // Chỉnh Header
+            dgvBXH.EnableHeadersVisualStyles = false; 
             dgvBXH.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
             dgvBXH.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(20, 20, 20); // Màu đen/tối
-            dgvBXH.ColumnHeadersDefaultCellStyle.ForeColor = Color.Gold; // Chữ vàng sang trọng
+            dgvBXH.ColumnHeadersDefaultCellStyle.ForeColor = Color.Gold;
             dgvBXH.ColumnHeadersDefaultCellStyle.Font = new Font("Segoe UI", 12, FontStyle.Bold);
             dgvBXH.ColumnHeadersHeight = 40;
 
-            // 3. Chỉnh Row (Dòng dữ liệu)
+            //  Chỉnh Row
             dgvBXH.DefaultCellStyle.BackColor = Color.FromArgb(30, 30, 30); // Nền dòng tối
             dgvBXH.DefaultCellStyle.ForeColor = Color.White; // Chữ trắng
             dgvBXH.DefaultCellStyle.Font = new Font("Segoe UI", 11, FontStyle.Regular);
-            dgvBXH.DefaultCellStyle.SelectionBackColor = Color.FromArgb(70, 70, 70); // Màu khi chọn
+            dgvBXH.DefaultCellStyle.SelectionBackColor = Color.FromArgb(70, 70, 70); // Màu
             dgvBXH.DefaultCellStyle.SelectionForeColor = Color.White;
-            dgvBXH.RowTemplate.Height = 50; // Dòng cao lên cho thoáng
-
-            // Căn giữa nội dung
+            dgvBXH.RowTemplate.Height = 50; // Dòng cao lên
+            // Căn giữa
             dgvBXH.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dgvBXH.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
         }
@@ -138,30 +136,22 @@ namespace Nhom16_OAnQuan.Forms.GameForms
         {
             try
             {
-                // Setup giao diện đẹp trước
                 DecorateDataGridView();
-
-                // Tạo cột
                 dgvBXH.Columns.Clear();
-
-                // Cột 0: Huy chương (Dùng ImageColumn thay vì Text)
                 DataGridViewImageColumn imgCol = new DataGridViewImageColumn();
                 imgCol.Name = "RankImg";
                 imgCol.HeaderText = "Hạng";
-                imgCol.ImageLayout = DataGridViewImageCellLayout.Zoom; // Co giãn ảnh vừa ô
+                imgCol.ImageLayout = DataGridViewImageCellLayout.Zoom;
                 dgvBXH.Columns.Add(imgCol);
-
-                // Cột 1: Rank Text (Để hiển thị số 4, 5, 6... nếu không có huy chương)
                 dgvBXH.Columns.Add("RankTxt", "Hạng");
-                dgvBXH.Columns["RankTxt"].Visible = false; // Ẩn cột này đi, chỉ dùng để lưu số
-
+                dgvBXH.Columns["RankTxt"].Visible = false;
                 // Các cột còn lại
-                dgvBXH.Columns.Add("Name", "Đại Cao Thủ");
+                dgvBXH.Columns.Add("Name", "Người Chơi");
                 dgvBXH.Columns.Add("Wins", "Chiến Thắng");
 
                 // Chỉnh độ rộng
-                dgvBXH.Columns[0].Width = 60;  // Cột huy chương nhỏ
-                dgvBXH.Columns[2].Width = 250; // Cột tên rộng
+                dgvBXH.Columns[0].Width = 60;
+                dgvBXH.Columns[2].Width = 250;
 
                 // Lấy dữ liệu Firestore
                 var db = FirestoreHelper.Database;
@@ -177,16 +167,15 @@ namespace Nhom16_OAnQuan.Forms.GameForms
                     {
                         UserData user = doc.ConvertTo<UserData>();
 
-                        // Xử lý hình ảnh huy chương
+                        // -------------------Xử lý hình ảnh huy chương---------------------------------------------------
+                        // ===================== ĐANG LỖI CẦN FIX CHÈN ẢNH ==========================
+
                         Image rankImage = null;
-                        if (rank == 1) rankImage = Image.FromFile(@"Resources\medal_1.png"); // Ảnh vàng
+                        //if (rank == 1) rankImage = Properties.Resources.seabed; // Ảnh vàng
                         //else if (rank == 2) rankImage = Properties.Resources.medal_2; // Ảnh bạc
                         //else if (rank == 3) rankImage = Properties.Resources.medal_3; // Ảnh đồng
 
                         // Nếu không có ảnh trong Resource thì để null (code dưới sẽ vẽ số)
-
-                        // Thêm dòng
-                        // Lưu ý: Cột 0 là ảnh, Cột 1 là số rank (ẩn), Cột 2 Tên, Cột 3 Win
                         dgvBXH.Rows.Add(rankImage, rank, user.Username, user.Wins);
 
                         rank++;
@@ -202,20 +191,13 @@ namespace Nhom16_OAnQuan.Forms.GameForms
         }
         private void dgvBXH_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
-            // Kiểm tra nếu đang render các dòng dữ liệu (không phải header)
             if (e.RowIndex >= 0)
             {
-                // Lấy giá trị Rank (Cột ẩn "RankTxt" là cột index 1)
-                // Hoặc đơn giản lấy RowIndex + 1 vì bảng đã sort sẵn
                 int rank = e.RowIndex + 1;
-
                 // Nếu cột đầu tiên (Cột ảnh) không có ảnh (từ top 4 trở đi), hiển thị số rank
                 if (dgvBXH.Columns[e.ColumnIndex].Name == "RankImg" && e.Value == null)
                 {
-                    // Vẽ số rank vào cột ảnh nếu không có huy chương (Xử lý nâng cao, hoặc dùng cột RankTxt hiển thị lại)
-                    // Đơn giản nhất: Nếu bạn muốn hiện số cho Top 4-10, hãy bật lại cột RankTxt
                 }
-
                 // Tô màu chữ đặc biệt cho Top 3
                 if (rank == 1)
                 {
@@ -237,7 +219,6 @@ namespace Nhom16_OAnQuan.Forms.GameForms
         }
         private void dgvBXH_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-
         }
     }
 }
