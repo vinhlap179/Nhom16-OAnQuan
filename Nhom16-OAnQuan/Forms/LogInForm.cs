@@ -97,10 +97,5 @@ namespace Nhom16_OAnQuan.Forms
         {
 
         }
-
-        private void LogInForm_Load(object sender, EventArgs e)
-        {
-
-        }
     }
 }

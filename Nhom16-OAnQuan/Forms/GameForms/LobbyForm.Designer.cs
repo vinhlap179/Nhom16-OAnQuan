@@ -36,49 +36,64 @@
             // 
             // BtnCreateRoom
             // 
-            BtnCreateRoom.Font = new Font("Segoe UI", 14F);
-            BtnCreateRoom.Location = new Point(183, 38);
+            BtnCreateRoom.BackColor = Color.DarkGray;
+            BtnCreateRoom.FlatAppearance.BorderSize = 0;
+            BtnCreateRoom.FlatStyle = FlatStyle.Flat;
+            BtnCreateRoom.Font = new Font("Press Start 2P", 7.8F);
+            BtnCreateRoom.ForeColor = SystemColors.ButtonHighlight;
+            BtnCreateRoom.Location = new Point(193, 70);
             BtnCreateRoom.Name = "BtnCreateRoom";
             BtnCreateRoom.Size = new Size(228, 67);
             BtnCreateRoom.TabIndex = 0;
-            BtnCreateRoom.Text = "Tạo Phòng";
-            BtnCreateRoom.UseVisualStyleBackColor = true;
+            BtnCreateRoom.Text = "Create Room";
+            BtnCreateRoom.UseVisualStyleBackColor = false;
             BtnCreateRoom.Click += BtnCreateRoom_Click;
             // 
             // BtnFindRoom
             // 
-            BtnFindRoom.Font = new Font("Segoe UI", 14F);
-            BtnFindRoom.Location = new Point(183, 153);
+            BtnFindRoom.BackColor = Color.DarkGray;
+            BtnFindRoom.FlatAppearance.BorderSize = 0;
+            BtnFindRoom.FlatStyle = FlatStyle.Flat;
+            BtnFindRoom.Font = new Font("Press Start 2P", 7.8F);
+            BtnFindRoom.ForeColor = SystemColors.ButtonHighlight;
+            BtnFindRoom.Location = new Point(193, 165);
             BtnFindRoom.Name = "BtnFindRoom";
             BtnFindRoom.Size = new Size(228, 67);
             BtnFindRoom.TabIndex = 1;
-            BtnFindRoom.Text = "Tìm Phòng";
-            BtnFindRoom.UseVisualStyleBackColor = true;
+            BtnFindRoom.Text = "Find Room";
+            BtnFindRoom.UseVisualStyleBackColor = false;
             BtnFindRoom.Click += BtnFindRoom_Click;
             // 
             // BtnJoinRoom
             // 
-            BtnJoinRoom.Font = new Font("Segoe UI", 14F);
-            BtnJoinRoom.Location = new Point(183, 261);
+            BtnJoinRoom.BackColor = Color.DarkGray;
+            BtnJoinRoom.FlatAppearance.BorderSize = 0;
+            BtnJoinRoom.FlatStyle = FlatStyle.Flat;
+            BtnJoinRoom.Font = new Font("Press Start 2P", 7.8F);
+            BtnJoinRoom.ForeColor = SystemColors.ButtonHighlight;
+            BtnJoinRoom.Location = new Point(193, 263);
             BtnJoinRoom.Name = "BtnJoinRoom";
             BtnJoinRoom.Size = new Size(228, 67);
             BtnJoinRoom.TabIndex = 2;
-            BtnJoinRoom.Text = "Tham Gia Phòng";
-            BtnJoinRoom.UseVisualStyleBackColor = true;
+            BtnJoinRoom.Text = "Join Room";
+            BtnJoinRoom.UseVisualStyleBackColor = false;
             BtnJoinRoom.Click += BtnJoinRoom_Click;
             // 
             // txtRoomId
             // 
-            txtRoomId.Location = new Point(12, 48);
+            txtRoomId.Font = new Font("Press Start 2P", 7.8F);
+            txtRoomId.Location = new Point(12, 24);
             txtRoomId.Name = "txtRoomId";
-            txtRoomId.Size = new Size(125, 27);
+            txtRoomId.Size = new Size(175, 20);
             txtRoomId.TabIndex = 3;
-            txtRoomId.Text = "Nhập Room ID";
+            txtRoomId.Text = "Enter Room ID";
+            txtRoomId.TextChanged += txtRoomId_TextChanged;
             // 
             // LobbyForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.DimGray;
             ClientSize = new Size(616, 389);
             Controls.Add(txtRoomId);
             Controls.Add(BtnJoinRoom);
