@@ -134,6 +134,8 @@
             dgvBXH.RowHeadersWidth = 51;
             dgvBXH.Size = new Size(569, 310);
             dgvBXH.TabIndex = 25;
+            dgvBXH.CellContentClick += dgvBXH_CellContentClick;
+            dgvBXH.CellFormatting += dgvBXH_CellFormatting;
             // 
             // StartingGUI
             // 
