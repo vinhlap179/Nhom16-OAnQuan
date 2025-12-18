@@ -46,9 +46,8 @@ namespace Nhom16_OAnQuan.Forms.GameForms
             btnTrai.Tag = -1;
             btnPhai.Tag = 1;
 
-            this.BackColor = Color.FromArgb(40, 40, 40);
             // Hiện title cho dễ biết mình là ai
-            this.Text = isHost ? $"CHỦ PHÒNG (P1) - Room: {roomId}" : $"KHÁCH (P2) - Room: {roomId}";
+            this.Text = isHost ? $"OWNER (P1) - Room: {roomId}" : $"GUEST (P2) - Room: {roomId}";
 
             this.Load += GameOnline_Load;
             this.FormClosing += GameOnline_FormClosing;
@@ -356,21 +355,20 @@ namespace Nhom16_OAnQuan.Forms.GameForms
             // Hiển thị điểm số
             if (_isHost)
             {
-                lblDiemNguoi1.Text = $"BẠN (P1): {_game.DiemNguoi1}";
-                lblDiemNguoi2.Text = $"KHÁCH (P2): {_game.DiemNguoi2}";
+                lblDiemNguoi1.Text = $"YOU (P1): {_game.DiemNguoi1}";
+                lblDiemNguoi2.Text = $"OPPONENT (P2): {_game.DiemNguoi2}";
             }
             else
             {
-                lblDiemNguoi1.Text = $"CHỦ (P1): {_game.DiemNguoi1}";
-                lblDiemNguoi2.Text = $"BẠN (P2): {_game.DiemNguoi2}";
+                lblDiemNguoi1.Text = $"OPPONENT (P1): {_game.DiemNguoi1}";
+                lblDiemNguoi2.Text = $"YOU (P2): {_game.DiemNguoi2}";
             }
             CapNhatTrangThaiLuot();
         }
 
         private void CapNhatTrangThaiLuot()
         {
-            lblThongBao.Text = _isMyTurn ? "ĐẾN LƯỢT BẠN!" : "Đợi đối thủ...";
-            lblThongBao.ForeColor = _isMyTurn ? Color.Lime : Color.Yellow;
+            lblThongBao.Text = _isMyTurn ? "YOUR TURN" : "OPPONENT TURN";
 
             bool allowClick = _isMyTurn && !_isAnimating;
             for (int i = 0; i < 12; i++)

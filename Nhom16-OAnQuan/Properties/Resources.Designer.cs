@@ -73,6 +73,26 @@ namespace Nhom16_OAnQuan.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap end_bg {
+            get {
+                object obj = ResourceManager.GetObject("end_bg", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap end_bg1 {
+            get {
+                object obj = ResourceManager.GetObject("end_bg1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap fairy_cave_bg {
             get {
                 object obj = ResourceManager.GetObject("fairy_cave_bg", resourceCulture);
@@ -83,9 +103,39 @@ namespace Nhom16_OAnQuan.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap gameboard {
+            get {
+                object obj = ResourceManager.GetObject("gameboard", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap labotory_backgroud {
+            get {
+                object obj = ResourceManager.GetObject("labotory-backgroud", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap OAnQuan_Logo {
             get {
                 object obj = ResourceManager.GetObject("OAnQuan_Logo", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap plain {
+            get {
+                object obj = ResourceManager.GetObject("plain", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

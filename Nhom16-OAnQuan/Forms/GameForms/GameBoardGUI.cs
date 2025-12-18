@@ -9,7 +9,7 @@ namespace Nhom16_OAnQuan.Forms.GameForms
     public partial class GameBoardGUI : Form
     {
         private OAnQuanLogic _game;
-        private OAnQuanDrawer _drawer;  // Họa sĩ vẽ bàn cờ
+        private OAnQuanDrawer _drawer;
         private Label[] oVuong = new Label[12];
         private int oDaChon = -1;
         private bool dangDiChuyen = false;
@@ -20,14 +20,14 @@ namespace Nhom16_OAnQuan.Forms.GameForms
             _game = new OAnQuanLogic();
             _drawer = new OAnQuanDrawer();
 
-            // Gắn sự kiện click
+            // Gắn sự kiện click cho nút điều hướng
             btnTrai.Click += btnHuong_Click;
             btnPhai.Click += btnHuong_Click;
             btnTrai.Tag = -1;
             btnPhai.Tag = 1;
 
-            this.BackColor = Color.FromArgb(40, 40, 40); // Màu nền tối cho ngầu
-            this.Text = "Ô Ăn Quan - Đấu với Máy";
+            // [ĐÃ XÓA] Dòng chỉnh màu nền và tiêu đề Form ở đây
+            // Bạn hãy chỉnh BackgroundImage và Text trong màn hình Design nhé!
         }
 
         private void GameBoardGUI_Load(object sender, EventArgs e)
@@ -41,7 +41,6 @@ namespace Nhom16_OAnQuan.Forms.GameForms
         {
             if (_game.GameOver) return;
 
-            // Đổi lượt (Người <-> Bot)
             _game.LaLuotNguoiChoi = !_game.LaLuotNguoiChoi;
             CapNhatGiaoDien();
 
@@ -49,28 +48,23 @@ namespace Nhom16_OAnQuan.Forms.GameForms
             _game.CheckEndGame();
             if (_game.GameOver)
             {
-                CapNhatGiaoDien(); // Update điểm lần cuối
-
-                // --- [SỬA Ở ĐÂY] GỌI FORM KẾT QUẢ XỊN XÒ ---
-                // Truyền điểm Người và điểm Bot sang
+                CapNhatGiaoDien();
                 ResultForm resultForm = new ResultForm(_game.DiemNguoi1, _game.DiemNguoi2);
-                resultForm.ShowDialog(); // Hiện form lên
-                // -------------------------------------------
-
-                this.Close(); // Đóng bàn cờ
+                resultForm.ShowDialog();
+                this.Close();
                 return;
             }
 
             // 2. Kiểm tra vay quân
             if (_game.CheckAndBorrowStones())
             {
-                string ai = _game.LaLuotNguoiChoi ? "Bạn" : "Bot";
+                string ai = _game.LaLuotNguoiChoi ? "YOU" : "BOT";
                 MessageBox.Show($"{ai} hết quân, hệ thống tự động vay 5 điểm!", "Vay Quân");
                 CapNhatGiaoDien();
                 await Task.Delay(1000);
             }
 
-            // 3. Nếu đến lượt Bot -> Gọi Bot chạy
+            // 3. Bot đi
             if (!_game.LaLuotNguoiChoi) await BotTuDi();
         }
 
@@ -78,11 +72,9 @@ namespace Nhom16_OAnQuan.Forms.GameForms
         private async Task BotTuDi()
         {
             if (_game.GameOver) return;
-            await Task.Delay(700); // Bot nghĩ 0.7 giây cho giống thật
+            await Task.Delay(700);
 
             var move = _game.TimNuocDiChoBot();
-
-            // Nếu Bot không tìm được nước đi (thường là đã hết quân -> sẽ rơi vào case Vay Quân ở trên)
             if (move.start == -1) { DoiLuot(); return; }
 
             await ThucHienNuocDi(move.start, move.dir, false);
@@ -94,7 +86,7 @@ namespace Nhom16_OAnQuan.Forms.GameForms
         {
             if (start < 0 || start >= 12 || _game.BanCo[start] <= 0) return;
 
-            dangDiChuyen = true; // Khóa bàn cờ
+            dangDiChuyen = true;
             btnTrai.Visible = btnPhai.Visible = false;
 
             int stones = _game.BanCo[start];
@@ -102,7 +94,6 @@ namespace Nhom16_OAnQuan.Forms.GameForms
             CapNhatGiaoDien(); await Task.Delay(250);
 
             int pos = start;
-            // Rải quân
             while (stones > 0)
             {
                 pos = _game.NextIndex(pos, dir);
@@ -111,13 +102,12 @@ namespace Nhom16_OAnQuan.Forms.GameForms
                 stones--;
             }
 
-            // Xử lý logic (Ăn, Đi tiếp, Dừng)
             while (true)
             {
                 int next = _game.NextIndex(pos, dir);
-                if (_game.IsQuan(next)) break; // Gặp quan -> Dừng
+                if (_game.IsQuan(next)) break;
 
-                if (_game.BanCo[next] > 0) // Có quân -> Đi tiếp
+                if (_game.BanCo[next] > 0)
                 {
                     stones = _game.BanCo[next]; _game.BanCo[next] = 0; pos = next;
                     CapNhatGiaoDien(); await Task.Delay(250);
@@ -128,12 +118,12 @@ namespace Nhom16_OAnQuan.Forms.GameForms
                         stones--;
                     }
                 }
-                else // Ô trống -> Ăn
+                else
                 {
                     int nextEmpty = _game.NextIndex(next, dir);
                     if (_game.BanCo[nextEmpty] > 0)
                     {
-                        lblThongBao.Text = "Ăn quân!";
+                        lblThongBao.Text = "Ăn quân!"; // Chỉ gán nội dung chữ
                         int cap = _game.BanCo[nextEmpty]; _game.BanCo[nextEmpty] = 0;
 
                         if (laNguoi) _game.DiemNguoi1 += cap;
@@ -141,7 +131,6 @@ namespace Nhom16_OAnQuan.Forms.GameForms
 
                         CapNhatGiaoDien(); await Task.Delay(400);
 
-                        // Ăn chuỗi
                         int cur = nextEmpty;
                         while (true)
                         {
@@ -161,17 +150,16 @@ namespace Nhom16_OAnQuan.Forms.GameForms
                     break;
                 }
             }
-            dangDiChuyen = false; // Mở khóa
+            dangDiChuyen = false;
             CapNhatGiaoDien();
         }
 
         // --- 4. UI & SỰ KIỆN ---
-
         private void TaoBanCoUI()
         {
             tblBanCo.GrowStyle = TableLayoutPanelGrowStyle.FixedSize;
             tblBanCo.Controls.Clear();
-            tblBanCo.BackColor = Color.Transparent;
+            tblBanCo.BackColor = Color.Transparent; // Giữ cái này để bàn cờ trong suốt đè lên hình nền
 
             for (int i = 0; i < 12; i++)
             {
@@ -185,9 +173,8 @@ namespace Nhom16_OAnQuan.Forms.GameForms
                     BackColor = Color.Transparent
                 };
 
-                lbl.Paint += oVuong_Paint; // Gắn thợ vẽ
+                lbl.Paint += oVuong_Paint;
 
-                // Chỉ cho người chơi bấm ô 7-11
                 if (i >= 7 && i <= 11)
                 {
                     lbl.Cursor = Cursors.Hand;
@@ -200,7 +187,6 @@ namespace Nhom16_OAnQuan.Forms.GameForms
 
                 oVuong[i] = lbl;
 
-                // Xếp vào bàn cờ
                 if (i == 0) tblBanCo.Controls.Add(lbl, 0, 1);
                 else if (i == 6) tblBanCo.Controls.Add(lbl, 6, 1);
                 else if (i >= 1 && i <= 5) tblBanCo.Controls.Add(lbl, i, 0);
@@ -212,7 +198,6 @@ namespace Nhom16_OAnQuan.Forms.GameForms
         {
             Label lbl = sender as Label;
             int index = (int)lbl.Tag;
-            // Nhờ Drawer vẽ giùm
             _drawer.DrawCell(e.Graphics, lbl.ClientRectangle, index, _game.BanCo[index], (index == oDaChon));
         }
 
@@ -220,11 +205,11 @@ namespace Nhom16_OAnQuan.Forms.GameForms
         {
             for (int i = 0; i < 12; i++) if (oVuong[i] != null) oVuong[i].Invalidate();
 
-            lblDiemNguoi1.Text = $"Bạn: {_game.DiemNguoi1}";
-            lblDiemNguoi2.Text = $"Bot: {_game.DiemNguoi2}";
-            lblThongBao.Text = _game.GameOver ? "Kết thúc." : (_game.LaLuotNguoiChoi ? "Lượt: Bạn" : "Lượt: Bot");
+            // Các dòng này chỉ gán số liệu (Data binding), KHÔNG CHỈNH DESIGN
+            lblDiemNguoi1.Text = $"YOU: {_game.DiemNguoi1}";
+            lblDiemNguoi2.Text = $"BOT: {_game.DiemNguoi2}";
+            lblThongBao.Text = _game.GameOver ? "END" : (_game.LaLuotNguoiChoi ? "YOUR TURN" : "BOT TURN");
 
-            // Khóa ô khi không phải lượt hoặc đang chạy animation
             bool choPhep = _game.LaLuotNguoiChoi && !dangDiChuyen && !_game.GameOver;
             for (int i = 0; i < 12; i++)
             {
@@ -265,7 +250,7 @@ namespace Nhom16_OAnQuan.Forms.GameForms
             if (oDaChon < 0) return;
             int dir = (int)(sender as Button).Tag;
 
-            int start = oDaChon; // Lưu lại
+            int start = oDaChon;
             oDaChon = -1;
             btnTrai.Visible = btnPhai.Visible = false;
 
