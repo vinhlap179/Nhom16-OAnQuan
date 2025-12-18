@@ -58,55 +58,70 @@
             // lblDiemNguoi1
             // 
             lblDiemNguoi1.AutoSize = true;
-            lblDiemNguoi1.Font = new Font("Segoe UI", 18F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
+            lblDiemNguoi1.BackColor = Color.Transparent;
+            lblDiemNguoi1.FlatStyle = FlatStyle.Flat;
+            lblDiemNguoi1.Font = new Font("Press Start 2P", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblDiemNguoi1.ForeColor = SystemColors.ButtonHighlight;
             lblDiemNguoi1.Location = new Point(82, 764);
             lblDiemNguoi1.Name = "lblDiemNguoi1";
-            lblDiemNguoi1.Size = new Size(253, 41);
+            lblDiemNguoi1.Size = new Size(336, 32);
             lblDiemNguoi1.TabIndex = 1;
-            lblDiemNguoi1.Text = "Điểm người chơi";
+            lblDiemNguoi1.Text = "PLAYER'S SCORE";
             // 
             // lblDiemNguoi2
             // 
             lblDiemNguoi2.AutoSize = true;
-            lblDiemNguoi2.Font = new Font("Segoe UI", 18F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
+            lblDiemNguoi2.BackColor = Color.Transparent;
+            lblDiemNguoi2.Font = new Font("Press Start 2P", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblDiemNguoi2.ForeColor = SystemColors.ButtonHighlight;
             lblDiemNguoi2.Location = new Point(1074, 768);
             lblDiemNguoi2.Name = "lblDiemNguoi2";
-            lblDiemNguoi2.Size = new Size(163, 41);
+            lblDiemNguoi2.Size = new Size(267, 32);
             lblDiemNguoi2.TabIndex = 2;
-            lblDiemNguoi2.Text = "Điểm máy";
+            lblDiemNguoi2.Text = "BOT'S SCORE";
             // 
             // lblThongBao
             // 
             lblThongBao.AutoSize = true;
-            lblThongBao.Font = new Font("Segoe UI Semibold", 16.2F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
+            lblThongBao.BackColor = Color.Transparent;
+            lblThongBao.Font = new Font("Press Start 2P", 12F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
+            lblThongBao.ForeColor = SystemColors.ButtonHighlight;
             lblThongBao.Location = new Point(616, 776);
             lblThongBao.Name = "lblThongBao";
-            lblThongBao.Size = new Size(154, 38);
+            lblThongBao.Size = new Size(201, 27);
             lblThongBao.TabIndex = 3;
             lblThongBao.Text = "Thông Báo";
             // 
             // btnTrai
             // 
+            btnTrai.BackColor = SystemColors.WindowText;
+            btnTrai.Font = new Font("Press Start 2P", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnTrai.ForeColor = SystemColors.ButtonHighlight;
             btnTrai.Location = new Point(422, 776);
             btnTrai.Name = "btnTrai";
             btnTrai.Size = new Size(116, 43);
             btnTrai.TabIndex = 4;
-            btnTrai.Text = "Trái";
-            btnTrai.UseVisualStyleBackColor = true;
+            btnTrai.Text = "LEFT";
+            btnTrai.UseVisualStyleBackColor = false;
             // 
             // btnPhai
             // 
+            btnPhai.BackColor = SystemColors.WindowText;
+            btnPhai.Font = new Font("Press Start 2P", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnPhai.ForeColor = SystemColors.ButtonHighlight;
             btnPhai.Location = new Point(847, 771);
             btnPhai.Name = "btnPhai";
             btnPhai.Size = new Size(122, 48);
             btnPhai.TabIndex = 5;
-            btnPhai.Text = "Phải";
-            btnPhai.UseVisualStyleBackColor = true;
+            btnPhai.Text = "RIGHT";
+            btnPhai.UseVisualStyleBackColor = false;
             // 
             // GameBoardGUI
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackgroundImage = Properties.Resources.gameboard;
+            BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(1374, 850);
             Controls.Add(btnPhai);
             Controls.Add(btnTrai);

@@ -133,6 +133,9 @@
             // dgvBXH
             // 
             dgvBXH.AllowUserToAddRows = false;
+            dgvBXH.AllowUserToDeleteRows = false;
+            dgvBXH.AllowUserToResizeColumns = false;
+            dgvBXH.AllowUserToResizeRows = false;
             dgvBXH.BackgroundColor = SystemColors.InfoText;
             dgvBXH.CellBorderStyle = DataGridViewCellBorderStyle.None;
             dgvBXH.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
@@ -149,6 +152,7 @@
             dgvBXH.EnableHeadersVisualStyles = false;
             dgvBXH.GridColor = SystemColors.InfoText;
             dgvBXH.Location = new Point(70, 252);
+            dgvBXH.MultiSelect = false;
             dgvBXH.Name = "dgvBXH";
             dgvBXH.ReadOnly = true;
             dgvBXH.RowHeadersVisible = false;
@@ -162,6 +166,7 @@
             dataGridViewCellStyle2.BackColor = Color.Transparent;
             dataGridViewCellStyle2.Font = new Font("Press Start 2P", 7.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
             dataGridViewCellStyle2.ForeColor = Color.LightCoral;
+            dataGridViewCellStyle2.SelectionBackColor = SystemColors.HighlightText;
             RANK.DefaultCellStyle = dataGridViewCellStyle2;
             RANK.HeaderText = "RANK";
             RANK.MinimumWidth = 6;
@@ -175,6 +180,7 @@
             dataGridViewCellStyle3.BackColor = Color.Transparent;
             dataGridViewCellStyle3.Font = new Font("Press Start 2P", 7.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
             dataGridViewCellStyle3.ForeColor = Color.LightCoral;
+            dataGridViewCellStyle3.SelectionBackColor = SystemColors.ControlLightLight;
             NAME.DefaultCellStyle = dataGridViewCellStyle3;
             NAME.HeaderText = "NAME";
             NAME.MinimumWidth = 6;
@@ -188,6 +194,7 @@
             dataGridViewCellStyle4.BackColor = Color.Transparent;
             dataGridViewCellStyle4.Font = new Font("Press Start 2P", 7.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
             dataGridViewCellStyle4.ForeColor = Color.LightCoral;
+            dataGridViewCellStyle4.SelectionBackColor = SystemColors.ButtonHighlight;
             WIN.DefaultCellStyle = dataGridViewCellStyle4;
             WIN.HeaderText = "WIN";
             WIN.MinimumWidth = 6;
