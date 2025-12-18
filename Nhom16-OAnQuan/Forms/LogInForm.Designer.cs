@@ -139,6 +139,7 @@
             Controls.Add(label1);
             Name = "LogInForm";
             Text = "LogInForm";
+            Load += LogInForm_Load;
             ResumeLayout(false);
             PerformLayout();
         }

@@ -136,8 +136,13 @@ namespace Nhom16_OAnQuan.Forms.GameForms
                 MessageBox.Show("Lỗi BXH: " + ex.Message);
             }
         }
+        private void StartingGUI_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            GlobalUserSession.ClearSession();
+            MessageBox.Show("Bạn đã đăng xuất thành công.", "Đăng xuất");
+            Application.Restart();
+        }
 
-        
 
     }
 }

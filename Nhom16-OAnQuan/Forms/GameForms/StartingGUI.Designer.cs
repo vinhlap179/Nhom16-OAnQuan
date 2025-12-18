@@ -64,7 +64,7 @@
             // PlayerInformationBtn
             // 
             PlayerInformationBtn.BackColor = Color.Gray;
-            PlayerInformationBtn.Font = new Font("Press Start 2P", 9F);
+            PlayerInformationBtn.Font = new Font("Microsoft Sans Serif", 9F);
             PlayerInformationBtn.ForeColor = SystemColors.ButtonHighlight;
             PlayerInformationBtn.Location = new Point(32, 188);
             PlayerInformationBtn.Name = "PlayerInformationBtn";
@@ -77,7 +77,7 @@
             // GuideBtn
             // 
             GuideBtn.BackColor = Color.Gray;
-            GuideBtn.Font = new Font("Press Start 2P", 9F);
+            GuideBtn.Font = new Font("Microsoft Sans Serif", 9F);
             GuideBtn.ForeColor = SystemColors.ButtonHighlight;
             GuideBtn.Location = new Point(32, 106);
             GuideBtn.Name = "GuideBtn";
@@ -90,7 +90,7 @@
             // PlayBtn
             // 
             PlayBtn.BackColor = Color.Gray;
-            PlayBtn.Font = new Font("Press Start 2P", 9F);
+            PlayBtn.Font = new Font("Microsoft Sans Serif", 9F);
             PlayBtn.ForeColor = SystemColors.ButtonHighlight;
             PlayBtn.Location = new Point(32, 24);
             PlayBtn.Name = "PlayBtn";
@@ -103,7 +103,7 @@
             // SignOutBtn
             // 
             SignOutBtn.BackColor = Color.Gray;
-            SignOutBtn.Font = new Font("Press Start 2P", 9F);
+            SignOutBtn.Font = new Font("Microsoft Sans Serif", 9F);
             SignOutBtn.ForeColor = SystemColors.ButtonHighlight;
             SignOutBtn.Location = new Point(32, 265);
             SignOutBtn.Name = "SignOutBtn";
@@ -141,7 +141,7 @@
             dgvBXH.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle1.BackColor = Color.Transparent;
-            dataGridViewCellStyle1.Font = new Font("Press Start 2P", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle1.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             dataGridViewCellStyle1.ForeColor = Color.LightCoral;
             dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
             dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
@@ -164,7 +164,7 @@
             // 
             dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle2.BackColor = Color.Transparent;
-            dataGridViewCellStyle2.Font = new Font("Press Start 2P", 7.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle2.Font = new Font("Microsoft Sans Serif", 7.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
             dataGridViewCellStyle2.ForeColor = Color.LightCoral;
             dataGridViewCellStyle2.SelectionBackColor = SystemColors.HighlightText;
             RANK.DefaultCellStyle = dataGridViewCellStyle2;
@@ -178,7 +178,7 @@
             // 
             dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle3.BackColor = Color.Transparent;
-            dataGridViewCellStyle3.Font = new Font("Press Start 2P", 7.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle3.Font = new Font("Microsoft Sans Serif", 7.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
             dataGridViewCellStyle3.ForeColor = Color.LightCoral;
             dataGridViewCellStyle3.SelectionBackColor = SystemColors.ControlLightLight;
             NAME.DefaultCellStyle = dataGridViewCellStyle3;
@@ -192,7 +192,7 @@
             // 
             dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle4.BackColor = Color.Transparent;
-            dataGridViewCellStyle4.Font = new Font("Press Start 2P", 7.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle4.Font = new Font("Microsoft Sans Serif", 7.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
             dataGridViewCellStyle4.ForeColor = Color.LightCoral;
             dataGridViewCellStyle4.SelectionBackColor = SystemColors.ButtonHighlight;
             WIN.DefaultCellStyle = dataGridViewCellStyle4;
@@ -216,6 +216,7 @@
             Name = "StartingGUI";
             StartPosition = FormStartPosition.Manual;
             Text = "StartingGUI";
+            FormClosing += StartingGUI_FormClosing;
             Load += StartingGUI_Load;
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             panel1.ResumeLayout(false);

@@ -77,7 +77,7 @@ namespace Nhom16_OAnQuan.Forms
             {
                 MessageBox.Show($"Đã xảy ra lỗi hệ thống: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-           this.Hide();
+            this.Hide();
         }
 
         private void forgotPassBtn_Click(object sender, EventArgs e)
@@ -97,5 +97,11 @@ namespace Nhom16_OAnQuan.Forms
         {
 
         }
+
+        private void LogInForm_Load(object sender, EventArgs e)
+        {
+
+        }
+
     }
 }

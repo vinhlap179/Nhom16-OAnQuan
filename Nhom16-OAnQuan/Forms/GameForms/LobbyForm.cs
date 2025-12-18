@@ -24,7 +24,8 @@ namespace Nhom16_OAnQuan.Forms.GameForms
 
         private async void BtnCreateRoom_Click(object sender, EventArgs e)
         {
-            await CreateRoom();
+             await CreateRoom();
+            
         }
 
         private async void BtnFindRoom_Click(object sender, EventArgs e)
@@ -85,6 +86,8 @@ namespace Nhom16_OAnQuan.Forms.GameForms
             // CHUYỂN SANG WAITING ROOM (Là Host)
             WaitingRoom waitForm = new WaitingRoom(roomId, currentUser, true);
             waitForm.Show();
+            waitForm.Activate();
+            waitForm.BringToFront();
             this.Hide(); // Ẩn Lobby đi
         }
 
