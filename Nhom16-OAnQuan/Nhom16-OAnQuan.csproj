@@ -30,22 +30,22 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="Images\GameBoard\cool.jpg">
+    <None Update="Assets\Images\GameBoard\cool.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="Images\GameBoard\wood.jpg">
+    <None Update="Assets\Images\GameBoard\wood.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="Images\Guides\pic1.png">
+    <None Update="Assets\Images\Guides\pic1.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="Images\Guides\pic2.png">
+    <None Update="Assets\Images\Guides\pic2.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="Images\Guides\pic3.png">
+    <None Update="Assets\Images\Guides\pic3.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="Images\Guides\pic4.png">
+    <None Update="Assets\Images\Guides\pic4.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
