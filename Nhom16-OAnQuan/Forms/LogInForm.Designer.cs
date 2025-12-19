@@ -120,7 +120,7 @@
             forgotPassBtn.Name = "forgotPassBtn";
             forgotPassBtn.Size = new Size(450, 51);
             forgotPassBtn.TabIndex = 19;
-            forgotPassBtn.Text = "Forgot password";
+            forgotPassBtn.Text = "Change Password";
             forgotPassBtn.UseVisualStyleBackColor = false;
             forgotPassBtn.Click += forgotPassBtn_Click;
             // 

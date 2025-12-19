@@ -1,6 +1,6 @@
 ﻿namespace Nhom16_OAnQuan.Forms
 {
-    partial class ForgotPassword
+    partial class ChangePassword
     {
         /// <summary>
         /// Required designer variable.
@@ -33,6 +33,8 @@
             label1 = new Label();
             label2 = new Label();
             ChangePassBtn = new Button();
+            label3 = new Label();
+            newPassBox = new TextBox();
             SuspendLayout();
             // 
             // UserBox
@@ -64,7 +66,7 @@
             label1.AutoSize = true;
             label1.Font = new Font("Press Start 2P", 9F);
             label1.ForeColor = SystemColors.ButtonHighlight;
-            label1.Location = new Point(65, 93);
+            label1.Location = new Point(42, 90);
             label1.Name = "label1";
             label1.Size = new Size(130, 21);
             label1.TabIndex = 9;
@@ -75,18 +77,18 @@
             label2.AutoSize = true;
             label2.Font = new Font("Press Start 2P", 9F);
             label2.ForeColor = SystemColors.ButtonHighlight;
-            label2.Location = new Point(65, 154);
+            label2.Location = new Point(12, 154);
             label2.Name = "label2";
-            label2.Size = new Size(130, 21);
+            label2.Size = new Size(190, 21);
             label2.TabIndex = 13;
-            label2.Text = "Password";
+            label2.Text = "Old Password";
             // 
             // ChangePassBtn
             // 
             ChangePassBtn.BackColor = Color.DimGray;
             ChangePassBtn.Font = new Font("Press Start 2P", 9F);
             ChangePassBtn.ForeColor = SystemColors.ButtonHighlight;
-            ChangePassBtn.Location = new Point(223, 224);
+            ChangePassBtn.Location = new Point(217, 264);
             ChangePassBtn.Name = "ChangePassBtn";
             ChangePassBtn.Size = new Size(204, 51);
             ChangePassBtn.TabIndex = 14;
@@ -94,19 +96,44 @@
             ChangePassBtn.UseVisualStyleBackColor = false;
             ChangePassBtn.Click += ChangePassBtn_Click;
             // 
-            // ForgotPassword
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Font = new Font("Press Start 2P", 9F);
+            label3.ForeColor = SystemColors.ButtonHighlight;
+            label3.Location = new Point(12, 204);
+            label3.Name = "label3";
+            label3.Size = new Size(190, 21);
+            label3.TabIndex = 15;
+            label3.Text = "New Password";
+            // 
+            // newPassBox
+            // 
+            newPassBox.BackColor = SystemColors.ControlDark;
+            newPassBox.Font = new Font("Press Start 2P", 9F);
+            newPassBox.ForeColor = SystemColors.ButtonHighlight;
+            newPassBox.Location = new Point(203, 204);
+            newPassBox.Name = "newPassBox";
+            newPassBox.PasswordChar = '*';
+            newPassBox.Size = new Size(306, 22);
+            newPassBox.TabIndex = 16;
+            newPassBox.UseSystemPasswordChar = true;
+            // 
+            // ChangePassword
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(64, 64, 64);
             ClientSize = new Size(659, 351);
+            Controls.Add(newPassBox);
+            Controls.Add(label3);
             Controls.Add(ChangePassBtn);
             Controls.Add(label2);
             Controls.Add(label1);
             Controls.Add(PassBox);
             Controls.Add(UserBox);
-            Name = "ForgotPassword";
-            Text = "ForgotPassword";
+            Name = "ChangePassword";
+            Text = "ChangePassword";
             ResumeLayout(false);
             PerformLayout();
         }
@@ -118,5 +145,7 @@
         private Label label1;
         private Label label2;
         private Button ChangePassBtn;
+        private Label label3;
+        private TextBox newPassBox;
     }
 }
