@@ -136,7 +136,7 @@
             dgvBXH.AllowUserToDeleteRows = false;
             dgvBXH.AllowUserToResizeColumns = false;
             dgvBXH.AllowUserToResizeRows = false;
-            dgvBXH.BackgroundColor = SystemColors.InfoText;
+            dgvBXH.BackgroundColor = SystemColors.Info;
             dgvBXH.CellBorderStyle = DataGridViewCellBorderStyle.None;
             dgvBXH.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
@@ -149,6 +149,7 @@
             dgvBXH.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dgvBXH.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvBXH.Columns.AddRange(new DataGridViewColumn[] { RANK, NAME, WIN });
+            dgvBXH.Enabled = false;
             dgvBXH.EnableHeadersVisualStyles = false;
             dgvBXH.GridColor = SystemColors.InfoText;
             dgvBXH.Location = new Point(70, 252);
