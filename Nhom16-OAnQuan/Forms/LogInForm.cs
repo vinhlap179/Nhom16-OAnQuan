@@ -82,7 +82,7 @@ namespace Nhom16_OAnQuan.Forms
 
         private void forgotPassBtn_Click(object sender, EventArgs e)
         {
-            ForgotPassword form = new ForgotPassword();
+            ChangePassword form = new ChangePassword();
             this.Hide();
             form.ShowDialog();
             this.Show();
