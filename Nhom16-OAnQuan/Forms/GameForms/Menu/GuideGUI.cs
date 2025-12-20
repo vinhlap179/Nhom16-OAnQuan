@@ -26,10 +26,10 @@ namespace Nhom16_OAnQuan.Forms.GameForms
         {
             guideImages = new List<string>
             {
-                "Images/Guides/pic1.png",
-                "Images/Guides/pic2.png",
-                "Images/Guides/pic3.png",
-                "Images/Guides/pic4.png"
+                "Assets/Images/Guides/pic1.png",
+                "Assets/Images/Guides/pic2.png",
+                "Assets/Images/Guides/pic3.png",
+                "Assets/Images/Guides/pic4.png"
             };
 
             picGuide.SizeMode = PictureBoxSizeMode.Zoom;
