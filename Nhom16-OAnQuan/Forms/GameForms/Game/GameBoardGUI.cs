@@ -30,10 +30,23 @@ namespace Nhom16_OAnQuan.Forms.GameForms
             // Bạn hãy chỉnh BackgroundImage và Text trong màn hình Design nhé!
         }
 
-        private void GameBoardGUI_Load(object sender, EventArgs e)
+        private async void GameBoardGUI_Load(object sender, EventArgs e)
         {
             TaoBanCoUI();
             CapNhatGiaoDien();
+            // Random người đi trước(0: Bot, 1: Người)
+    Random rand = new Random();
+            bool nguoiDiTruoc = rand.Next(0, 2) == 1; // Random true hoặc false
+            _game.LaLuotNguoiChoi = nguoiDiTruoc;
+            CapNhatGiaoDien();
+            string thongBao = nguoiDiTruoc ? "BẠN được chọn đi trước!" : "MÁY (BOT) được chọn đi trước!";
+            MessageBox.Show(thongBao, "Thông báo lượt đi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            // Nếu là lượt máy thì cho máy chạy ngay
+            if (!_game.LaLuotNguoiChoi)
+            {
+                await BotTuDi();
+            }
         }
 
         // --- 1. XỬ LÝ GAME OVER & ĐỔI LƯỢT ---
