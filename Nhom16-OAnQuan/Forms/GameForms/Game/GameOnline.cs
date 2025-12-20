@@ -53,11 +53,43 @@ namespace Nhom16_OAnQuan.Forms.GameForms
             this.FormClosing += GameOnline_FormClosing;
         }
 
-        private void GameOnline_Load(object sender, EventArgs e)
+        private async void GameOnline_Load(object sender, EventArgs e)
         {
-            TaoBanCoUI();       // Vẽ mấy cái ô ra
-            CapNhatGiaoDien();  // Hiện điểm số lên
-            LangNghePhong();    // Bắt đầu kết nối mạng để hóng tin
+            TaoBanCoUI();
+
+            // --- CODE MỚI: XÁC ĐỊNH LƯỢT ĐẦU TIÊN ---
+            try
+            {
+                // Lấy dữ liệu phòng hiện tại về
+                DocumentSnapshot snap = await FirestoreService.DB.Collection("rooms").Document(_roomId).GetSnapshotAsync();
+
+                // SỬA LỖI TẠI ĐÂY: Dùng ContainsField thay vì Contains
+                if (snap.Exists && snap.ContainsField("Turn"))
+                {
+                    string turnUID = snap.GetValue<string>("Turn");
+                    // So sánh UID trên mạng với UID của mình
+                    _isMyTurn = (turnUID == _myUID);
+                    // Cập nhật giao diện (Mở khóa nếu là lượt mình)
+                    CapNhatGiaoDien();
+
+                    // Hiện thông báo
+                    if (_isMyTurn)
+                    {
+                        MessageBox.Show("Hệ thống đã chọn ngẫu nhiên:\nBẠN ĐƯỢC ĐI TRƯỚC!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Hệ thống đã chọn ngẫu nhiên:\nĐỐI THỦ ĐƯỢC ĐI TRƯỚC!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi lấy dữ liệu ban đầu: " + ex.Message);
+            }
+            // ----------------------------------------
+
+            LangNghePhong();    // Sau khi xong xuôi thì mới bắt đầu lắng nghe realtime
         }
 
         // -----------------------------------------------------------

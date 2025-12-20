@@ -81,32 +81,42 @@ namespace Nhom16_OAnQuan.Forms.GameForms
         {
             if (InvokeRequired) { Invoke(new Action(() => CheckGameStatus(room))); return; }
 
-            // 1. Nếu là HOST và thấy có Guest vào -> Set GameStarted = true
+            // 1. Logic dành cho HOST: Kiểm tra đủ người và Random lượt đi
             if (isHost && !string.IsNullOrEmpty(room.GuestUID) && !room.GameStarted)
             {
-                // Delay nhỏ để người dùng kịp nhìn thấy tên Guest hiện lên
-                await Task.Delay(1000);
+                await Task.Delay(1000); // Đợi xíu cho UI cập nhật tên khách
+
+                // --- RANDOM NGƯỜI ĐI TRƯỚC ---
+                Random rand = new Random();
+                // 0 là Host đi, 1 là Guest đi
+                string firstPlayerUID = (rand.Next(0, 2) == 0) ? room.HostUID : room.GuestUID;
+
                 DocumentReference doc = FirestoreService.DB.Collection("rooms").Document(roomId);
-                await doc.UpdateAsync("GameStarted", true);
+
+                // Cập nhật cùng lúc: Game bắt đầu VÀ Lượt của ai
+                Dictionary<string, object> updates = new Dictionary<string, object>
+        {
+            { "GameStarted", true },
+            { "Turn", firstPlayerUID } // Lưu UID người đi trước lên server
+        };
+
+                await doc.UpdateAsync(updates);
             }
 
             // 2. Cả Host và Guest đều lắng nghe: Nếu GameStarted == true -> Vào game
-            // Trong file WaitingRoom.cs
             if (room.GameStarted)
             {
                 _listener.StopAsync(); // Dừng lắng nghe phòng chờ
-                MessageBox.Show("Game bắt đầu!");
 
-                // --- SỬA DÒNG NÀY ---
-                // Truyền biến 'isHost' (chữ thường) của class, KHÔNG ĐƯỢC truyền 'true' hay 'false' cứng
+                // --- SỬA LẠI: Không hiện MessageBox ở đây nữa cho đỡ rối ---
+                // MessageBox.Show("Game bắt đầu!"); 
+
                 GameOnline game = new GameOnline(roomId, currentUser, this.isHost);
-                // --------------------
-
                 game.Show();
                 this.Hide();
             }
         }
-        
+
 
         private void WaitingRoom_FormClosing(object sender, FormClosingEventArgs e)
         {
