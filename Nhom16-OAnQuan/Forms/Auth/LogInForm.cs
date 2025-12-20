@@ -62,6 +62,8 @@ namespace Nhom16_OAnQuan.Forms
                     else
                     {
                         MessageBox.Show("Đăng nhập thất bại. Vui lòng kiểm tra lại tài khoản và mật khẩu.");
+                        PassBox.Text = null;
+                        return;
                     }
                 }
                 else
