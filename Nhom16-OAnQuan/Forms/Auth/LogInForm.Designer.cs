@@ -40,7 +40,7 @@
             // LogInBtn
             // 
             LogInBtn.BackColor = Color.DimGray;
-            LogInBtn.Font = new Font("Microsoft Sans Serif", 9F);
+            LogInBtn.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             LogInBtn.ForeColor = SystemColors.ButtonHighlight;
             LogInBtn.Location = new Point(404, 215);
             LogInBtn.Name = "LogInBtn";
@@ -53,7 +53,7 @@
             // SignUpBtn
             // 
             SignUpBtn.BackColor = Color.DimGray;
-            SignUpBtn.Font = new Font("Microsoft Sans Serif", 9F);
+            SignUpBtn.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             SignUpBtn.ForeColor = SystemColors.ButtonHighlight;
             SignUpBtn.Location = new Point(152, 215);
             SignUpBtn.Name = "SignUpBtn";
@@ -66,23 +66,23 @@
             // PassBox
             // 
             PassBox.BackColor = SystemColors.ControlDark;
-            PassBox.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            PassBox.Font = new Font("Microsoft Sans Serif", 7.8F);
             PassBox.ForeColor = SystemColors.Control;
-            PassBox.Location = new Point(302, 161);
+            PassBox.Location = new Point(302, 165);
             PassBox.Name = "PassBox";
             PassBox.PasswordChar = '*';
-            PassBox.Size = new Size(306, 30);
+            PassBox.Size = new Size(306, 22);
             PassBox.TabIndex = 15;
             PassBox.UseSystemPasswordChar = true;
             // 
             // UserBox
             // 
             UserBox.BackColor = SystemColors.ControlDark;
-            UserBox.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            UserBox.Font = new Font("Microsoft Sans Serif", 7.8F);
             UserBox.ForeColor = SystemColors.Control;
-            UserBox.Location = new Point(302, 119);
+            UserBox.Location = new Point(302, 103);
             UserBox.Name = "UserBox";
-            UserBox.Size = new Size(306, 30);
+            UserBox.Size = new Size(306, 22);
             UserBox.TabIndex = 14;
             UserBox.TextChanged += UserBox_TextChanged;
             // 
@@ -90,11 +90,11 @@
             // 
             label2.AutoSize = true;
             label2.BackColor = Color.FromArgb(64, 64, 64);
-            label2.Font = new Font("Microsoft Sans Serif", 9F);
+            label2.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label2.ForeColor = SystemColors.ButtonHighlight;
             label2.Location = new Point(152, 161);
             label2.Name = "label2";
-            label2.Size = new Size(75, 18);
+            label2.Size = new Size(98, 25);
             label2.TabIndex = 12;
             label2.Text = "Password";
             // 
@@ -102,11 +102,11 @@
             // 
             label1.AutoSize = true;
             label1.BackColor = Color.FromArgb(64, 64, 64);
-            label1.Font = new Font("Microsoft Sans Serif", 9F);
+            label1.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label1.ForeColor = SystemColors.ButtonHighlight;
-            label1.Location = new Point(152, 122);
+            label1.Location = new Point(152, 99);
             label1.Name = "label1";
-            label1.Size = new Size(77, 18);
+            label1.Size = new Size(102, 25);
             label1.TabIndex = 11;
             label1.Text = "Username";
             label1.Click += label1_Click;
@@ -114,13 +114,13 @@
             // forgotPassBtn
             // 
             forgotPassBtn.BackColor = Color.DimGray;
-            forgotPassBtn.Font = new Font("Microsoft Sans Serif", 9F);
+            forgotPassBtn.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             forgotPassBtn.ForeColor = SystemColors.ButtonHighlight;
             forgotPassBtn.Location = new Point(152, 292);
             forgotPassBtn.Name = "forgotPassBtn";
             forgotPassBtn.Size = new Size(450, 51);
             forgotPassBtn.TabIndex = 19;
-            forgotPassBtn.Text = "Forgot password";
+            forgotPassBtn.Text = "Change Password";
             forgotPassBtn.UseVisualStyleBackColor = false;
             forgotPassBtn.Click += forgotPassBtn_Click;
             // 

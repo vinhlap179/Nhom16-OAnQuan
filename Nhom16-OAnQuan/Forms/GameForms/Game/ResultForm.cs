@@ -31,25 +31,25 @@ namespace Nhom16_OAnQuan.Forms.GameForms
         }
         private async void ResultForm_Load(object sender, EventArgs e)
         {
-            lbScorePlayer.Text = $"Điểm của bạn: {playerScore}";
-            string otherLabel = isOnlineMatch ? "Điểm đối thủ" : "Điểm của máy";
+            lbScorePlayer.Text = $"Your score: {playerScore}";
+            string otherLabel = isOnlineMatch ? "Oppoent score" : "Bot score";
             lbScoreBot.Text = $"{otherLabel}: {botScore}";
             // Nếu onl á thì cập nhật điểm cho cả hai người chơi, còn off thì chỉ cập nhật cho người chơi
             string resultMessage;
 
             if (playerScore > botScore)
             {
-                resultMessage = "🎉 Bạn đã thắng!";
+                resultMessage = "YOU WIN!";
                 await UpdatePlayerStats(isWinner: true);
             }
             else if (playerScore < botScore)
             {
-                resultMessage = "😢 Bạn đã thua!";
+                resultMessage = "YOU LOOSE!";
                 await UpdatePlayerStats(isWinner: false);
             }
             else
             {
-                resultMessage = "🤝 Hòa!";
+                resultMessage = "DRAW!";
                 await UpdatePlayerStats(isWinner: null);
             }
 

@@ -107,6 +107,7 @@ namespace Nhom16_OAnQuan.Forms.GameForms
             try
             {
                 //Tạo cột cho bảng
+
                 dgvBXH.Columns.Clear();
                 dgvBXH.Columns.Add("Rank", "Top");
                 dgvBXH.Columns.Add("Name", "Tên");
@@ -115,6 +116,7 @@ namespace Nhom16_OAnQuan.Forms.GameForms
                 dgvBXH.Columns[0].Width = 140;  // Cột Top nhỏ thôi
                 dgvBXH.Columns[1].Width = 300; // Cột Tên
                 dgvBXH.Columns[2].Width = 150;  // Cột Thắng
+
 
                 //Lấy dữ liệu từ Firestore xong sắp xếp
                 var db = FirestoreHelper.Database;
@@ -143,8 +145,13 @@ namespace Nhom16_OAnQuan.Forms.GameForms
                 MessageBox.Show("Lỗi BXH: " + ex.Message);
             }
         }
+        private void StartingGUI_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            GlobalUserSession.ClearSession();
+            MessageBox.Show("Bạn đã đăng xuất thành công.", "Đăng xuất");
+            Application.Restart();
+        }
 
-        
 
     }
 }

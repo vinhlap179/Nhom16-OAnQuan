@@ -72,9 +72,12 @@
             // 
             // btClose
             // 
-            btClose.BackColor = SystemColors.ButtonHighlight;
+            btClose.BackColor = Color.Transparent;
+            btClose.FlatAppearance.BorderSize = 0;
+            btClose.FlatStyle = FlatStyle.Flat;
             btClose.Font = new Font("Press Start 2P", 9F);
-            btClose.Location = new Point(84, 231);
+            btClose.ForeColor = SystemColors.ButtonHighlight;
+            btClose.Location = new Point(224, 244);
             btClose.Name = "btClose";
             btClose.Size = new Size(141, 56);
             btClose.TabIndex = 3;

@@ -77,12 +77,12 @@ namespace Nhom16_OAnQuan.Forms
             {
                 MessageBox.Show($"Đã xảy ra lỗi hệ thống: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-           this.Hide();
+            this.Hide();
         }
 
         private void forgotPassBtn_Click(object sender, EventArgs e)
         {
-            ForgotPassword form = new ForgotPassword();
+            ChangePassword form = new ChangePassword();
             this.Hide();
             form.ShowDialog();
             this.Show();
@@ -102,5 +102,6 @@ namespace Nhom16_OAnQuan.Forms
         {
 
         }
+
     }
 }

@@ -39,11 +39,11 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Font = new Font("Press Start 2P", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label1.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label1.ForeColor = Color.White;
             label1.Location = new Point(121, 120);
             label1.Name = "label1";
-            label1.Size = new Size(130, 21);
+            label1.Size = new Size(77, 18);
             label1.TabIndex = 2;
             label1.Text = "Username";
             // 
@@ -51,41 +51,42 @@
             // 
             label2.AutoSize = true;
             label2.BackColor = Color.FromArgb(64, 64, 64);
-            label2.Font = new Font("Press Start 2P", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label2.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label2.ForeColor = SystemColors.Control;
             label2.Location = new Point(121, 151);
             label2.Name = "label2";
-            label2.Size = new Size(130, 21);
+            label2.Size = new Size(75, 18);
             label2.TabIndex = 3;
             label2.Text = "Password";
             // 
             // UserBox
             // 
             UserBox.BackColor = SystemColors.ControlDark;
-            UserBox.Font = new Font("Press Start 2P", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            UserBox.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             UserBox.ForeColor = SystemColors.Window;
             UserBox.Location = new Point(265, 109);
             UserBox.Name = "UserBox";
-            UserBox.Size = new Size(306, 27);
+            UserBox.Size = new Size(306, 30);
             UserBox.TabIndex = 6;
             UserBox.TextChanged += UserBox_TextChanged;
             // 
             // PassBox
             // 
             PassBox.BackColor = SystemColors.ControlDark;
-            PassBox.Font = new Font("Press Start 2P", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            PassBox.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             PassBox.ForeColor = SystemColors.Window;
             PassBox.Location = new Point(265, 151);
             PassBox.Name = "PassBox";
             PassBox.PasswordChar = '*';
-            PassBox.Size = new Size(306, 27);
+            PassBox.Size = new Size(306, 30);
             PassBox.TabIndex = 7;
             PassBox.UseSystemPasswordChar = true;
+            PassBox.TextChanged += PassBox_TextChanged;
             // 
             // BackToLoginBtn
             // 
             BackToLoginBtn.BackColor = Color.DimGray;
-            BackToLoginBtn.Font = new Font("Press Start 2P", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            BackToLoginBtn.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             BackToLoginBtn.ForeColor = SystemColors.ButtonHighlight;
             BackToLoginBtn.Location = new Point(121, 205);
             BackToLoginBtn.Name = "BackToLoginBtn";
@@ -100,7 +101,7 @@
             SignUpBtn.BackColor = Color.DimGray;
             SignUpBtn.BackgroundImageLayout = ImageLayout.Center;
             SignUpBtn.FlatAppearance.BorderSize = 0;
-            SignUpBtn.Font = new Font("Press Start 2P", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            SignUpBtn.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             SignUpBtn.ForeColor = SystemColors.ButtonHighlight;
             SignUpBtn.Location = new Point(371, 205);
             SignUpBtn.Name = "SignUpBtn";
@@ -126,6 +127,7 @@
             DoubleBuffered = true;
             Name = "RegisterForm";
             Text = "RegisterForm";
+            Load += RegisterForm_Load;
             ResumeLayout(false);
             PerformLayout();
         }

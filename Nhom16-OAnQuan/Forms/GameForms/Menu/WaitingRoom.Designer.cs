@@ -37,48 +37,50 @@
             // lblRoomId
             // 
             lblRoomId.AutoSize = true;
-            lblRoomId.Font = new Font("Segoe UI", 14F);
+            lblRoomId.Font = new Font("Microsoft Sans Serif", 13.8F);
             lblRoomId.Location = new Point(35, 43);
             lblRoomId.Name = "lblRoomId";
-            lblRoomId.Size = new Size(125, 32);
+            lblRoomId.Size = new Size(125, 29);
             lblRoomId.TabIndex = 0;
             lblRoomId.Text = "Room ID : ";
             // 
             // lblHost
             // 
             lblHost.AutoSize = true;
-            lblHost.Font = new Font("Segoe UI", 14F);
+            lblHost.Font = new Font("Microsoft Sans Serif", 13.8F);
             lblHost.Location = new Point(35, 102);
             lblHost.Name = "lblHost";
-            lblHost.Size = new Size(82, 32);
+            lblHost.Size = new Size(80, 29);
             lblHost.TabIndex = 1;
             lblHost.Text = "Host : ";
             // 
             // lblGuest
             // 
             lblGuest.AutoSize = true;
-            lblGuest.Font = new Font("Segoe UI", 14F);
+            lblGuest.Font = new Font("Microsoft Sans Serif", 13.8F);
             lblGuest.Location = new Point(35, 168);
             lblGuest.Name = "lblGuest";
-            lblGuest.Size = new Size(94, 32);
+            lblGuest.Size = new Size(94, 29);
             lblGuest.TabIndex = 2;
             lblGuest.Text = "Guest : ";
             // 
             // btnBack
             // 
-            btnBack.Font = new Font("Segoe UI", 14F);
-            btnBack.Location = new Point(35, 252);
+            btnBack.BackColor = Color.LightCoral;
+            btnBack.Font = new Font("Microsoft Sans Serif", 13.8F);
+            btnBack.Location = new Point(268, 250);
             btnBack.Name = "btnBack";
-            btnBack.Size = new Size(115, 45);
+            btnBack.Size = new Size(174, 58);
             btnBack.TabIndex = 3;
             btnBack.Text = "Return";
-            btnBack.UseVisualStyleBackColor = true;
+            btnBack.UseVisualStyleBackColor = false;
             btnBack.Click += btnBack_Click;
             // 
             // WaitingRoom
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = SystemColors.Info;
             ClientSize = new Size(734, 364);
             Controls.Add(btnBack);
             Controls.Add(lblGuest);

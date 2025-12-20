@@ -38,49 +38,61 @@
             // 
             // btnPhai
             // 
+            btnPhai.BackColor = SystemColors.WindowText;
+            btnPhai.Font = new Font("Press Start 2P", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnPhai.ForeColor = SystemColors.ButtonHighlight;
             btnPhai.Location = new Point(891, 737);
             btnPhai.Name = "btnPhai";
             btnPhai.Size = new Size(122, 48);
             btnPhai.TabIndex = 11;
-            btnPhai.Text = "Phải";
-            btnPhai.UseVisualStyleBackColor = true;
+            btnPhai.Text = "RIGHT ";
+            btnPhai.UseVisualStyleBackColor = false;
             // 
             // btnTrai
             // 
+            btnTrai.BackColor = SystemColors.WindowText;
+            btnTrai.Font = new Font("Press Start 2P", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnTrai.ForeColor = SystemColors.ButtonHighlight;
             btnTrai.Location = new Point(466, 742);
             btnTrai.Name = "btnTrai";
             btnTrai.Size = new Size(116, 43);
             btnTrai.TabIndex = 10;
-            btnTrai.Text = "Trái";
-            btnTrai.UseVisualStyleBackColor = true;
+            btnTrai.Text = "LEFT ";
+            btnTrai.UseVisualStyleBackColor = false;
             // 
             // lblThongBao
             // 
             lblThongBao.AutoSize = true;
-            lblThongBao.Font = new Font("Segoe UI Semibold", 16.2F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
+            lblThongBao.BackColor = Color.Transparent;
+            lblThongBao.Font = new Font("Press Start 2P", 16.2F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
+            lblThongBao.ForeColor = SystemColors.ButtonHighlight;
             lblThongBao.Location = new Point(660, 742);
             lblThongBao.Name = "lblThongBao";
-            lblThongBao.Size = new Size(154, 38);
+            lblThongBao.Size = new Size(278, 38);
             lblThongBao.TabIndex = 9;
             lblThongBao.Text = "Thông Báo";
             // 
             // lblDiemNguoi2
             // 
             lblDiemNguoi2.AutoSize = true;
-            lblDiemNguoi2.Font = new Font("Segoe UI", 18F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
+            lblDiemNguoi2.BackColor = Color.Transparent;
+            lblDiemNguoi2.Font = new Font("Press Start 2P", 13.8F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
+            lblDiemNguoi2.ForeColor = SystemColors.ButtonHighlight;
             lblDiemNguoi2.Location = new Point(1118, 734);
             lblDiemNguoi2.Name = "lblDiemNguoi2";
-            lblDiemNguoi2.Size = new Size(278, 41);
+            lblDiemNguoi2.Size = new Size(385, 32);
             lblDiemNguoi2.TabIndex = 8;
             lblDiemNguoi2.Text = "Điểm người chơi 2";
             // 
             // lblDiemNguoi1
             // 
             lblDiemNguoi1.AutoSize = true;
-            lblDiemNguoi1.Font = new Font("Segoe UI", 18F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
+            lblDiemNguoi1.BackColor = Color.Transparent;
+            lblDiemNguoi1.Font = new Font("Press Start 2P", 13.8F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
+            lblDiemNguoi1.ForeColor = SystemColors.ButtonHighlight;
             lblDiemNguoi1.Location = new Point(126, 730);
             lblDiemNguoi1.Name = "lblDiemNguoi1";
-            lblDiemNguoi1.Size = new Size(278, 41);
+            lblDiemNguoi1.Size = new Size(385, 32);
             lblDiemNguoi1.TabIndex = 7;
             lblDiemNguoi1.Text = "Điểm người chơi 1";
             // 
@@ -107,6 +119,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackgroundImage = Properties.Resources.gameboard;
             ClientSize = new Size(1438, 811);
             Controls.Add(btnPhai);
             Controls.Add(btnTrai);
