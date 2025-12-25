@@ -31,7 +31,7 @@ namespace Nhom16_OAnQuan.Classes
             // 2. Load ảnh Sỏi Nhỏ
             try
             {
-                string pathSoi = Path.Combine(startupPath, "Images", "Stones", "SoiNho.png");
+                string pathSoi = Path.Combine(startupPath, "Assets", "Images", "Stones", "SoiNho.png");
                 if (File.Exists(pathSoi)) _imgSoiNho = Image.FromFile(pathSoi);
                 else _imgSoiNho = null;
             }
@@ -41,7 +41,7 @@ namespace Nhom16_OAnQuan.Classes
             try
             {
                 // Bạn nhớ đổi tên file kim cương thành QuanLon.png và bỏ vào thư mục Stones nhé
-                string pathQuan = Path.Combine(startupPath, "Images", "Stones", "QuanLon.png");
+                string pathQuan = Path.Combine(startupPath,"Assets", "Images", "Stones", "QuanLon.png");
 
                 if (File.Exists(pathQuan))
                     _imgQuanLon = Image.FromFile(pathQuan);
