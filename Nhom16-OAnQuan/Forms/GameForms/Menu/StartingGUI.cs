@@ -106,18 +106,6 @@ namespace Nhom16_OAnQuan.Forms.GameForms
         {
             try
             {
-                //Tạo cột cho bảng
-
-                dgvBXH.Columns.Clear();
-                dgvBXH.Columns.Add("Rank", "Top");
-                dgvBXH.Columns.Add("Name", "Tên");
-                dgvBXH.Columns.Add("Wins", "Thắng");
-
-                dgvBXH.Columns[0].Width = 140;  // Cột Top nhỏ thôi
-                dgvBXH.Columns[1].Width = 300; // Cột Tên
-                dgvBXH.Columns[2].Width = 150;  // Cột Thắng
-
-
                 //Lấy dữ liệu từ Firestore xong sắp xếp
                 var db = FirestoreHelper.Database;
                 Query query = db.Collection("UserData").OrderByDescending("Wins").Limit(10);

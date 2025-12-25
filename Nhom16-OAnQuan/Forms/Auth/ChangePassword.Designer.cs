@@ -132,6 +132,7 @@
             Controls.Add(label1);
             Controls.Add(PassBox);
             Controls.Add(UserBox);
+            FormBorderStyle = FormBorderStyle.FixedSingle;
             Name = "ChangePassword";
             Text = "ChangePassword";
             ResumeLayout(false);

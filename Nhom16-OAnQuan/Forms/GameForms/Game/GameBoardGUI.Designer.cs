@@ -129,6 +129,7 @@
             Controls.Add(lblDiemNguoi2);
             Controls.Add(lblDiemNguoi1);
             Controls.Add(tblBanCo);
+            FormBorderStyle = FormBorderStyle.FixedSingle;
             Name = "GameBoardGUI";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "GameBoardGUI";

@@ -37,37 +37,37 @@
             // lblRoomId
             // 
             lblRoomId.AutoSize = true;
-            lblRoomId.Font = new Font("Microsoft Sans Serif", 13.8F);
+            lblRoomId.Font = new Font("Press Start 2P", 13.8F);
             lblRoomId.Location = new Point(35, 43);
             lblRoomId.Name = "lblRoomId";
-            lblRoomId.Size = new Size(125, 29);
+            lblRoomId.Size = new Size(244, 32);
             lblRoomId.TabIndex = 0;
             lblRoomId.Text = "Room ID : ";
             // 
             // lblHost
             // 
             lblHost.AutoSize = true;
-            lblHost.Font = new Font("Microsoft Sans Serif", 13.8F);
+            lblHost.Font = new Font("Press Start 2P", 13.8F);
             lblHost.Location = new Point(35, 102);
             lblHost.Name = "lblHost";
-            lblHost.Size = new Size(80, 29);
+            lblHost.Size = new Size(175, 32);
             lblHost.TabIndex = 1;
             lblHost.Text = "Host : ";
             // 
             // lblGuest
             // 
             lblGuest.AutoSize = true;
-            lblGuest.Font = new Font("Microsoft Sans Serif", 13.8F);
+            lblGuest.Font = new Font("Press Start 2P", 13.8F);
             lblGuest.Location = new Point(35, 168);
             lblGuest.Name = "lblGuest";
-            lblGuest.Size = new Size(94, 29);
+            lblGuest.Size = new Size(198, 32);
             lblGuest.TabIndex = 2;
             lblGuest.Text = "Guest : ";
             // 
             // btnBack
             // 
-            btnBack.BackColor = Color.LightCoral;
-            btnBack.Font = new Font("Microsoft Sans Serif", 13.8F);
+            btnBack.BackColor = Color.WhiteSmoke;
+            btnBack.Font = new Font("Press Start 2P", 13.8F);
             btnBack.Location = new Point(268, 250);
             btnBack.Name = "btnBack";
             btnBack.Size = new Size(174, 58);
@@ -86,6 +86,7 @@
             Controls.Add(lblGuest);
             Controls.Add(lblHost);
             Controls.Add(lblRoomId);
+            FormBorderStyle = FormBorderStyle.FixedSingle;
             Name = "WaitingRoom";
             Text = "WaitingRoom";
             Load += WaitingRoom_Load;

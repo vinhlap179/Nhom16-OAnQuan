@@ -108,6 +108,7 @@
             Controls.Add(lbLoss);
             Controls.Add(lbWin);
             Controls.Add(lbUsername);
+            FormBorderStyle = FormBorderStyle.FixedSingle;
             Name = "PlayerInfoForm";
             Text = "PlayerInfoForm";
             Load += PlayerInfoForm_Load;

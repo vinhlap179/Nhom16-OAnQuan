@@ -66,6 +66,7 @@
             ClientSize = new Size(624, 339);
             Controls.Add(PlayOnlineBtn);
             Controls.Add(PlayOfflineBtn);
+            FormBorderStyle = FormBorderStyle.FixedSingle;
             Name = "ChooseMode";
             Text = "ChooseMode";
             ResumeLayout(false);
