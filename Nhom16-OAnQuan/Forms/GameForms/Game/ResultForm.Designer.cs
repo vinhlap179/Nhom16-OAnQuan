@@ -96,6 +96,7 @@
             Controls.Add(lbKq);
             Controls.Add(lbScoreBot);
             Controls.Add(lbScorePlayer);
+            FormBorderStyle = FormBorderStyle.FixedSingle;
             Name = "ResultForm";
             Text = "ResultForm";
             Load += ResultForm_Load;

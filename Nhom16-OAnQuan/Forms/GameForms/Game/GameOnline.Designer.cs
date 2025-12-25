@@ -127,6 +127,7 @@
             Controls.Add(lblDiemNguoi2);
             Controls.Add(lblDiemNguoi1);
             Controls.Add(tblBanCo);
+            FormBorderStyle = FormBorderStyle.FixedSingle;
             Name = "GameOnline";
             Text = "GameOnline";
             Load += GameOnline_Load;

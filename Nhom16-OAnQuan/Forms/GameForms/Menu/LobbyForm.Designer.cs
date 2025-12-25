@@ -40,7 +40,7 @@
             BtnCreateRoom.BackColor = Color.DarkGray;
             BtnCreateRoom.FlatAppearance.BorderSize = 0;
             BtnCreateRoom.FlatStyle = FlatStyle.Flat;
-            BtnCreateRoom.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            BtnCreateRoom.Font = new Font("Press Start 2P", 12F);
             BtnCreateRoom.ForeColor = SystemColors.ButtonHighlight;
             BtnCreateRoom.Location = new Point(193, 107);
             BtnCreateRoom.Name = "BtnCreateRoom";
@@ -55,7 +55,7 @@
             BtnFindRoom.BackColor = Color.DarkGray;
             BtnFindRoom.FlatAppearance.BorderSize = 0;
             BtnFindRoom.FlatStyle = FlatStyle.Flat;
-            BtnFindRoom.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            BtnFindRoom.Font = new Font("Press Start 2P", 12F);
             BtnFindRoom.ForeColor = SystemColors.ButtonHighlight;
             BtnFindRoom.Location = new Point(193, 200);
             BtnFindRoom.Name = "BtnFindRoom";
@@ -70,7 +70,7 @@
             BtnJoinRoom.BackColor = Color.DarkGray;
             BtnJoinRoom.FlatAppearance.BorderSize = 0;
             BtnJoinRoom.FlatStyle = FlatStyle.Flat;
-            BtnJoinRoom.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            BtnJoinRoom.Font = new Font("Press Start 2P", 12F);
             BtnJoinRoom.ForeColor = SystemColors.ButtonHighlight;
             BtnJoinRoom.Location = new Point(193, 296);
             BtnJoinRoom.Name = "BtnJoinRoom";
@@ -83,7 +83,7 @@
             // txtRoomId
             // 
             txtRoomId.Font = new Font("Microsoft Sans Serif", 7.8F);
-            txtRoomId.Location = new Point(279, 38);
+            txtRoomId.Location = new Point(212, 39);
             txtRoomId.Name = "txtRoomId";
             txtRoomId.Size = new Size(203, 22);
             txtRoomId.TabIndex = 3;
@@ -92,12 +92,12 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
-            label1.Location = new Point(67, 32);
+            label1.Font = new Font("Press Start 2P", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label1.Location = new Point(1, 39);
             label1.Name = "label1";
-            label1.Size = new Size(181, 28);
+            label1.Size = new Size(205, 21);
             label1.TabIndex = 4;
-            label1.Text = "Nhập vào Room ID";
+            label1.Text = "Enter Room ID";
             // 
             // LobbyForm
             // 
@@ -110,6 +110,7 @@
             Controls.Add(BtnJoinRoom);
             Controls.Add(BtnFindRoom);
             Controls.Add(BtnCreateRoom);
+            FormBorderStyle = FormBorderStyle.FixedSingle;
             Name = "LobbyForm";
             Text = "LobbyForm";
             Load += LobbyForm_Load;
