@@ -26,10 +26,10 @@ namespace Nhom16_OAnQuan.Forms.GameForms
         {
             guideImages = new List<string>
             {
-                "Assets/Images/Guides/pic1.png",
-                "Assets/Images/Guides/pic2.png",
-                "Assets/Images/Guides/pic3.png",
-                "Assets/Images/Guides/pic4.png"
+                "Assets/Images/GameBoard/Guides/pic1.png",
+                "Assets/Images/GameBoard/Guides/pic2.png",
+                "Assets/Images/GameBoard/Guides/pic3.png",
+                "Assets/Images/GameBoard/Guides/pic4.png"
             };
 
             picGuide.SizeMode = PictureBoxSizeMode.Zoom;
@@ -38,18 +38,21 @@ namespace Nhom16_OAnQuan.Forms.GameForms
 
         private void ShowCurrentImage()
         {
-            string imagePath = guideImages[currentIndex];
+            // Lấy đường dẫn thư mục chứa file .exe đang chạy
+            string baseDirectory = AppDomain.CurrentDomain.BaseDirectory;
+            // Kết hợp với đường dẫn tương đối
+            string relativePath = guideImages[currentIndex];
+            string imagePath = Path.Combine(baseDirectory, relativePath);
 
             if (File.Exists(imagePath))
             {
-                // Note: Dùng 'new Bitmap(path)' thay vì 'Image.FromFile(path)'
-                // để tránh lỗi file locking (file đang bị chiếm dụng).
+                // Giải phóng ảnh cux
+                if (picGuide.Image != null) picGuide.Image.Dispose();
                 picGuide.Image = new Bitmap(imagePath);
             }
             else
             {
-                MessageBox.Show($"Lỗi: Không tìm thấy file ảnh tại: {imagePath}", "Lỗi tải ảnh", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                picGuide.Image = null;
+                MessageBox.Show($"Không tìm thấy ảnh tại: \n{imagePath}", "Lỗi");
             }
 
             btnBack.Enabled = (currentIndex > 0);
