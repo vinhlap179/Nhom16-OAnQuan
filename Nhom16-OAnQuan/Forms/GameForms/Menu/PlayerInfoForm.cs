@@ -40,10 +40,10 @@ namespace Nhom16_OAnQuan.Forms.GameForms
 
             UserData data = snapshot.ConvertTo<UserData>();
 
-            lbUsername.Text = $"👤 Tài khoản: {data.Username}";
-            lbWin.Text = $"🏆 Số trận thắng: {data.Wins}";
-            lbLoss.Text = $"💀 Số trận thua: {data.Losses}";
-            lbTotal.Text = $"🎮 Tổng số trận: {data.TotalGames}";
+            lbUsername.Text = $"Account: {data.Username}";
+            lbWin.Text = $"Numbers of win: {data.Wins}";
+            lbLoss.Text = $"Numbers of loss: {data.Losses}";
+            lbTotal.Text = $"Total games: {data.TotalGames}";
         }
     }
 }

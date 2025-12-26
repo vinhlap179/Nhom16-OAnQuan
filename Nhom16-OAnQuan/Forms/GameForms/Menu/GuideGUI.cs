@@ -18,8 +18,7 @@ namespace Nhom16_OAnQuan.Forms.GameForms
 
         private void button1_Click(object sender, EventArgs e)
         {
-            new StartingGUI().Show();
-            this.Hide();
+            this.Close();
         }
 
         private void GuideGUI_Load(object sender, EventArgs e)

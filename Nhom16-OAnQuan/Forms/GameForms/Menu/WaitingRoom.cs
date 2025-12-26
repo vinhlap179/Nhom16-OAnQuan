@@ -74,7 +74,7 @@ namespace Nhom16_OAnQuan.Forms.GameForms
             }
 
             lblHost.Text = "Host: " + room.HostUID;
-            lblGuest.Text = string.IsNullOrEmpty(room.GuestUID) ? "Đang chờ..." : "Guest: " + room.GuestUID;
+            lblGuest.Text = string.IsNullOrEmpty(room.GuestUID) ? "Waiting..." : "Guest: " + room.GuestUID;
         }
 
         private async void CheckGameStatus(RoomModel room)
